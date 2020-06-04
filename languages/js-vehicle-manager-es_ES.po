@@ -1,0 +1,4145 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es_ES\n"
+"X-Generator: Poedit 2.3\n"
+
+#, fuzzy
+msgid "Control Panel"
+msgstr "Panel de control"
+
+msgid "Dashboard"
+msgstr "Escritorio"
+
+msgid "Seller List"
+msgstr "Lista de Tiendas"
+
+msgid "Sellers By City"
+msgstr "Tiendas por ciudad"
+
+msgid "Register"
+msgstr "Registro"
+
+msgid "My Stats"
+msgstr "Mis estadísticas"
+
+msgid "Seller Info"
+msgstr "Información de la tienda"
+
+msgid "My Vehicles"
+msgstr "Mis vehículos"
+
+msgid "Vehicles"
+msgstr "Vehículos"
+
+msgid "Vehicle Detail"
+msgstr "Detalle de vehículos"
+
+msgid "Search Vehicle"
+msgstr "Buscador de vehículos"
+
+msgid "Shortlisted Vehicles"
+msgstr "Vehículos preseleccionados"
+
+msgid "Compare Vehicles"
+msgstr "Comparador de vehículos"
+
+msgid "From Vehicle"
+msgstr "Del vehículo"
+
+msgid "Vehicles By Make"
+msgstr "Vehículos por marca"
+
+msgid "Vehicles By Condition"
+msgstr "Vehículos por estado"
+
+msgid "Vehicles By City"
+msgstr "Vehículos por ciudad"
+
+msgid "Rate List"
+msgstr "Lista de tarifas"
+
+msgid "Credits Log"
+msgstr "Registro de créditos"
+
+msgid "Credits Pack"
+msgstr "Paquete de créditos"
+
+msgid "Purchase History"
+msgstr "Historial de compras"
+
+msgid "Vehicle Alert"
+msgstr "Alerta de vehículos"
+
+msgid "Vehicles By Types"
+msgstr "Vehículos por tipos"
+
+msgid "Login"
+msgstr "Acceder"
+
+msgid "Login into your account"
+msgstr "Acceso a su cuenta"
+
+msgid "Lost your password?"
+msgstr "¿Perdió su contraseña?"
+
+msgid "Lost your password"
+msgstr "Perdió su contraseña"
+
+msgid "Plus"
+msgstr "Más que"
+
+msgid "Equals"
+msgstr "Igual a"
+
+msgid "Minus"
+msgstr "Menos que"
+
+msgid "Select"
+msgstr "Seleccionar"
+
+msgid "Delete"
+msgstr "Eliminar"
+
+msgid "Download"
+msgstr "Descargar"
+
+msgid "Admin"
+msgstr "Administración"
+
+msgid "Update"
+msgstr "Actualizar"
+
+msgid "Information"
+msgstr "Información"
+
+msgid "Activity Logs"
+msgstr "Registros de actividad"
+
+msgid "Approval Queue"
+msgstr "Cola de aprobación"
+
+msgid "Fields ordering"
+msgstr "Ordenamiento de campos"
+
+msgid "Vehicle alerts"
+msgstr "Alertas de vehículos"
+
+msgid "Configurations"
+msgstr "Configuración"
+
+msgid "Cron Job"
+msgstr "Tareas programadas"
+
+msgid "Payment Methods Configurations"
+msgstr "Configuración de medios de pago"
+
+msgid "Makes By Models"
+msgstr "Marcas por modelo"
+
+msgid "Makes"
+msgstr "Marcas"
+
+msgid "Users"
+msgstr "Usuarios"
+
+msgid "Packages"
+msgstr "Paquetes"
+
+msgid "Credits"
+msgstr "Créditos"
+
+msgid "Credits log"
+msgstr "Registro de créditos"
+
+msgid "Vehicle Types"
+msgstr "Tipos de vehiculos"
+
+msgid "Fuel Types"
+msgstr "Tipos de combustible"
+
+msgid "Mileages"
+msgstr "Kilometraje"
+
+msgid "Model years"
+msgstr "Año del modelo"
+
+msgid "Transmissions"
+msgstr "Transmisión"
+
+msgid "Cylinders"
+msgstr "Cilindrada"
+
+msgid "Conditions"
+msgstr "Condición"
+
+msgid "Currencies"
+msgstr "Monedas"
+
+msgid "Reports"
+msgstr "Reportes"
+
+msgid "Overall Reports"
+msgstr "Reportes generales"
+
+msgid "Overall Stats"
+msgstr "Estadísticas generales"
+
+msgid "Makes and models"
+msgstr "Marcas y modelos"
+
+msgid "Vehicle Exports"
+msgstr "Exportaciones de vehículos"
+
+msgid "Email Templates"
+msgstr "Plantillas de Email"
+
+msgid "Options"
+msgstr "Opciones"
+
+msgid "New Vehicle Admin"
+msgstr "Administrador de nuevos vehículos"
+
+msgid "New Vehicle"
+msgstr "Nuevos vehículo"
+
+msgid "New Vehicle Visitor"
+msgstr "Nuevo visitante del vehículo"
+
+msgid "Vehicle Status"
+msgstr "Estado del vehículo"
+
+msgid "Delete Vehicle"
+msgstr "Eliminar vehículo"
+
+msgid "Credits Purchase Admin"
+msgstr "Administrador de compras de créditos"
+
+msgid "Credits Purchase"
+msgstr "Compras de créditos"
+
+msgid "Credits Expire"
+msgstr "Expiración de créditos"
+
+msgid "Register New Seller"
+msgstr "Registrar nueva tienda"
+
+msgid "Tell A Friend"
+msgstr "Dile a un amigo"
+
+msgid "Make An Offer"
+msgstr "Haz una oferta"
+
+msgid "Schedule Test Drive"
+msgstr "Programar prueba de manejo"
+
+msgid "Message To Seller"
+msgstr "Mensaje a la tienda"
+
+msgid "Country"
+msgstr "País"
+
+msgid "Proceed Without Paying"
+msgstr "Continuar sin pagar"
+
+msgid "Proceed"
+msgstr "Continuar"
+
+msgid "Total Credits"
+msgstr "Total de créditos"
+
+msgid "Credit for action"
+msgstr "Créditos por acción"
+
+msgid "Expire in"
+msgstr "Expira en"
+
+msgid "Days"
+msgstr "Días"
+
+msgid "Credits remaining after proceed"
+msgstr "Créditos restantes después de proceder"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Proceed With Paying"
+msgstr "Proceder con el pago"
+
+msgid "Insufficient Credits"
+msgstr "Créditos insuficientes"
+
+msgid "Buy credits"
+msgstr "Comprar créditos"
+
+msgid "Add"
+msgstr "Agregar"
+
+msgid "Vehicle"
+msgstr "Vehículo"
+
+msgid "Add to"
+msgstr "Agregar a"
+
+msgid "featured"
+msgstr "destacado"
+
+msgid "vehicle"
+msgstr "vehículo"
+
+msgid "Vehicle name"
+msgstr "Nombre del vehículo"
+
+msgid "Error file size too large"
+msgstr "El tamaño del archivo de error es demasiado grande"
+
+msgid "Error file extension mismatch"
+msgstr "La extensión del archivo de error no coincide"
+
+msgid "Error wp file extension mismatch"
+msgstr "Error de extensión de archivo wp no coincide"
+
+msgid "No More Vehicles"
+msgstr "No se han encontrado más vehiculos"
+
+msgid "Fuel Consumption"
+msgstr "El consumo de combustible"
+
+msgid "CC"
+msgstr "CC"
+
+msgid "Show More"
+msgstr "Ver más"
+
+msgid "Featured"
+msgstr "Destacado"
+
+msgid "See"
+msgstr "Ver"
+
+msgid "Photos"
+msgstr "Fotos"
+
+msgid "Sold"
+msgstr "Vendido"
+
+msgid "Highway"
+msgstr "Carretera"
+
+msgid "Exterior Color"
+msgstr "Color exterior"
+
+msgid "Stock Number"
+msgstr "Número de stock"
+
+msgid "Location"
+msgstr "Ubicación"
+
+msgid "Shortlist"
+msgstr "Preseleccionados"
+
+msgid "Add To Compare"
+msgstr "Agregar al comparador"
+
+msgid "Today Vehicles Stats"
+msgstr "Estadísticas de hoy"
+
+msgid "Total Vehicles Stats"
+msgstr "Estadísticas de vehículos"
+
+msgid "Last Week Top Five Vehicle By Makes"
+msgstr "Los cinco principales vehículos por marcas de la semana pasada"
+
+msgid "Newly Arrived Vehicles"
+msgstr "Vehículos recién llegados"
+
+msgid "Newly Registered Users"
+msgstr "Usuarios recientemente registrados"
+
+msgid "Add Vehicle"
+msgstr "Agregar vehículo"
+
+msgid "Shortlist Vehicles"
+msgstr "Vehículos preseleccionados"
+
+msgid "Vehicle By Cities"
+msgstr "Vehículos por ciudad"
+
+msgid "Sellers List"
+msgstr "Lista de tiendas"
+
+msgid "Username / password is incorrect"
+msgstr "Nombre de usuario / contraseña incorrecto"
+
+msgid "Vehicle manager pages"
+msgstr "Páginas de administrador de vehículos"
+
+msgid "Create shortcode for"
+msgstr "Crear código corto para"
+
+msgid "vehicle manager"
+msgstr "administrador de vehículos"
+
+msgid "pages"
+msgstr "páginas"
+
+msgid "Select page"
+msgstr "Seleccionar página"
+
+msgid "Message"
+msgstr "Mensaje"
+
+msgid "Featured vehicle"
+msgstr "Vehículo destacado"
+
+msgid "Select detail page"
+msgstr "Seleccionar página de detalles"
+
+msgid "Sliding style"
+msgstr "Estilo deslizante"
+
+msgid "Whole Slide"
+msgstr "Diapositiva entera"
+
+msgid "Single Slide"
+msgstr "Diapositiva única"
+
+msgid "Slide speed"
+msgstr "Velocidad de deslizamiento"
+
+msgid "Number of vehicles"
+msgstr "Número de vehiculos"
+
+msgid "Heading"
+msgstr "Título"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "Newest vehicle"
+msgstr "Vehículo más nuevo"
+
+msgid "newest vehicle"
+msgstr "vehículo más nuevo"
+
+msgid "Style"
+msgstr "Estilo"
+
+msgid "Vehicle search"
+msgstr "Buscador de vehículos"
+
+msgid "vehicle search"
+msgstr "buscador de vehículos"
+
+msgid "Vehicle search style"
+msgstr "Estilo del buscador de vehículos"
+
+msgid "Title"
+msgstr "Título"
+
+msgid "Background image"
+msgstr "Imagen de fondo"
+
+msgid "Select background image"
+msgstr "Seleccione una imagen de fondo"
+
+msgid "Select image"
+msgstr "Selecciones una imagen"
+
+msgid "List Vehicles"
+msgstr "Lista de vehículos"
+
+msgid "Search Vehicles"
+msgstr "Buscador de vehículos"
+
+msgid "My Profile"
+msgstr "Mi perfil"
+
+msgid "Vehicles by City"
+msgstr "Vehículos por ciudad"
+
+msgid "Sellers by City"
+msgstr "Tiendas por ciudad"
+
+msgid "Vehicles by Type"
+msgstr "Vehículos por tipo"
+
+msgid "Vehicles by Make"
+msgstr "Vehículos por marca"
+
+msgid "Seller Detail"
+msgstr "Detalles de la tienda"
+
+msgid "Credits Rate List"
+msgstr "Lista de tasas de créditos"
+
+msgid "Vehicle alert"
+msgstr "Alerta del vehículo"
+
+msgid "Thank you"
+msgstr "Muchas gracias"
+
+msgid "Error"
+msgstr "Error"
+
+msgid "You must set jobs user role"
+msgstr "Debe establecer el rol de usuario de trabajos"
+
+msgid "Invalid recaptcha answer"
+msgstr "Respuesta recaptcha inválida"
+
+msgid "Username already taken"
+msgstr "El Rut ya existe en el sistema"
+
+msgid "Invalid username"
+msgstr "Nombre de usuario inválido"
+
+msgid "Please enter a username"
+msgstr "Ingrese un nombre de usuario"
+
+msgid "Invalid email"
+msgstr "Email inválido"
+
+msgid "Email already registered"
+msgstr "El correo ya ha sido registrado"
+
+msgid "Please enter a password"
+msgstr "Por favor ingrese una contraseña"
+
+msgid "Passwords do not match"
+msgstr "Las contraseñas no coinciden"
+
+msgid "Vehicle Manager Credits"
+msgstr "Administrador de créditos de vehículos"
+
+msgid "Select Package"
+msgstr "Seleccionar paquete"
+
+msgid "Package combo"
+msgstr "Paquete de oferta"
+
+msgid "Select credits pack so that user can purchase them."
+msgstr "Seleccione un paquete de créditos con el que los usuarios puedan comprar."
+
+msgid "Vehicle Manager"
+msgstr "Administrador de vehículos"
+
+msgid "Currency"
+msgstr "Monedas"
+
+msgid "Models"
+msgstr "Modelos"
+
+msgid "Vehicle types"
+msgstr "Tipos de vehículo"
+
+msgid "Email templates"
+msgstr "Plantillas de email"
+
+msgid "Email options"
+msgstr "Opciones de email"
+
+msgid "Field ordering Vehicle"
+msgstr "Vehículo de pedidos de campo"
+
+msgid "Payment methods"
+msgstr "Métodos de pago"
+
+msgid "Countries"
+msgstr "Países"
+
+msgid "States"
+msgstr "Estados"
+
+msgid "Cities"
+msgstr "Ciudades"
+
+msgid "Activity Log"
+msgstr "Registro de actividad"
+
+msgid "Payment Methods Configuration"
+msgstr "Configuración de métodos de pago"
+
+msgid "Messages"
+msgstr "Mensajes"
+
+msgid "System Error"
+msgstr "Error de sistema"
+
+msgid "Common"
+msgstr "Común"
+
+msgid "Post Installation"
+msgstr "Post instalación"
+
+msgid "Could not find any matching results"
+msgstr "No hemos encontrado coincidencias para tu búsqueda"
+
+msgid "Oops..."
+msgstr "Lo sentimos..."
+
+msgid "No record found"
+msgstr "No hemos encontrado respuesta para tu búsqueda"
+
+msgid "To Access This Page Please Login"
+msgstr "Para acceder a esta página, debe acceder o registrarse primero"
+
+msgid "Back to control panel"
+msgstr "Regreso al panel de contro"
+
+msgid "Registration is disabled by admin, please contact to system administrator"
+msgstr "El registro de usuarios está deshabilitado, por favor contacte al administrador"
+
+msgid "You are not logged in"
+msgstr "Usted no está registrado"
+
+msgid "You do not have sufficient credits"
+msgstr "No tienes suficientes créditos"
+
+msgid "Visitor not allowed to perform this action"
+msgstr "No está permitido realizar estas acciones por los visitantes"
+
+msgid "You are not allowed"
+msgstr "No está permitido"
+
+msgid "Please first make a selection from the list"
+msgstr "Por favor, seleccione un elemento de la lista"
+
+msgid "Unknown"
+msgstr "Desconocido"
+
+msgid "Invalid request"
+msgstr "Consulta inválida"
+
+msgid "has been successfully saved"
+msgstr "ha sido exitosamente guardado"
+
+msgid "has not been saved"
+msgstr "no ha sido guardado"
+
+msgid "has been successfully removed from our system"
+msgstr "ha sido exitosamente removido de su sistema"
+
+msgid "has been successfully deleted"
+msgstr "ha sido exitosamente borrado"
+
+msgid "Record not exist"
+msgstr "No existe información relacionada"
+
+msgid "has not been deleted"
+msgstr "no ha sido eliminado"
+
+msgid "has been successfully published"
+msgstr "ha sido exitosamente publicado"
+
+msgid "transaction has been successfully verified"
+msgstr "la transacción ha sido exitosamente verificada"
+
+msgid "transaction has been successfully unverified"
+msgstr "la transacción no ha podido ser confirmada"
+
+msgid "transaction has not been successfully verified"
+msgstr "la transacción no ha podido ser verificada"
+
+msgid "transaction has not been successfully unverified"
+msgstr "la transacción no ha podido ser confirmada"
+
+msgid "has not been published"
+msgstr "no ha sido publicada"
+
+msgid "has been successfully unpublished"
+msgstr "ha sido exitosamente despublicada"
+
+msgid "has not been unpublished"
+msgstr "no ha sido despublicada"
+
+msgid "Fields has been successfully required"
+msgstr "Los campos han sido exitosamente requeridos"
+
+msgid "Field has not been required"
+msgstr "El campo no han sido requerido"
+
+msgid "Fields has not been required"
+msgstr "Los campos no han sido requeridos"
+
+msgid "Fields has been successfully not required"
+msgstr "Los campos han sido exitosamente no requeridos"
+
+msgid "Field has not been not required"
+msgstr "El campo no ha sido requerido"
+
+msgid "Fields has not been not required"
+msgstr "El campo no es requerido"
+
+msgid "Field order up successfully"
+msgstr "Campo ordenado ascendentemente"
+
+msgid "Field order up error"
+msgstr "Error de ordenamiento ascendentemente"
+
+msgid "Field order down successfully"
+msgstr "Campo ordenado descendentemente"
+
+msgid "has been rejected"
+msgstr "ha sido rechazado"
+
+msgid "Job applied successfully"
+msgstr "Postulación a trabajo exitosa"
+
+msgid "Error in applying job"
+msgstr "Error en postulación a trabajao"
+
+msgid "has not been rejected"
+msgstr "no ha sido rechazado"
+
+msgid "has been approved"
+msgstr "ha sido aprobado"
+
+msgid "has not been approved"
+msgstr "no ha sido aprobado"
+
+msgid "has been set as default"
+msgstr "ha sido marcado por defecto"
+
+msgid "Unpublished field cannot set default"
+msgstr "Un campo despublicado no puede ser señalado por defecto"
+
+msgid "has not been set as default"
+msgstr "no puede ser señalado por defecto"
+
+msgid "status has been updated"
+msgstr "el estado ha sido actualizado"
+
+msgid "has not been updated"
+msgstr "no ha sido actualizado"
+
+msgid "in use cannot deleted"
+msgstr "no es posible borrar elementos en uso"
+
+msgid "already exist"
+msgstr "ya existe"
+
+msgid "File type error"
+msgstr "Error de tipo de archivo"
+
+msgid "File size error"
+msgstr "Error de tamaño de archivo"
+
+msgid "has been enabled"
+msgstr "ha sido habilitado"
+
+msgid "has been disabled"
+msgstr "hasido deshabilitado"
+
+msgid "has been marked as sold"
+msgstr "ha sido señalado como vendido"
+
+msgid "has not been marked as sold"
+msgstr "no ha sido marcado como vendido"
+
+msgid "Credits pack successfully saved and unpublished.You should also disable package from woo commerce if have"
+msgstr ""
+"El paquete de créditos se ha guardado y despublicado correctamente. También debe deshabilitar el paquete de Woo "
+"Commerce si tiene"
+
+msgid "Ad-Expiry"
+msgstr "Vencimiento del anuncio"
+
+msgid "Address Data"
+msgstr "Dirección"
+
+msgid "Fuel type"
+msgstr "Tipo de combustible"
+
+msgid "Condition"
+msgstr "Condición"
+
+msgid "Cylinder"
+msgstr "Cilindrada"
+
+msgid "Model year"
+msgstr "Año del modelo"
+
+msgid "Transmission"
+msgstr "Transmisión"
+
+msgid "Make"
+msgstr "Marca"
+
+msgid "Vehicle type"
+msgstr "Tipo de vehículo"
+
+msgid "Model"
+msgstr "Modelo"
+
+msgid "City"
+msgstr "Ciudad"
+
+msgid "Field"
+msgstr "Campo"
+
+msgid "Gold vehicle"
+msgstr "Vehículo dorado"
+
+msgid "Payment History"
+msgstr "Historial de pagos"
+
+msgid "Payment Method Configuration"
+msgstr "Configuración del método de pago"
+
+msgid "State"
+msgstr "Estado"
+
+msgid "Seller"
+msgstr "Tienda"
+
+msgid "Configuration"
+msgstr "Configuración"
+
+msgid "Email Template"
+msgstr "Plantilla de email"
+
+msgid "Tag"
+msgstr "Pestaña"
+
+msgid "record"
+msgstr "registro"
+
+msgid "s"
+msgstr "s"
+
+msgid "Mileage"
+msgstr "Kilometraje"
+
+msgid "User"
+msgstr "Usuario"
+
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Next"
+msgstr "Siguiente"
+
+msgid "Please add your text field for the "
+msgstr "Por favor, agregue un campo de texto para "
+
+msgid "You have insufficient credits, you can not perform this action"
+msgstr "No tiene créditos suficientes por lo que no puede realizar esta acción"
+
+msgid "Please Accept Terms And Conditions So You Can Proceed"
+msgstr "Por favor, acepte los Términos y Condiciones para continuar"
+
+msgid "You have not answered all required fields"
+msgstr "No ha respondido todos los campos requeridos"
+
+msgid "Ad-Expiries"
+msgstr "Agregar vencimiento"
+
+msgid "Administrator"
+msgstr "Administrador"
+
+msgid "added a new"
+msgstr "agregado un nuevo"
+
+msgid "edited a existing"
+msgstr "editar existente"
+
+msgid "delete a record"
+msgstr "eliminar registro"
+
+msgid "unknown"
+msgstr "desconocido"
+
+msgid "Fuel Type"
+msgstr "Tipo de combustible"
+
+msgid "Model Year"
+msgstr "Año del modelo"
+
+msgid "Deleted a"
+msgstr "Borrar un"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "User Name"
+msgstr "Nombre de usuario"
+
+msgid "Reference For"
+msgstr "Referido por"
+
+msgid "Created"
+msgstr "Creado"
+
+msgid "Settings"
+msgstr "Configuración"
+
+msgid "Ad Expiry"
+msgstr "Vencimiento del anuncio"
+
+msgid "Config"
+msgstr "Configuración"
+
+msgid "Credit Packs"
+msgstr "Paquete de créditos"
+
+msgid "Submit"
+msgstr "Enviar"
+
+msgid "Sort by"
+msgstr "Ordenar por"
+
+msgid "Year"
+msgstr "Año"
+
+msgid "Month"
+msgstr "Mes"
+
+msgid "Week"
+msgstr "Semana"
+
+msgid "Day"
+msgstr "Día"
+
+msgid "Add New"
+msgstr "Agregar nuevo"
+
+msgid "Publish"
+msgstr "Publicar"
+
+msgid "Unpublished"
+msgstr "Despublicado"
+
+msgid "Are you sure to delete? "
+msgstr "¿Está seguro de eliminar? "
+
+msgid "Expiry value"
+msgstr "Valor de vencimiento"
+
+msgid "Select type"
+msgstr "Seleccionar tipo"
+
+msgid "Select Status"
+msgstr "Seleccionar estado"
+
+msgid "Select status"
+msgstr "Seleccionar estado"
+
+msgid "Search"
+msgstr "Buscar"
+
+msgid "Reset"
+msgstr "Reiniciar"
+
+msgid "Ad-Value"
+msgstr "Agregar valor"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Default"
+msgstr "Defecto"
+
+msgid "Published"
+msgstr "Publicado"
+
+msgid "Ordering"
+msgstr "Orden"
+
+msgid "Action"
+msgstr "Acción"
+
+msgid "Not Published"
+msgstr "No publicado"
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Expiry Value"
+msgstr "Valor de vencimiento"
+
+msgid "Yes"
+msgstr "Si"
+
+msgid "No"
+msgstr "No"
+
+msgid "Save"
+msgstr "Guardar"
+
+msgid "Vehicle List"
+msgstr "Lista de vehículos"
+
+msgid "Compare"
+msgstr "Comparar"
+
+msgid "Last Week Stats"
+msgstr "Estadísticas de la última semana"
+
+msgid "Graph"
+msgstr "Gráfica"
+
+msgid "Total Vehicles"
+msgstr "Total de vehículos"
+
+msgid "Featured Vehicles"
+msgstr "Vehículos destacados"
+
+msgid "Short Listed Vehicles"
+msgstr "Vehículos preseleccionados"
+
+msgid "Misc"
+msgstr "Misceláneos"
+
+msgid "Vehicle By Condition"
+msgstr "Vehículo por condición"
+
+msgid "Profile"
+msgstr "Perfil"
+
+msgid "Seller By City"
+msgstr "Tienda por ciudad"
+
+msgid "Time stamp"
+msgstr "Sello de tiempo"
+
+msgid "View All"
+msgstr "Ver todo"
+
+msgid "Stats"
+msgstr "Estadísticas"
+
+msgid "New Vehicles"
+msgstr "Vehículos nuevos"
+
+msgid "Used Vehicles"
+msgstr "Vehículos usados"
+
+msgid "New Vehicles By Make"
+msgstr "Vehículos nuevos por marca"
+
+msgid "Used Vehicles By Make"
+msgstr "Vehículos usados por marca"
+
+msgid "Vehicles By Type"
+msgstr "Vehículos por tipo"
+
+msgid "Most View Vehicles"
+msgstr "Vehículos más vistos"
+
+msgid "Others"
+msgstr "Otros"
+
+msgid "Error in saving records please try again"
+msgstr "Error al guardar registros, por favor intente nuevamente"
+
+msgid "Error while saving new state"
+msgstr "Error al guardar nuevo estado"
+
+msgid "Country not found"
+msgstr "País no encontrado"
+
+msgid "Location format is not correct please enter city in this format city name, country name"
+msgstr "El formato de ubicación no es correcto, ingrese la ciudad en este formato nombre de ciudad, nombre de país"
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid "Select state"
+msgstr "Seleccionar estado"
+
+msgid "Latitude"
+msgstr "Latitud"
+
+msgid "Longitude"
+msgstr "Longitud"
+
+msgid "Weeks"
+msgstr "Semanas"
+
+msgid "Months"
+msgstr "Meses"
+
+msgid "Years"
+msgstr "Años"
+
+msgid "Featured Vehicle"
+msgstr "Vehículos destacados"
+
+msgid "Minimum"
+msgstr "Mínimo"
+
+msgid "Maximum"
+msgstr "Máximo"
+
+msgid "Approved"
+msgstr "Aprobado"
+
+msgid "Rejected"
+msgstr "Rechazado"
+
+msgid "Show all"
+msgstr "Mostrar todos"
+
+msgid "Show featured"
+msgstr "Mostrar destacados"
+
+msgid "Text Field"
+msgstr "Campo de texto"
+
+msgid "Text Area"
+msgstr "Área de texto"
+
+msgid "Check Box"
+msgstr "Cuador de selección"
+
+msgid "Date"
+msgstr "Fecha"
+
+msgid "Drop Down"
+msgstr "Desplegable"
+
+msgid "Email Address"
+msgstr "Email"
+
+msgid "Call"
+msgstr "Llamar"
+
+msgid "Messages Sent To Sellers"
+msgstr "Mensajes enviados a los vendedores"
+
+msgid "Created Date"
+msgstr "Fecha de creación"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Vehicle Offers"
+msgstr "Ofertas de vehículos"
+
+msgid "Phone Number"
+msgstr "Número de teléfono"
+
+msgid "Offered Price"
+msgstr "Precio ofrecido"
+
+msgid "Comments"
+msgstr "Comentarios"
+
+msgid "Vehicle Test Drives"
+msgstr "Unidades de prueba de vehículos"
+
+msgid "Phone"
+msgstr "Teléfono"
+
+msgid "Time"
+msgstr "Hora"
+
+msgid "Color"
+msgstr "Color"
+
+msgid "Vehicles by condition"
+msgstr "DD-mm-yyyy"
+
+msgid "Data directory can not empty."
+msgstr "El directorio de datos no puede estar vacío."
+
+msgid "Data directory is not proper."
+msgstr "El directorio de datos no es el apropiado."
+
+msgid "Data directory is not writable."
+msgstr "El directorio de datos no tiene permisos de escritura."
+
+msgid "dd-mm-yyyy"
+msgstr "dd-mm-yyyy"
+
+msgid "mm/dd/yyyy"
+msgstr "mm/dd/yyyy"
+
+msgid "yyyy-mm-dd"
+msgstr "yyyy-mm-dd"
+
+msgid "Only Show Button"
+msgstr "Solo mostrar el botón"
+
+msgid "Show Auto Popup"
+msgstr "Mostrar alerta automática"
+
+msgid "Both"
+msgstr "Ambos"
+
+msgid "Show"
+msgstr "Mostrar"
+
+msgid "Hide"
+msgstr "Ocultar"
+
+msgid "Meters"
+msgstr "Metros"
+
+msgid "Kilometers"
+msgstr "Kilómetros"
+
+msgid "Miles"
+msgstr "Millas"
+
+msgid "Nautical Miles"
+msgstr "Millas naúticas"
+
+msgid "Left align"
+msgstr "Alinear a la izquierda"
+
+msgid "Right align"
+msgstr "Alinear a la derecha"
+
+msgid "Top Left"
+msgstr "Arriba a la izquierda"
+
+msgid "Top Right"
+msgstr "Arriba a la derecha"
+
+msgid "Middle Left"
+msgstr "Al medio a la izquierda"
+
+msgid "Middle Right"
+msgstr "Al medio a la derecha"
+
+msgid "Bottom Left"
+msgstr "Al fondo a la izquierda"
+
+msgid "Bottom Right"
+msgstr "Al fondo a la derecha"
+
+msgid "Left Top"
+msgstr "Arriba a la izquierda"
+
+msgid "Left Bottom"
+msgstr "A la izquierda abajo"
+
+msgid "Right Top"
+msgstr "A la derecha arriba"
+
+msgid "Right Bottom"
+msgstr "Abajo a la derecha"
+
+msgid "Site Settings"
+msgstr "Configuración del sitio"
+
+msgid "Pricing"
+msgstr "Precios"
+
+msgid "Vehicle setting"
+msgstr "Configuración de vehículos"
+
+msgid "Email setting"
+msgstr "Configuración de correo"
+
+msgid "RSS setting"
+msgstr "Configuración RSS"
+
+msgid "Google Map and Adsense"
+msgstr "Google Map y Adsense"
+
+msgid "Social Login"
+msgstr "Inicio de sesión con redes sociales"
+
+msgid "Social Sharing"
+msgstr "Recaptcha"
+
+msgid "Member Links"
+msgstr "Enlaces de usuarios"
+
+msgid "Visitor Links"
+msgstr "Enlaces del visitante"
+
+msgid "Visitor"
+msgstr "Visitante"
+
+msgid "Recaptcha"
+msgstr "Recaptcha"
+
+msgid "Breadcrumbs"
+msgstr "Breadcrumbs"
+
+msgid "Data directory"
+msgstr "Directorio de datos"
+
+msgid "System will upload all user files in this folder"
+msgstr "El sistema cargará todos los archivos de usuario en esta carpeta"
+
+msgid "Date format"
+msgstr "Formato de fecha"
+
+msgid "Auto assign package to new user"
+msgstr "Asignar paquete de forma automática a los nuevos usuarios"
+
+msgid "Auto assign free package to new user"
+msgstr "Asignar paquetes gratuitos de forma automática a los nuevos usuarios"
+
+msgid "Auto approve free package"
+msgstr "Aprobar paquete gratuito"
+
+msgid "Auto approve free package of new new user"
+msgstr ""
+
+msgid "Purchase free package only once"
+msgstr "Compre el paquete gratis solo una vez"
+
+msgid "User can purchase free package only once"
+msgstr "El usuario puede adquirir paquetes gratis solo una vez"
+
+msgid "User can add vehicle"
+msgstr "El usuario no puede agregar vehículos"
+
+msgid "Vehicle default expiry in days"
+msgstr "Vencimiento predeterminado del vehículo en días"
+
+msgid "Default page"
+msgstr "Página por defecto"
+
+msgid ""
+"Select JS Vehicle Manager default page, on action system will redirect on selected page. If not select default "
+"page, email links and support icon might not work."
+msgstr ""
+"Seleccione la página predeterminada JS Vehicle Manager, en el sistema de acción redirigirá en la página "
+"seleccionada. Si no selecciona la página predeterminada, los enlaces de correo electrónico y el ícono de soporte "
+"podrían no funcionar."
+
+msgid "Vehicle SEO"
+msgstr "SEO para vehículos"
+
+msgid "Vehicle seo options are make, model, modelyear, vehicletype, condition, location"
+msgstr "Las opciones de seo por vehículo son marca, modelo, año del modelo, tipo de vehículo, condición, ubicación"
+
+msgid "make"
+msgstr "marca"
+
+msgid "model"
+msgstr "modelo"
+
+msgid "model year"
+msgstr "año del modelo"
+
+msgid "Default pagination size"
+msgstr "Paginación por defecto"
+
+msgid "Maximum number of records show per Page"
+msgstr "Cantidad"
+
+msgid "Default radius type"
+msgstr "Tipo de radio predeterminado"
+
+msgid "Default Radius Type"
+msgstr "Tipo de radio predeterminado"
+
+msgid "Default address display style"
+msgstr "Estilo de visualización de dirección predeterminado"
+
+msgid "User can add city"
+msgstr "El usuario puede una ciudad"
+
+msgid "Maximum record for city field"
+msgstr "Registro máximo para campo de ciudad"
+
+msgid "Show maximum records for city field"
+msgstr "Mostrar registros máximos para campo de ciudad"
+
+msgid "Allowed upload file size"
+msgstr "Tamaño de archivo permitido"
+
+msgid "File size in kb"
+msgstr "Tamaño de archivo en Kb"
+
+msgid "Allowed extensions type"
+msgstr "Tipos de extensiones permitidas"
+
+msgid "Allowed file extensions types for upload files"
+msgstr "Tipos de extensiones de archivo permitidos para cargar archivos"
+
+msgid "Upload file types for brochure"
+msgstr "Subir tipos de archivo para folleto"
+
+msgid "For example"
+msgstr "Por ejemplo"
+
+msgid "User register redirect"
+msgstr "Redirección de registro de usuario"
+
+msgid "New user register redirect page"
+msgstr "Nueva página de redireccionamiento de registro de usuario"
+
+msgid "Price Notations"
+msgstr "Notación de precio"
+
+msgid "Currency symbol position"
+msgstr "Posición del símbolo de moneda"
+
+msgid "The available currencies in the system can be managed from"
+msgstr "Las monedas disponibles en el sistema se pueden administrar desde"
+
+msgid "here"
+msgstr "aquí"
+
+msgid "Price number after decimal Point"
+msgstr "Número de precio después del punto decimal"
+
+msgid "Price decimal separator"
+msgstr "Separador decimal del precio"
+
+msgid "Price thousand separator"
+msgstr "Separado de miles del precio"
+
+msgid "Vehicle Settings"
+msgstr "Configuración de vehículo"
+
+msgid "Show sold vehicles"
+msgstr "Mostrar vehículos vendidos"
+
+msgid "Show sold vehicles in vehicle listing"
+msgstr "Mostrar vehículos vendidos en el listado"
+
+msgid "Show featured vehicles"
+msgstr "Mostrar vehículos destacados"
+
+msgid "Show featured vehicles in vehicle listings"
+msgstr "Mostrar vehículos destacados en listados de vehículos"
+
+msgid "Limit vehicle alerts"
+msgstr "Limite las alertas del vehículo"
+
+msgid "Maximum vehicles alerts for user"
+msgstr "Máximo de alertas de vehículos para el usuario"
+
+msgid "Vehicle alert action button"
+msgstr "Botón de acción de alerta del vehículo"
+
+msgid "Show vehicle alert display type after search vehicle"
+msgstr "Mostrar tipo de visualización de alerta del vehículo después de buscar el vehículo"
+
+msgid "Vehicle alert popup delay"
+msgstr "Demora de alerta emergente de vehículo"
+
+msgid "Popup delay in seconds"
+msgstr "Retraso de la ventana emergente en segundos"
+
+msgid "Maximum images per vehicle"
+msgstr "Imágenes máximas por vehículo"
+
+msgid "Maximum upload images per vehicle"
+msgstr "Carga máxima de imágenes por vehículo"
+
+msgid "Vehicle auto approve"
+msgstr "Aprobación automática del vehículo"
+
+msgid "Vehicle Auto Approve"
+msgstr "Aprobación Automática del Vehículo"
+
+msgid "Featured vehicle auto approve"
+msgstr "Vehículo destacado aprobado"
+
+msgid "Number of featured vehicles"
+msgstr "Número de vehículos destacados"
+
+msgid "Show number of featured vehicles in vehicle listings"
+msgstr "Mostrar el número de vehículos destacados en las listas de vehículos"
+
+msgid "Vehicle type per row"
+msgstr "Tipo de vehículo por fila"
+
+msgid "Add Watermark To Vehicle Images"
+msgstr "Agregar marca de agua a imágenes de vehículos"
+
+msgid "Select Whether To Add Watermark Or Not"
+msgstr "Seleccione si desea agregar marca de agua o no"
+
+msgid "Watermark Image"
+msgstr "Agregar de agua"
+
+msgid "Select The Image You Want To Use As Watermark"
+msgstr "Seleccione la imagen que desea usar como marca de agua"
+
+msgid "Watermark Position"
+msgstr "PDF"
+
+msgid "Select Position Of Watermark"
+msgstr "Seleccione la posición de la marca de agua"
+
+msgid "Visitors Settings"
+msgstr "Configuraciones de visitantes"
+
+msgid "Visitor can add vehicle"
+msgstr "Los visitantes pueden agregar vehículos"
+
+msgid "Visitor add vehicle redirect page"
+msgstr "Agregar página de redireccionamiento de vehículo para el visitante"
+
+msgid "Where to redirect visitor when visitor adds a new vehicle"
+msgstr "Dónde redirigir al visitante cuando el visitante agrega un vehículo nuevo"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "Print"
+msgstr "Imprimir"
+
+msgid "Refine Search Tag Position"
+msgstr "Refinar la posición de la etiqueta de búsqueda"
+
+msgid "Seller Image"
+msgstr "Logotipo de la tienda"
+
+msgid "Google Map"
+msgstr "Google Map"
+
+msgid "Default longitude"
+msgstr "Longitud por defecto"
+
+msgid "Default Longitude"
+msgstr "Longitud por defecto"
+
+msgid "Default latitude"
+msgstr "Latitud por defecto"
+
+msgid "Default Latitude"
+msgstr "Latitud por defecto"
+
+msgid "Google map API key"
+msgstr "API key de Google map"
+
+msgid "Get API key from"
+msgstr "Ir al formulario del API Key"
+
+msgid "Adsense"
+msgstr "Adsense"
+
+msgid "Show google adds in list vehicle"
+msgstr "Mostrar Google Adss en listado de vehículo"
+
+msgid "Google adsense client id"
+msgstr "Id de cliente Adsense"
+
+msgid "Google adsense slot id"
+msgstr "ID de la vacante para Google Adsense"
+
+msgid "Google adds show after number of vehicles"
+msgstr "Mostrar Google adds después de la cantidad de vehículos"
+
+msgid "Google adds width"
+msgstr "Ancho de Google Adds"
+
+msgid "Google adds height"
+msgstr "Google adds altura"
+
+msgid "Google adds custom css"
+msgstr "Css personalizado de Google Adds"
+
+msgid "Sender email address"
+msgstr "RSS"
+
+msgid "Default sender email"
+msgstr "Remitente por defecto"
+
+msgid "Email sender name"
+msgstr "Nombre del remitente"
+
+msgid "Default Email Sender Name"
+msgstr "Nombre del remitente por defecto"
+
+msgid "Admin email address"
+msgstr "Dirección de correo"
+
+msgid "Admin Email"
+msgstr "Correo del administrador"
+
+msgid "RSS"
+msgstr "RSS"
+
+msgid "Vehicle RSS"
+msgstr "RSS del vehículo"
+
+msgid "Webmaster"
+msgstr "Webmaster"
+
+msgid "Must provide title for feed"
+msgstr "Debe señalar un título para el Feed"
+
+msgid "Must provide description for feed"
+msgstr "Debe proporcionar una descripción para el Feed"
+
+msgid "Copyright"
+msgstr "Copyright"
+
+msgid "Leave blank to hide"
+msgstr "Dejar en blanco para no mostrar"
+
+msgid "Show vehicle image"
+msgstr "Mostrar imagen del vehículo"
+
+msgid "Show vehicle image in feeds"
+msgstr "Mostrar imagen del vehículo en Feeds"
+
+msgid "Editor"
+msgstr "Editor"
+
+msgid "Leave blank to hide editor used for feed content issue"
+msgstr "Deje en blanco para ocultar el editor utilizado para el problema de contenido del Feed"
+
+msgid "Time to live"
+msgstr ""
+
+msgid "Time to live for feed"
+msgstr ""
+
+msgid "Web master"
+msgstr "Web master"
+
+msgid "Leave blank to hide webmaster used for technical issue"
+msgstr ""
+
+msgid "Show Vehicle Condition"
+msgstr "Mostrar condición del vehículo"
+
+msgid "Categorize vehicle by condition in feeds"
+msgstr ""
+
+msgid "Facebook"
+msgstr "Facebook"
+
+msgid "Login with facebook"
+msgstr "Acceder con Facebook"
+
+msgid "Facebook user can login in js vehicle manager"
+msgstr "El usuario de Facebook puede iniciar sesión en el sistema"
+
+msgid "API Key"
+msgstr "API Key"
+
+msgid "API key is required for facebook app"
+msgstr ""
+
+msgid "Secret"
+msgstr "Secret"
+
+msgid "Linkedin"
+msgstr "Linkedin"
+
+msgid "Login with linkedin"
+msgstr "Acceder con Linkedin"
+
+msgid "Linkedin user can login in js vehicle manager"
+msgstr ""
+
+msgid "API key is required for linkedin app"
+msgstr ""
+
+msgid "Xing"
+msgstr "Xing"
+
+msgid "Login with Xing"
+msgstr "Acceder con Xing"
+
+msgid "Xing user can login in js vehicle manager"
+msgstr ""
+
+msgid "API key is required for xing app"
+msgstr ""
+
+msgid "Social Media"
+msgstr "Redes sociales"
+
+msgid "Tumbler share"
+msgstr "Compartir con"
+
+msgid "Facebook share"
+msgstr "Compartir con Facebook"
+
+msgid "Google share"
+msgstr "Compartir con Google"
+
+msgid "Blogger share"
+msgstr "Compartir con Blogger"
+
+msgid "Instagram share"
+msgstr "Compartir con"
+
+msgid "Linkedin share"
+msgstr "Compartir con Linkedin"
+
+msgid "Digg share"
+msgstr "Compartir con Digg"
+
+msgid "Twitter share"
+msgstr "Compartir con Twitter"
+
+msgid "Pintrest share"
+msgstr "Compartir con Pintrest"
+
+msgid "User Top Menu Links"
+msgstr ""
+
+msgid "Vehicle By Make"
+msgstr "Vehículo por marca"
+
+msgid "User Dashboard Links"
+msgstr "Enlaces de panel de usuario"
+
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+msgid "Visitor Top Menu Links"
+msgstr "Enlaces del menú principal del visitante"
+
+msgid "Visitor Dashboard Links"
+msgstr "Enlaces del panel de visitantes"
+
+msgid "Add Vehicle Login Message"
+msgstr "Agregar mensaje de inicio de sesión del vehículo"
+
+msgid "Seller Count"
+msgstr "Cuenta de la tienda"
+
+msgid "Country Name"
+msgstr "Nombre del país"
+
+msgid "Vehicle By City"
+msgstr "Vehículo por ciudad"
+
+msgid "Vehicle Count"
+msgstr "Recuento de vehículos"
+
+msgid "Buyer Can Contact Seller"
+msgstr "El comprador puede contactar a la tienda"
+
+msgid "Position Of Model Year"
+msgstr "Posición del año modelo"
+
+msgid "Public Key"
+msgstr "Clave pública"
+
+msgid "Private Key"
+msgstr "Clave privada"
+
+msgid "Visitor Enable"
+msgstr "Visitante habilitado"
+
+msgid "Disable Recaptcha"
+msgstr "Deshabilitar Recaptcha"
+
+msgid "Contact To Seller"
+msgstr "Contactar a la tienda"
+
+msgid "Vehicle Form"
+msgstr "Formulario de vehículo"
+
+msgid "Registration Form"
+msgstr "Formulario de registro"
+
+msgid "Webcrown.org"
+msgstr "Webcrown.org"
+
+msgid "Wget"
+msgstr "Wget"
+
+msgid "Curl"
+msgstr "Curl"
+
+msgid "Php Script"
+msgstr "Script de Php"
+
+msgid "Website"
+msgstr "Sitio Web"
+
+msgid "Recommended run script once a day"
+msgstr ""
+
+msgid "Configuration Of A Backup Job With"
+msgstr ""
+
+msgid "Name Of Cron Job"
+msgstr ""
+
+msgid "Log In To"
+msgstr "Acceder a"
+
+msgid "In The Cron Area"
+msgstr "En el área de Cron"
+
+msgid "Click On The New Cron Button"
+msgstr "Haga clic en el nuevo botón Cron"
+
+msgid "Below You will Find What You Have To Enter At"
+msgstr "A continuación encontrará lo que debe ingresar en"
+
+msgid "Interface"
+msgstr "Interface"
+
+msgid "Timeout"
+msgstr "Se acabó el tiempo"
+
+msgid "180 sec If The Backup Does Not Complete"
+msgstr ""
+
+msgid "Increase It"
+msgstr "Incrementar"
+
+msgid "Most Sites Will Work With A Setting Of 180 Or 600 Here"
+msgstr ""
+
+msgid "If You Have A Very Big Site Which Takes More Than 5 Minutes To Back Itself Up"
+msgstr "Si tiene un sitio muy grande que toma más de 5 minutos para respaldarse"
+
+msgid "You Might Consider Using Akeeba Backup Professional And The Native Cli Cron Job Instead"
+msgstr ""
+
+msgid "As Its Much More Cost-effective."
+msgstr "Como es mucho más rentable."
+
+msgid "Url You Want To Execute"
+msgstr "Url que quieres ejecutar"
+
+msgid "Leave This Blank"
+msgstr "Dejar en blanco"
+
+msgid "Password"
+msgstr "Contraseña"
+
+msgid "Execution Time"
+msgstr "Tiempo de ejecución"
+
+msgid "Thats The Grid Below The Other Options"
+msgstr ""
+
+msgid "Select When And How Often You Want Your Cron Job To Run."
+msgstr "Seleccione cuándo y con qué frecuencia desea que se ejecute su Cron job."
+
+msgid "Alerts"
+msgstr "Alertas"
+
+msgid "If You Have Already Set Up Alert Methods In"
+msgstr ""
+
+msgid ""
+"We Recommend Choosing An Alert Method Here And Not Checking The only On Error So That You Always Get A "
+"Notification When The Backup Cron Job Runs"
+msgstr ""
+
+msgid "Finally Click On The Submit Button To Finish Setting Up Your Cron Job."
+msgstr ""
+
+msgid "Cron Scheduling Using Wget most Hosts"
+msgstr ""
+
+msgid "Cron Scheduling Using Curl siteground And A Few Other Hosts"
+msgstr ""
+
+msgid "Or"
+msgstr "O"
+
+msgid "Custom Php Script To Run"
+msgstr ""
+
+msgid "Sorry"
+msgstr "Lo sentimos"
+
+msgid "The Backup Did Not Work."
+msgstr "El respaldo no ha funcionado."
+
+msgid "Url For Use With Your Own Scripts And Third Party Services"
+msgstr "Url para usar con sus propios scripts y servicios de terceros"
+
+msgid "Has states"
+msgstr "Tiene provincias o estados"
+
+msgid "Has cities"
+msgstr "Tiene Ciudades"
+
+msgid "Cost"
+msgstr "Costo"
+
+msgid "Expiry"
+msgstr "Vencimiento"
+
+msgid "Status"
+msgstr "Estado"
+
+msgid "Action For"
+msgstr "Acción para"
+
+msgid ""
+"Configure your credit system. How much credits required for action. if you don't enter any credit. it will be "
+"free"
+msgstr ""
+
+msgid "You can define expiry date of action. i.e"
+msgstr ""
+
+msgid "Vehicle will be expire in 30 days"
+msgstr "El vehículo expira en 30 días"
+
+msgid "Featured Vehicle will be expire in 30 days"
+msgstr "El vehículo destacado expira en 30 días"
+
+msgid "Select action"
+msgstr "Seleccionar una acción"
+
+msgid "Expire in Days"
+msgstr "Expira en días"
+
+msgid "will be expire"
+msgstr "va a expirar"
+
+msgid "How much credits required for"
+msgstr ""
+
+msgid "Invalid Entry"
+msgstr "Entrada inválida"
+
+msgid "added to featured successfully"
+msgstr ""
+
+msgid "New vehicle"
+msgstr "Nuevo Vehículo"
+
+msgid "added successfully"
+msgstr "agregado exitosamente"
+
+msgid "By Admin"
+msgstr "Por el administrador"
+
+msgid "Credit Used"
+msgstr "Créditos usados"
+
+msgid "Start Date"
+msgstr "Fecha de inicio"
+
+msgid "End"
+msgstr "Fin"
+
+msgid "Action On"
+msgstr ""
+
+msgid "Date and Time"
+msgstr "Fecha y hora"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Spent"
+msgstr "Gastado"
+
+msgid "Remaining"
+msgstr "Restante"
+
+msgid "Start Credits"
+msgstr "Crédito inicial"
+
+msgid "End Credits"
+msgstr "Crédito final"
+
+msgid "Start Price"
+msgstr "Precio inicial"
+
+msgid "End Price"
+msgstr "Precio final"
+
+msgid "off"
+msgstr "apagado"
+
+msgid "Amount"
+msgstr "Monto"
+
+msgid "Discount Cannot Be Higher Then Price"
+msgstr "El descuento no puede ser mayor que el precio"
+
+msgid "Please Select Both Discount Dates"
+msgstr "Por favor, selecciones ambas fechas de descuento"
+
+msgid "Please Enter Discount Value"
+msgstr "Ingrese el valor del descuento"
+
+msgid "Discount Start Date Is Greater Than Discount End Date"
+msgstr "La fecha de inicio del descuento es mayor que la fecha de fin"
+
+msgid "Price"
+msgstr "Precio"
+
+msgid "Select currency"
+msgstr "Seleccionar moneda"
+
+msgid "Discount"
+msgstr "Descuento"
+
+msgid "Discount Type"
+msgstr "Tipo de descuento"
+
+msgid "Discount Start Date"
+msgstr "Fecha de inicio del descuento"
+
+msgid "Discount End Date"
+msgstr "Fecha de inicio del descuento"
+
+msgid "Discount Message"
+msgstr "Mensaje del descuento"
+
+msgid "Package Expire in Days"
+msgstr "El paquete expira en días"
+
+msgid "Buy With"
+msgstr "Compara con"
+
+msgid "Buy Now"
+msgstr "Compara ahora"
+
+msgid "Expire Days"
+msgstr "Días de vigencia"
+
+msgid " Currency "
+msgstr " Moneda "
+
+msgid "Symbol"
+msgstr "Símbolo"
+
+msgid "Code"
+msgstr "Código"
+
+msgid "User Field"
+msgstr "Campo de usuario"
+
+msgid "Radio Button"
+msgstr "Botón de radio"
+
+msgid "Dependent Field"
+msgstr "Campo dependiente"
+
+msgid "upload file"
+msgstr "cargar archivo"
+
+msgid "Multi Select"
+msgstr "Multiselección"
+
+msgid "Text Editor"
+msgstr "Editor de texto"
+
+msgid "Field Type"
+msgstr "Tipo de campo"
+
+msgid "Select field type"
+msgstr "Campo de selección"
+
+msgid "Parent Field"
+msgstr "Campo padre"
+
+msgid "Field Name"
+msgstr "Nombre del campo"
+
+msgid "Field Title"
+msgstr "Título del campo"
+
+msgid "Show on listing"
+msgstr "Mostra en listado"
+
+msgid "Select show on listing"
+msgstr "Seleccionar mostrar en listado"
+
+msgid "Section"
+msgstr "Sección"
+
+msgid "Select section"
+msgstr "Seleccionar sección"
+
+msgid "Read Only"
+msgstr "Leer solamente"
+
+msgid "Select read only"
+msgstr "Seleccionar solo lectura"
+
+msgid "User Published"
+msgstr "Usuario publicado"
+
+msgid "Select published"
+msgstr "Seleccionar publicado"
+
+msgid "Visitor Published"
+msgstr "Visitante publicado"
+
+msgid "Select visitor published"
+msgstr "Seleccionar visitante publicado"
+
+msgid "User Search"
+msgstr "Búsqueda de usuario"
+
+msgid "Select user search"
+msgstr "Seleccionar búsqueda de usuario"
+
+msgid "Visitor Search"
+msgstr "Búsqueda de visita"
+
+msgid "Select visitor search"
+msgstr "Seleccionar búsqueda de visitante"
+
+msgid "Required"
+msgstr "Requerido"
+
+msgid "Select required"
+msgstr "Seleccionar requerido"
+
+msgid "Field Size"
+msgstr "Tamaño de campo"
+
+msgid "Java Script"
+msgstr "Java Script"
+
+msgid "Max Length"
+msgstr "Tamaño máximo"
+
+msgid "Columns"
+msgstr "Columnas"
+
+msgid "Rows"
+msgstr "Filas"
+
+msgid "Use The Table Below To Add New Values"
+msgstr "Use la tabla a continuación para agregar nuevos valores"
+
+msgid "Sample Text"
+msgstr "Texto de ejemplo"
+
+msgid "Add Value"
+msgstr "Agregar valor"
+
+msgid "Value"
+msgstr "Valor"
+
+msgid "User Fields"
+msgstr "Campos de usuario"
+
+msgid "Add User Field"
+msgstr "Agregar campos de usuaurio"
+
+msgid "Not Required"
+msgstr "No requerido"
+
+msgid " Cylinders "
+msgstr " Cilindrada "
+
+msgid "Pending"
+msgstr "Pendiente"
+
+msgid "Removed"
+msgstr "Removido"
+
+msgid "rejected for featured"
+msgstr "rechazado para destacado"
+
+msgid "approved for featured"
+msgstr ""
+
+msgid "removed for featured"
+msgstr ""
+
+msgid "pending for featured"
+msgstr ""
+
+msgid "Due to rejection of vehicle you have not permission to see vehicle detail"
+msgstr ""
+
+msgid "Due to pending status of vehicle you have not permission to see vehicle detail"
+msgstr ""
+
+msgid "Vehicles Queue"
+msgstr "Colo de vehículos"
+
+msgid "Package Detail"
+msgstr "Detalle de paquete"
+
+msgid "Visitor Vehicle"
+msgstr ""
+
+msgid "Subject"
+msgstr "Asunto"
+
+msgid "Body"
+msgstr "Cuerpo"
+
+msgid "Parameters"
+msgstr "Parámetros"
+
+msgid "Seller name"
+msgstr "Nombre de la tienda"
+
+msgid "Vehicle title"
+msgstr "Título del vehículo"
+
+msgid "Vehicle location"
+msgstr "Ubicación del vehículo"
+
+msgid "Vehicle status"
+msgstr "Estado del vehículo"
+
+msgid "Vehicle credits"
+msgstr "Crédito del vehículo"
+
+msgid "Vehicle link"
+msgstr "Enlace del vehículo"
+
+msgid "Vehicle approve or reject"
+msgstr ""
+
+msgid "Package name"
+msgstr "Nombre del paquete"
+
+msgid "Package price"
+msgstr "Precio del paquete"
+
+msgid "Package purchase date"
+msgstr ""
+
+msgid "Package link"
+msgstr "Enlace del paquete"
+
+msgid "My dashboard link"
+msgstr "Enlace a Mi Escritorio"
+
+msgid "Vehicles list that match your alert criteria"
+msgstr "Lista de vehículos que coinciden con sus criterios de alerta"
+
+msgid "Sender name"
+msgstr "Nombre del remitente"
+
+msgid "Your website name"
+msgstr "Nombre del Sitio Web"
+
+msgid "Sender message"
+msgstr "Mensaje del remitente"
+
+msgid "Customer name"
+msgstr "Nombre del cliente"
+
+msgid "Customer Email Address"
+msgstr "Dirección de correo del cliente"
+
+msgid "Customer mobile no"
+msgstr ""
+
+msgid "Customer offered price"
+msgstr ""
+
+msgid "Customer message"
+msgstr ""
+
+msgid "Test Drive Date"
+msgstr ""
+
+msgid "Test Drive Time"
+msgstr ""
+
+msgid "Message from sender"
+msgstr "Mensaje del remitente"
+
+msgid "Email Templates Options"
+msgstr "Opciones de plantillas de correo"
+
+msgid "Visitor Seller"
+msgstr ""
+
+msgid "Add new vehicle"
+msgstr "Agregar un nuevo vehículo"
+
+msgid "Send email"
+msgstr "Enviar correo"
+
+msgid "Do not send email"
+msgstr "No enviar correo"
+
+msgid "Miscellaneous"
+msgstr ""
+
+msgid "Purchase Credits Pack"
+msgstr "Compara paquete de créditos"
+
+msgid "Expire Credits Pack"
+msgstr "Vencimiento del paquete de créditos"
+
+msgid "Select parent field"
+msgstr "Seleccione campo de dependencia"
+
+msgid "Edit Field"
+msgstr "Editar campo"
+
+msgid "Visitor published"
+msgstr "Visitante publicado"
+
+msgid "Terms And Conditions Page"
+msgstr "Página de términos y Condiciones"
+
+msgid "Show On Listing"
+msgstr "Mostrar en el listado"
+
+msgid "Advanced"
+msgstr ""
+
+msgid "Field Ordering"
+msgstr "Campo de ordenamiento"
+
+msgid "User Publish"
+msgstr "Usuario publicado"
+
+msgid "User Unpublished"
+msgstr "Usuario despublicado"
+
+msgid "Visitor Publish"
+msgstr "Visitante publicado"
+
+msgid "Visitor Unpublished"
+msgstr "Visitande despublicado"
+
+msgid "Select user status"
+msgstr "Selecciones el estado del usuario"
+
+msgid "Select visitor status"
+msgstr "Selecciones el estado del visitante"
+
+msgid "Cannot unpublished"
+msgstr "No es posible publicar"
+
+msgid "Cannot required"
+msgstr ""
+
+msgid "Upload File"
+msgstr "Cargar archivos"
+
+msgid "Section cannot be changeable in edit case"
+msgstr "La sección no se puede cambiar en caso de edición"
+
+msgid "Vehicle Option"
+msgstr "Opciones de vehículos"
+
+msgid "Dates"
+msgstr "Fechas"
+
+msgid "All vehicles"
+msgstr "Todos los vehículos"
+
+msgid "Active vehicles"
+msgstr "Vehículos activos"
+
+msgid "Expired vehicles"
+msgstr "Vehículos expirados"
+
+msgid "Vehicle By Makes"
+msgstr "Vehículos por marcas"
+
+msgid "Sold Vehicles"
+msgstr "Vehículos vendidos"
+
+msgid "Expired Vehicles"
+msgstr "Vehículos expirados"
+
+msgid "Not enough data to show graph"
+msgstr "No hay suficientes datos para mostrar el gráfico"
+
+msgid "Active Vehicles"
+msgstr "Vehículos activos"
+
+msgid "Dir is not writable"
+msgstr "No es posible escribir en el directorio"
+
+msgid "Unable to connect to server"
+msgstr "No se puede conectar al servidor"
+
+msgid "Language is not installed"
+msgstr "El idioma no está instalado"
+
+msgid "Language directory is not writable"
+msgstr "El directorio de idiomas no se puede escribir"
+
+msgid "Required language is not installed but similar language[s] like"
+msgstr "El idioma requerido no está instalado, pero hay idiomas similares como"
+
+msgid "is found in your system"
+msgstr "se encuentra en su sistema"
+
+msgid "Language code"
+msgstr "Código de lenguaje"
+
+msgid "Empty values"
+msgstr "Valores vacíos"
+
+msgid "File is not writable"
+msgstr "El archivo no se puede escribir"
+
+msgid "File Downloaded Successfully"
+msgstr "Archivo descargado correctamente"
+
+msgid "Your System Is Up To Date"
+msgstr "Tu sistema esta actualizado"
+
+msgid "New Version Is Available"
+msgstr "Nueva versión disponible"
+
+msgid "Unable Connect To Server"
+msgstr "Imposible conectar con el servidor"
+
+msgid "Total vehicles"
+msgstr "Total de vehículos"
+
+msgid "Statistics"
+msgstr "Estadísticas"
+
+msgid "Vehicle Fields"
+msgstr "Campos de vehículos"
+
+msgid "System Errors"
+msgstr "Errores de sistema"
+
+msgid "Translations"
+msgstr "Traducciones"
+
+msgid "Payment Methods"
+msgstr "Métodos de pago"
+
+msgid "Themes"
+msgstr "Plantillas"
+
+msgid "Newest Vehicles"
+msgstr "Vehículos más nuevos"
+
+msgid "Email template"
+msgstr "Plantillas de email"
+
+msgid "Fuel types"
+msgstr "Tipos de combustibles"
+
+msgid "Reports and Export"
+msgstr "Reportes y exprotación"
+
+msgid "Export"
+msgstr "Exportar"
+
+msgid "Support"
+msgstr "Soporte"
+
+msgid "Documentation"
+msgstr "Documentación"
+
+msgid "Forum"
+msgstr "Foro"
+
+msgid "Component Details"
+msgstr "Detalles de componente"
+
+msgid "Created By"
+msgstr "Creado por"
+
+msgid "Company"
+msgstr "Empresa"
+
+msgid "Plugins"
+msgstr "Plugins"
+
+msgid "Version"
+msgstr "Versión"
+
+msgid "Active"
+msgstr "Activo"
+
+msgid "Shortcode"
+msgstr "Shortcode"
+
+msgid "This shortcode is for vehicle listing page"
+msgstr "Este shortcode es para la página de listado de vehículos"
+
+msgid "Vehicle Search"
+msgstr "Buscador de vehículos"
+
+msgid "This shortcode is for vehicle Search page"
+msgstr "Este shortcode es para la página de búsqueda de vehículos"
+
+msgid "This shortcode is for add vehicle page"
+msgstr "Este shortcode es para agregar vehículos"
+
+msgid "This shortcode is for my vehicles"
+msgstr "Este shortcode es para Mis Vehículos"
+
+msgid "This shortcode is for control panel"
+msgstr "Este shortcode es para panel de control"
+
+msgid "This shortcode is for compare vehicles page"
+msgstr "Este shortcode es para comparar vehículos"
+
+msgid "This shortcode is for shortlisted vehicles listing page"
+msgstr "Este shortcode es para mostrar vehículos preseleccionados"
+
+msgid "This shortcode is for vehicles by city page"
+msgstr "Este shortcode es para vehículos por página de ciudad"
+
+msgid "This shortcode is for vehicles by types page"
+msgstr "Este shortcode es para vehículos por página de tipos"
+
+msgid "This shortcode is for vehicles by makes page"
+msgstr "Este shortcode es para vehículos por página de marcas"
+
+msgid "This shortcode is for sellers listing page"
+msgstr "Este shortcode es para la página de listado de tiendas"
+
+msgid "This shortcode is for sellers by city page"
+msgstr "Este shortcode es para tiendas por página de ciudad"
+
+msgid "This shortcode is for credits pack page"
+msgstr "Este shortcode es para la página del paquete de créditos"
+
+msgid "This shortcode is for credits rate list page"
+msgstr "Este shortcode es para la página de lista de tasa de créditos"
+
+msgid "This shortcode is for purchase history page"
+msgstr "Este shortcode es para la página del historial de compras"
+
+msgid "This shortcode is for credits log page"
+msgstr "Este shortcode es para la página de registro de créditos"
+
+msgid "Vehicle Alerts"
+msgstr "Alertas de vehículos"
+
+msgid "This shortcode is for vehicles alerts page"
+msgstr "Este shortcode es para la página de alertas de vehículos"
+
+msgid "This shortcode is for login page"
+msgstr "Este shortcode es para la página de acceso"
+
+msgid "Dir Not Validate"
+msgstr "Directorio no validado"
+
+msgid "Temp directory Not Validate"
+msgstr "Directorio temporal no validado"
+
+msgid "Create table Not Validate"
+msgstr "La creación de tabla no ha sido validada"
+
+msgid "insert record Not Validate"
+msgstr "insertar registro no validado"
+
+msgid "update record Not Validate"
+msgstr "actualizar registro no validado"
+
+msgid "delete record Not Validate"
+msgstr "borrar registro no validado"
+
+msgid "drop table Not Validate"
+msgstr ""
+
+msgid "file downloaded Not Validate"
+msgstr "archivo descargado no validado"
+
+msgid "CURL Not Validate"
+msgstr "CURL No validado"
+
+msgid "GD lib Not Validate"
+msgstr "GD lib no validar"
+
+msgid "ZIP lib Not Validate"
+msgstr "ZIP lib no validar"
+
+msgid "Please Insert Activation Key And Press Start"
+msgstr "Introduzca la clave de activación y presione Iniciar"
+
+msgid "Remember Key"
+msgstr "Recordar clave"
+
+msgid "It may take few minutes"
+msgstr "Puede tomar unos minutos"
+
+msgid "This may take few minutes"
+msgstr "Esto puede tomar algunos minutos"
+
+msgid "Preset Theme"
+msgstr "Tema preseleccionado"
+
+msgid "Color Chooser"
+msgstr "Selector de color"
+
+msgid "Color 1"
+msgstr "Color 1"
+
+msgid "Top menu heading background"
+msgstr "Fondo del encabezado del menú superior"
+
+msgid "Color 2"
+msgstr "Color 2"
+
+msgid "Top header line color"
+msgstr "Color de la línea del encabezado superior"
+
+msgid "Button Hover"
+msgstr "Desplazamiento del botón"
+
+msgid "Heading text"
+msgstr "Encabezado de texto"
+
+msgid "Color 3"
+msgstr "Color 3"
+
+msgid "Content Background Color"
+msgstr "Color de fondo del contenido"
+
+msgid "Color 4"
+msgstr "Color 4"
+
+msgid "Content Text Color"
+msgstr "Color del texto del contenido"
+
+msgid "Color 5"
+msgstr "Color 5"
+
+msgid "Border color"
+msgstr "Color de borde"
+
+msgid "Lines"
+msgstr "Líneas"
+
+msgid "Color 6"
+msgstr "Color 6"
+
+msgid "Button Color"
+msgstr "Color del botón"
+
+msgid "Color 7"
+msgstr "Color 7"
+
+msgid "Top header text color"
+msgstr "Color de título principal"
+
+msgid "Color 8"
+msgstr "Color 8"
+
+msgid "Theme"
+msgstr "Plantilla"
+
+msgid "My vehicle manager"
+msgstr "Administrador de mis vehículos"
+
+msgid "Add "
+msgstr "Agregar "
+
+msgid "Used Vehicle"
+msgstr "Vehículo usado"
+
+msgid "My Vehicle"
+msgstr "Mi vehículo"
+
+msgid "BMW 4"
+msgstr "BMW 4"
+
+msgid " SERIES"
+msgstr " SERIES"
+
+msgid "$"
+msgstr "$"
+
+msgid "1,20,000"
+msgstr "1200"
+
+msgid "04-10-2016"
+msgstr "04-10-2016"
+
+msgid "40"
+msgstr "40"
+
+msgid "KM"
+msgstr "KM"
+
+msgid "30"
+msgstr "30"
+
+msgid "Location:"
+msgstr "Ubicación:"
+
+msgid "Gujranwala, Punjab Pakistan"
+msgstr "Gujranwala, Punjab Pakistan"
+
+msgid "Exterior Color:"
+msgstr "Color exterior:"
+
+msgid "Blue"
+msgstr "Azul"
+
+msgid "New"
+msgstr "Nuevo"
+
+msgid "Automated"
+msgstr "Automático"
+
+msgid "CNG"
+msgstr "CNG"
+
+msgid "1200"
+msgstr "1200"
+
+msgid "1.2"
+msgstr "1.2"
+
+msgid "Black"
+msgstr "Negro"
+
+msgid "Mint"
+msgstr "Menta"
+
+msgid "Red"
+msgstr "Rojo"
+
+msgid "Aqua"
+msgstr "Agua"
+
+msgid "Blue Jeans"
+msgstr ""
+
+msgid "Grass"
+msgstr ""
+
+msgid "Grape fruit"
+msgstr ""
+
+msgid "Lavender"
+msgstr ""
+
+msgid "Get Vehicle Manager Translations"
+msgstr ""
+
+msgid "Get Translations"
+msgstr "Obtener traducción"
+
+msgid "Select Translation"
+msgstr "Seleccione traducción"
+
+msgid "When WordPress language change to ro, JS Vehicle Manager language will auto change to ro"
+msgstr "Cuando el idioma de WordPress cambia a ro, el idioma de JS Vehicle Manager cambiará automáticamente a ro"
+
+msgid "Contribute In Translation"
+msgstr "Participar en la traducción"
+
+msgid "Manual Download"
+msgstr "Descarga manual"
+
+msgid "Login to your account"
+msgstr "Acceder a cuenta"
+
+msgid "Username"
+msgstr "Rut"
+
+msgid "keep me login"
+msgstr "mantener conectado"
+
+msgid "Logo"
+msgstr "Logo"
+
+msgid "Allowed extension"
+msgstr "Extensiones permitidas"
+
+msgid "File size allowed"
+msgstr "Tamaño de archivo permitido"
+
+msgid " Make "
+msgstr " Marca "
+
+msgid "Vehicles Make And Model"
+msgstr "Vehículos, marcas y modelos"
+
+msgid "Select Model"
+msgstr "Selecciones un modelo"
+
+msgid "Vehicles by Model Years"
+msgstr "Vehículos por año de modelo"
+
+msgid "PayPal Settings"
+msgstr "Configuraciones de PayPal"
+
+msgid "Woocommerce Settings"
+msgstr "Configuraciones de Woocommerce"
+
+msgid "PayPal Enabled"
+msgstr "PayPal habilitado"
+
+msgid "User name"
+msgstr "Rut"
+
+msgid "Signature"
+msgstr "Firma"
+
+msgid "Logo URL"
+msgstr "Logo URL"
+
+msgid "Cancel Url"
+msgstr "Cancelar URL"
+
+msgid "Notify Url"
+msgstr "Notificar URL"
+
+msgid "Test Mode"
+msgstr "Modo de prueba"
+
+msgid "Language"
+msgstr "Idioma"
+
+msgid "Please enter language code i.e: EN"
+msgstr "Ingrese el código de idioma, por ejemplo: ES"
+
+msgid "Enabled"
+msgstr "Habilitado"
+
+msgid "Installation Successful"
+msgstr "Instalación exitosa"
+
+msgid "JS Vehicle Manager successfully install"
+msgstr "JS Vehicle Manager se instaló correctamente"
+
+msgid "JS Vehicle Manager Site Settings"
+msgstr ""
+
+msgid "Default Expiry in days"
+msgstr "Vencimiento en día por defecto"
+
+msgid "Sender Email Address"
+msgstr "Dirección de correo del remitente"
+
+msgid "Default sender email address"
+msgstr ""
+
+msgid "Email Sender Name"
+msgstr "Nombre del remitente"
+
+msgid "Default email sender name"
+msgstr "Nobre por defecto del remitente"
+
+msgid "Admin Email address"
+msgstr "Dirección de correo del administrador"
+
+msgid "Date Format"
+msgstr "Formato de fecha"
+
+msgid "Address Display Style"
+msgstr ""
+
+msgid "User Can Add Vehicle"
+msgstr "Los visitantes pueden agregar vehículos"
+
+msgid "User can add new vehicle"
+msgstr "Los visitantes pueden agregar nuevos vehículos"
+
+msgid "Visitor Can Add Vehicle"
+msgstr "Los visitantes pueden agrear vehículos"
+
+msgid "Visitor can add new vehicle"
+msgstr "Los visitantes pueden agregar un nuevo vehículo"
+
+msgid "Auto approve vehicle created from front end"
+msgstr ""
+
+msgid "Sample User Data"
+msgstr "Datos de ejemplo del usuario"
+
+msgid "Import sample data"
+msgstr "Importar datos de ejemplo"
+
+msgid "Top left"
+msgstr "Arriba a la izquierda"
+
+msgid "Top right"
+msgstr "Arriba a la derecha"
+
+msgid "Middle left"
+msgstr "Al medio al la izquierda"
+
+msgid "Middle right"
+msgstr "Al medio a la derecha"
+
+msgid "Bottom left"
+msgstr "Abajo a la izquierda"
+
+msgid "Bottom right"
+msgstr "Abajo a la derecha"
+
+msgid "JS Jobs Settings"
+msgstr "DD MM YYYY"
+
+msgid "General"
+msgstr "General"
+
+msgid "Employer"
+msgstr "Empleado"
+
+msgid "Job seeker"
+msgstr "Buscador de trabajo"
+
+msgid "Sample data"
+msgstr "Datos de ejemplo"
+
+msgid "Sample Data"
+msgstr "Datos de ejemplo"
+
+msgid "Insert Sample Data"
+msgstr "Insertar datos de ejemplo"
+
+msgid "Job Seeker"
+msgstr "Buscador de trabajos"
+
+msgid "Job Seeker Menu"
+msgstr "Menú de buscador de trabajo"
+
+msgid "Employer Menu"
+msgstr "Menú del empleador"
+
+msgid "Finish"
+msgstr "Finalizar"
+
+msgid "Back"
+msgstr "Regresar"
+
+msgid "Close"
+msgstr "Cerrar"
+
+msgid "DD MM YYYY"
+msgstr "DD MM YYYY"
+
+msgid "MM DD YYYY"
+msgstr "MM DD YYYY"
+
+msgid "YYYY MM DD"
+msgstr "YYYY MM DD"
+
+msgid "System slug"
+msgstr ""
+
+msgid "Select default page"
+msgstr "Seleccionar página por defecto"
+
+msgid "Select JS Jobs default page, on action system will redirect on selected page"
+msgstr ""
+
+msgid "If not select default page, email links and support icon might not work"
+msgstr ""
+"Si no selecciona la página predeterminada, los enlaces de correo electrónico y el ícono de soporte podrían no "
+"funcionar"
+
+msgid "Admin will receive email notifications on this address"
+msgstr "El administrador recibirá notificaciones por correo electrónico sobre esta dirección"
+
+msgid "System email address"
+msgstr "Dirección de correo del sistema"
+
+msgid "Email address that will be used to send emails"
+msgstr "Dirección de correo electrónico que se utilizará para enviar correos electrónicos"
+
+msgid "Email from name"
+msgstr "Nombre del remitente"
+
+msgid "Sender name that will be used in emails"
+msgstr "Nombre del remitente que se usará en los correos electrónicos"
+
+msgid "Show breadcrumbs"
+msgstr ""
+
+msgid "Select breadcrumbs"
+msgstr ""
+
+msgid "Show navigation in breadcrumbs"
+msgstr "Mostrar navegación en migas de pan"
+
+msgid "Default date format"
+msgstr "Formato de fecha por defecto"
+
+msgid "Select date format"
+msgstr "Seleccionar un formato de fecha"
+
+msgid "Date format for plugin"
+msgstr "Formato de fecha para la aplicación"
+
+msgid "Job Seeker Configuration"
+msgstr "Configuración de buscador de trabajo"
+
+msgid "Job Seeker default role"
+msgstr "Rol predeterminado de buscador de trabajo"
+
+msgid "This role will auto assign to new job seeker"
+msgstr ""
+
+msgid "Visitor can apply to job"
+msgstr "Los visitantes pueden postular a un trabajo"
+
+msgid "Search icon position"
+msgstr "Posición del ícono del búsqueda"
+
+msgid "Position for search icon on jobs listing page"
+msgstr "Posición para el icono de búsqueda en la página de listado de trabajos"
+
+msgid "Resume auto approve"
+msgstr "Reanudar la aprobación automática"
+
+msgid "Job short list"
+msgstr "Lista de trabajo"
+
+msgid "Job short list setting effects on job listing pages"
+msgstr ""
+
+msgid "Tell a friend"
+msgstr "Cuéntale a un amigo"
+
+msgid "Tell a friend setting effects on jobs listing page"
+msgstr "Configuración de efectos de Dígale a un Amigo en la página de listado de trabajos"
+
+msgid "Mark Job New"
+msgstr "Marcar como nuevo trabajo"
+
+msgid "How many days system show New tag"
+msgstr ""
+
+msgid "Employer Configuration"
+msgstr "Configuración del empleador"
+
+msgid "Enable Employer Area"
+msgstr "Habilitar área del empleador"
+
+msgid "If no then front end employer area is not accessible"
+msgstr ""
+
+msgid "Allow user register as employer"
+msgstr "Permitir el registro de usuarios como empleados"
+
+msgid "Effects on user registration"
+msgstr "Efectos en el registro de usuarios"
+
+msgid "Employer default role"
+msgstr "Rol por defecto del empleador"
+
+msgid "This role will auto assign to new employer"
+msgstr "Este rol se asignará automáticamente al nuevo empleador"
+
+msgid "Employer can view job seeker area"
+msgstr ""
+
+msgid "Visitor can post job"
+msgstr "El visitante puede publicar trabajo"
+
+msgid "Company auto approve"
+msgstr "Empresa auto aprobar"
+
+msgid "Job auto approve"
+msgstr "Aprobación automática de trabajo"
+
+msgid "Enable gold job"
+msgstr "Habilitar trabajos dorados"
+
+msgid "Gold jobs are allowed in plugin"
+msgstr "Los trabajos dorados están permitidos en el complemento"
+
+msgid "Enable featured job"
+msgstr "Habilitar trabajo destacado"
+
+msgid "Featured jobs are allowed in plugin"
+msgstr "Los trabajos destacados están permitidos en el complemento"
+
+msgid "Requested page is not available contact system Administrator"
+msgstr "La página solicitada no está disponible contacte al administrador del sistema"
+
+msgid "Transaction number"
+msgstr "Número de transacción"
+
+msgid "Update payment information error"
+msgstr "Actualizar error de información de pago"
+
+msgid "Payment has been verified"
+msgstr "El pago ha sido verificado"
+
+msgid "Payment has not been verified"
+msgstr "El pago no ha sido verificado"
+
+msgid "Order not found"
+msgstr "Orden no encontrada"
+
+msgid "Woocommerce product not found, please contact to system Administrator"
+msgstr "No se encuentra el producto de Woocommerce, póngase en contacto con el administrador del sistema"
+
+msgid "Select credits pack"
+msgstr "Seleccionar paquete de créditos"
+
+msgid "Select User"
+msgstr "Usuario seleccionado"
+
+msgid "Transaction Status"
+msgstr "Estado de transacción"
+
+msgid "Approve"
+msgstr "Aprobar"
+
+msgid "Select users"
+msgstr "Usuarios seleccionados"
+
+msgid "Expiry Date"
+msgstr "Fecha de vencimiento"
+
+msgid "Paid Amount"
+msgstr "Suma pagada"
+
+msgid "Purchase Date"
+msgstr "Fecha de compra"
+
+msgid "Purchase History Details"
+msgstr "Detalles del historial de compras"
+
+msgid "Payer name"
+msgstr "Nombre del comprador"
+
+msgid "Payer email address"
+msgstr "Dirección del comprador"
+
+msgid "Payer address"
+msgstr "Dirección del comprador"
+
+msgid "Payer contact number"
+msgstr "Número de contacto del comprador"
+
+msgid "Amount paid"
+msgstr "Suma pagada"
+
+msgid "Payment gateway"
+msgstr "Pasarela de pago"
+
+msgid "Purchase date"
+msgstr "Fecha de compra"
+
+msgid "Package expiry"
+msgstr "Vencimiento del paquete"
+
+msgid "Vehicle Export"
+msgstr "Exportación de vehículos"
+
+msgid "Vehicles By Conditions"
+msgstr "Vehículos por condición"
+
+msgid "Vehicle By types"
+msgstr "Vehículos por tipo"
+
+msgid "Vehicle By Transmissions"
+msgstr "Vehículos por transmisión"
+
+msgid "Vehicle By Fuel types"
+msgstr "Vehículos por tipo de combustible"
+
+msgid "From"
+msgstr "Desde"
+
+msgid "To"
+msgstr "Para"
+
+msgid "Vehicle Images"
+msgstr "Imágenes de vehículos"
+
+msgid "Makes And Models"
+msgstr "Marcas y modelos"
+
+msgid "Date From"
+msgstr "Fecha desde"
+
+msgid "Date To"
+msgstr "Fecha hasta"
+
+msgid "Select make"
+msgstr "Seleccionar marca"
+
+msgid "Select model"
+msgstr "Seleccionar modelo"
+
+msgid "Expire"
+msgstr "Expirados"
+
+msgid "vehicle by vehicle types"
+msgstr "vehículos por tipo"
+
+msgid "Vehicles by fuel types"
+msgstr "Vehículos por tipo de combustible"
+
+msgid "Vehicles by transmission"
+msgstr "Vehículos por transmisión"
+
+msgid "Vehicles By Makes"
+msgstr "Vehículos por marcas"
+
+msgid "Vehicles By Transmission"
+msgstr "Vehículos por transmisión"
+
+msgid "Vehicles By Fuel types"
+msgstr "Vehículos por tipos de combustibles"
+
+msgid "Active Featured"
+msgstr "Destacados activos"
+
+msgid "Expire Vehicles"
+msgstr "Vehículos expirados"
+
+msgid "Today Stats"
+msgstr "Estadísticas de hoy"
+
+msgid "Sold Featured"
+msgstr "Vendido Destacado"
+
+msgid "Expired"
+msgstr "Expirado"
+
+msgid "Show in graph"
+msgstr "Ver en el gráfico"
+
+msgid "Makes and models graph"
+msgstr "Gráfico de marcas y modelos"
+
+msgid "Vehicles By Models"
+msgstr "Vehículos por modelo"
+
+msgid "Vehicles By Cities"
+msgstr "Vehículos por ciudad"
+
+msgid "End Date"
+msgstr "Fecha de fin"
+
+msgid "Select Make"
+msgstr "Seleccione marca"
+
+msgid "Select Type"
+msgstr "Seleccione tipo"
+
+msgid "Select Condition"
+msgstr "Seleccione condición"
+
+msgid "Select condition"
+msgstr "Seleccione condición"
+
+msgid "Cell"
+msgstr "Celular"
+
+msgid "Weblink"
+msgstr "Dirección Web"
+
+msgid "Sellers"
+msgstr "Tiendas"
+
+msgid "New Seller"
+msgstr "Nueva tienda"
+
+msgid "Web Link"
+msgstr "Dirección Web"
+
+msgid "Add New Vehicle"
+msgstr "Agregar nuevo vehículo"
+
+msgid "Add Used Vehicle"
+msgstr "Agregar usuario de vehículo"
+
+msgid "Package"
+msgstr "Paquete"
+
+msgid "New State"
+msgstr "Nuevo estado"
+
+msgid "Error Log"
+msgstr "Registro de error"
+
+msgid "View"
+msgstr "Ver"
+
+msgid "Facebook user"
+msgstr "Usuario de Facebook"
+
+msgid "Linkedin user"
+msgstr "Usuario de Linkedin"
+
+msgid "Xing user"
+msgstr "Usuario Xing"
+
+msgid "You are logged in as "
+msgstr "Has accedido al sitio como "
+
+msgid "Please select your role to continue"
+msgstr "Por favor seleccione su rol para continuar"
+
+msgid "You are logged out"
+msgstr "Has cerrado sesión"
+
+msgid "vehicles"
+msgstr "vehículos"
+
+msgid "Invalid captcha"
+msgstr "Captcha inválido"
+
+msgid "Maximum file size"
+msgstr "Tamaño máximo de archivo"
+
+msgid "Youtube video Link"
+msgstr "Enlace de vídeo de Youtube"
+
+msgid "Embedded html"
+msgstr "HTML incrustado"
+
+msgid "Type In A Search Term"
+msgstr "Señale un término de búsqueda"
+
+msgid "No Results"
+msgstr "Sin resultados"
+
+msgid "Searching"
+msgstr "Buscando"
+
+msgid ""
+"Location Format Is Not Correct Please Enter City In This Format City Name Country Name Or City Name State Name "
+"Country Name"
+msgstr ""
+"El formato de ubicación no es correcto. Ingrese la ciudad en este formato Nombre de la ciudad, Nombre del país o "
+"nombre de la ciudad, Nombre del estado, Nombre del país"
+
+msgid "Something got wrong"
+msgstr "Algo no funcionó"
+
+msgid "Geocode was not successful for the following reason"
+msgstr "Geolocalización no fue exitosa por la siguiente razón"
+
+msgid "User Profile"
+msgstr "Perfil de usuario"
+
+msgid "Disable"
+msgstr "Deshabilitado"
+
+msgid "Address"
+msgstr "Dirección"
+
+msgid "Featured vehicles"
+msgstr "Pintrest"
+
+msgid "Map"
+msgstr "Mapa"
+
+msgid "None"
+msgstr "Ninguno"
+
+msgid "Video"
+msgstr "Vídeo"
+
+msgid "Show Seller Vehicles"
+msgstr "Mostrar vehículos de la tienda"
+
+msgid "Are you sure to remove"
+msgstr "Está seguro de eliminar"
+
+msgid "New Profile"
+msgstr "Nuevo perfil"
+
+msgid "Delete user"
+msgstr "Borrar usuario"
+
+msgid "data only from our system"
+msgstr "datos únicamente de nuestro sistema"
+
+msgid "Delete user and their data also from wp"
+msgstr "Eliminar usuarios y datos de WP"
+
+msgid "Select All"
+msgstr "Seleccionar todas"
+
+msgid "Delete Data"
+msgstr "Eliminar datos"
+
+msgid "Delete WP User"
+msgstr "Eliminar usuario de WP"
+
+msgid "Twitter"
+msgstr "Twitter"
+
+msgid "Google Plus"
+msgstr "Google Plus"
+
+#, fuzzy
+msgid "Pintrest"
+msgstr "Pintrest"
+
+msgid "Instagram"
+msgstr "Instagram"
+
+msgid "Reddit"
+msgstr "Reddit"
+
+msgid "View Profile"
+msgstr "Ver perfil"
+
+#, php-format
+msgid "%s"
+msgstr "%s"
+
+msgid "seller info"
+msgstr "información de la tienda"
+
+msgid "total"
+msgstr "total"
+
+msgid "Seller Information"
+msgstr "Información de la tienda"
+
+msgid "Loading"
+msgstr "Cargando"
+
+msgid "Send Message"
+msgstr "Enviar mensaje"
+
+msgid "by conditions"
+msgstr "por condición"
+
+msgid "by types"
+msgstr "por tipo"
+
+msgid "by model year"
+msgstr "por año del modelo"
+
+msgid "by city"
+msgstr "por ciudad"
+
+msgid "by make"
+msgstr "por marca"
+
+msgid "by model"
+msgstr "por model"
+
+msgid "by seller"
+msgstr "por tienda"
+
+msgid "Short List vehicle"
+msgstr "Vehículos preseleccionados"
+
+msgid "Rate"
+msgstr "Tasa"
+
+msgid "Very Poor"
+msgstr "Muy pobre"
+
+msgid "Poor"
+msgstr "Pobre"
+
+msgid "Regular"
+msgstr "Regular"
+
+msgid "Good"
+msgstr "Buena"
+
+msgid "Very Good"
+msgstr "Muy Buena"
+
+msgid "Vehicle Has Been Successfully Shortlisted"
+msgstr "El vehículo ha sido exitosamente preseleccionado"
+
+msgid "Failed While Shortlisting Vehicle"
+msgstr "Error mientra se preseleccionaba el vehículo"
+
+msgid "Your name"
+msgstr "Su nombre"
+
+msgid "Your email"
+msgstr "Su email"
+
+msgid "Friend email"
+msgstr "Correo de amigo"
+
+msgid "Send to friends"
+msgstr "Enviar a amigos"
+
+msgid "Seller Has Been Successfully Notified"
+msgstr "El vendedor ha sido exitosamente notificado"
+
+msgid "Failed While Notifying Seller"
+msgstr "Falló al notificar al vendedor"
+
+msgid "Failed While Sending Email To Seller"
+msgstr "Error en el envío de correo al vendedor"
+
+msgid "Mail Has Been Sent To Seller"
+msgstr "El correo ha sido enviado al vendedor"
+
+msgid "Offer Has Been Successfully Made"
+msgstr "La oferta ha sido exitosamente hecha"
+
+msgid "Failed While Making An Offer"
+msgstr "Error al hacer la oferta"
+
+msgid "See Vehicle"
+msgstr "Ver vehículo"
+
+msgid "Mail Has Been Successfully Sent"
+msgstr "El correo ha sido enviado exitosamente"
+
+msgid "Failed While Sending Mail"
+msgstr "Error en el envío de correo"
+
+msgid "Remove Vehicle From Compare"
+msgstr "Remover vehículo del comparador"
+
+msgid "Remove vehicle from compare"
+msgstr "Remover vehículo del comparador"
+
+msgid "Waiting for approval"
+msgstr "Esperando aprobación"
+
+msgid "Waiting"
+msgstr "Esperando"
+
+msgid "Percentage"
+msgstr "Porcentaje"
+
+msgid "Edit Profile"
+msgstr "Editar perfil"
+
+msgid "Select seller"
+msgstr "Seleccionar vendedor"
+
+msgid "Your profile will be use if you do not select seller."
+msgstr "Su perfil se utilizará si no selecciona vendedor."
+
+msgid "(0-100)"
+msgstr "(0-100)"
+
+msgid "Video Type"
+msgstr "Tipo de video"
+
+msgid "Maximum file size allowed"
+msgstr "Tamaño máximo permitido"
+
+msgid "KB"
+msgstr "KB"
+
+msgid "File type allowed"
+msgstr "Tipo de archivo permitido"
+
+msgid "Vehicle Options Check Any That Apply"
+msgstr "Opciones de vehículos, marque cualquiera que aplique"
+
+msgid "Upload Vehicle Images"
+msgstr "Subir imágenes del vehículo"
+
+msgid "Upload Images"
+msgstr "Cragar imágenes"
+
+msgid "Files Allowed"
+msgstr "Tipos de archivos permitidos"
+
+msgid "File size"
+msgstr "Tamaño de archivo"
+
+msgid "File size is greater then allowed file size"
+msgstr "El archivo es mayor que el tamaño permitido"
+
+msgid "File ext. is mismatched"
+msgstr "Archivo equivocado"
+
+msgid "Save Vehicle"
+msgstr "Guardar vehículo"
+
+msgid "Fuel"
+msgstr "Combustible"
+
+msgid "Vehicle Approval Queue"
+msgstr "Cola de aprobación de vehículos"
+
+msgid "Select transmission"
+msgstr "Seleccione transmisión"
+
+msgid "Select fuel type"
+msgstr "Seleccione tipo de combustible"
+
+msgid "Select mileage"
+msgstr "Seleccione el kilometráje"
+
+msgid "Start price"
+msgstr "Precio inicial"
+
+msgid " End price"
+msgstr " Precio final"
+
+msgid "Feature pending"
+msgstr "Pendiente destacado"
+
+msgid "Fuel Consumption:"
+msgstr "Consumo de combustible:"
+
+msgid "Vehicle Approve"
+msgstr "Vehículo aprobado"
+
+msgid "Feature Approve"
+msgstr "Aprobar destacado"
+
+msgid "Approve Both"
+msgstr "Aprobar ambos"
+
+msgid "Reject"
+msgstr "Rechazado"
+
+msgid "Vehicle Reject"
+msgstr "Vehículo rechazado"
+
+msgid "Feature Reject"
+msgstr "Destacado rechazado"
+
+msgid "Reject Both"
+msgstr "Rechazar ambos"
+
+msgid "Type seller name"
+msgstr "Nombre del tipo de tienda"
+
+msgid "No results"
+msgstr "Sin resultados"
+
+msgid " Vehicle"
+msgstr " Vehículo"
+
+msgid "Select mileage type"
+msgstr "Seleccionar tipo de kilometraje"
+
+msgid " End Price"
+msgstr " Precio final"
+
+msgid "Add To Featured"
+msgstr "Agregar destacado"
+
+msgid "Featured Pending"
+msgstr "Pendiente destacado"
+
+msgid "Remove Featured"
+msgstr "Quitar destacado"
+
+msgid "Image"
+msgstr "Imagen"
+
+msgid "Add vehicle"
+msgstr "Agregar vehículo"
+
+msgid "Make 1"
+msgstr "Hacer 1"
+
+msgid "Make 2"
+msgstr "Hacer 2"
+
+msgid "Engine Capacity"
+msgstr "Capacidad del motor"
+
+msgid "loading"
+msgstr "cargando"
+
+msgid "Select model year"
+msgstr "Selecciones el año del modelo"
+
+msgid "Select cylinder"
+msgstr "Seleccione la cilindrada"
+
+msgid "Vehicle Image"
+msgstr "Imagen del vehículo"
+
+msgid "Make Default"
+msgstr "Hacer por defecto"
+
+msgid "Contact Info"
+msgstr "Información de contacto"
+
+msgid "Terms and Conditions"
+msgstr "Términos y condiciones"
+
+msgid "Terms And Conditions"
+msgstr "Términos y condiciones"
+
+msgid "Sold Icon"
+msgstr "Icono de vendido"
+
+msgid "Edit Icon"
+msgstr "Icono de editar"
+
+msgid "Featured Icon"
+msgstr "Icono de desatacados"
+
+msgid "Delete Icon"
+msgstr "Icono de borrar"
+
+msgid "My vehicles"
+msgstr "Mis Vehículos"
+
+msgid "Print Vehicle"
+msgstr "Imprimir vehículo"
+
+msgid "Print Vehicle Icon"
+msgstr "Icono de imprimir vehículo"
+
+msgid "Refine Search"
+msgstr "Mejorar la búsqueda"
+
+msgid "Shortlisted vehicles"
+msgstr "Vehículos preseleccionados"
+
+msgid "Schedule a test drive"
+msgstr "Agendar prueba de manejo"
+
+msgid "Make an offer"
+msgstr "Marca y oferente"
+
+msgid "Seller Profile Icon"
+msgstr "Icono del perfil de la tienda"
+
+msgid "Seller Profile"
+msgstr "Perfil de la tienda"
+
+msgid "Overview"
+msgstr "Revisión"
+
+msgid "Features"
+msgstr "Característcas"
+
+msgid "Gallery"
+msgstr "Galería"
+
+msgid "Specifications"
+msgstr "Especificaciones"
+
+msgid "Mechanical Details"
+msgstr "Detalles mecánicos"
+
+msgid "Appearance And Condition"
+msgstr "Aparencia y condiciones"
+
+msgid "Additional Features"
+msgstr "Características adicionales"
+
+msgid "Following features are present in selected vehicle."
+msgstr "Las siguientes características están presentes en el vehículo seleccionado."
+
+msgid "Blogger"
+msgstr "Blogger"
+
+msgid "Blogger Share Icon"
+msgstr "Icono de compartir para Blogger"
+
+msgid "Blogger Share"
+msgstr "Compartir con Blogger"
+
+msgid "blogger"
+msgstr "blogger"
+
+msgid "Digg Share"
+msgstr "Compartir con Digg"
+
+msgid "Digg Share Icon"
+msgstr "Icono de compartir para Digg"
+
+msgid "Digg"
+msgstr "Digg"
+
+msgid "Facebook Share"
+msgstr "Compartir con Facebook"
+
+msgid "Facebook Share Icon"
+msgstr "Icono de compartir para Facebook"
+
+msgid "Instagram Share"
+msgstr "Compartir con Instagram"
+
+msgid "Instagram Share Icon"
+msgstr "Icono de compartir para Instagram"
+
+msgid "Google Share"
+msgstr "Compartir con Goolge"
+
+msgid "Google Share Icon"
+msgstr "Icono de compartir para Google"
+
+msgid "Linkedin Share"
+msgstr "Compartir con Linkedin"
+
+msgid "Linkedin Share Icon"
+msgstr "Icono de compartir para Linkedin"
+
+msgid "Pintrest Share"
+msgstr "Compartir con Pinterest"
+
+msgid "Pintrest Share Icon"
+msgstr "Icono de compartir para Pinterest"
+
+msgid "Twitter Share"
+msgstr "Compartir con Twitter"
+
+msgid "Twitter Share Icon"
+msgstr "Icono de compartir para Twitter"
+
+msgid "Tumbler Share"
+msgstr "Compartir en Tumbler"
+
+msgid "Tumbler Share Icon"
+msgstr "Icono de compartir para Tumbler"
+
+msgid "Tumbler"
+msgstr "Tumbler"
+
+msgid "Add To Short List"
+msgstr "Agregar a preseleccionados"
+
+msgid "Comments/Conditions"
+msgstr "Comentarios / Condiciones"
+
+msgid "Your Name"
+msgstr "Su nombre"
+
+msgid "Your Email"
+msgstr "Su email"
+
+msgid "Car Title"
+msgstr "Título del auto"
+
+msgid "Friend Email"
+msgstr "Email de amigo"
+
+msgid "Max Length is 250 Chars."
+msgstr "La longitud máxima es de 250 caracteres."
+
+msgid "Can not select more vehicles"
+msgstr "No se pueden seleccionar más vehículos"
+
+msgid "Remove From Compare"
+msgstr "Quitar del comparador"
+
+msgid "Add to Compare"
+msgstr "Agregar al comparador"
+
+msgid "Go To Compare"
+msgstr "Ir al comparador"
+
+msgid "Previous Image"
+msgstr "Imagen anterior"
+
+msgid "Next Image"
+msgstr "Siguiente imagen"
+
+msgid "View Seller Info"
+msgstr "Ver información de la tienda"
+
+msgid "Seller Photo"
+msgstr "Foto o logotipo de la tienda"
+
+msgid "shortlist"
+msgstr "preseleccionados"
+
+msgid "Add to compare"
+msgstr "Agregar al comparador"
+
+msgid "Please Select The Coordinate Radius Type"
+msgstr "Por favor, introduzca el tipo de radio de coordenadas"
+
+msgid "Please Enter The Coordinate Radius"
+msgstr "Por favor, introduzca el radio de coordenadas"
+
+msgid "Google Captcha"
+msgstr "Google Captcha"
+
+msgid "JS Jobs Captcha"
+msgstr "JS Jobs Captcha"
+
+msgid "Any"
+msgstr "Cualquiera"
+
+msgid "Addition"
+msgstr "Adición"
+
+msgid "Subtraction"
+msgstr "Sustracción"
+
+msgid "Vehicles search"
+msgstr "Buscador de vehículos"
+
+msgid "Set Marker From Address"
+msgstr "Establecer marcador de dirección"
+
+msgid "vehicle type"
+msgstr "tipo de vehículo"
+
+msgid "condition"
+msgstr "condición"
+
+msgid "fuel type"
+msgstr "tipo de combustible"
+
+msgid "transmission"
+msgstr "trasmisión"
+
+msgid "cylinder"
+msgstr "cilindrada"
+
+msgid "registration number"
+msgstr "número de registro"
+
+msgid "registration city"
+msgstr "ciudad de registro"
+
+msgid "location city"
+msgstr "ciudad de ubicación"
+
+msgid "location zip"
+msgstr "ubicación zip"
+
+msgid "price from"
+msgstr "precio desde"
+
+msgid "price to"
+msgstr "precio a"
+
+msgid "exterior color"
+msgstr "color exterior"
+
+msgid "interior color"
+msgstr "color interior"
+
+msgid "stock number"
+msgstr "número de inventario"
+
+msgid "city fuel consumption from"
+msgstr "consumo de combustible de la ciudad de"
+
+msgid "city fuel consumption to"
+msgstr "consumo de combustible de la ciudad a"
+
+msgid "highway fuel consumption from"
+msgstr "consumo de combustible en carretera desde"
+
+msgid "highway fuel consumption to"
+msgstr "consumo de combustible en carretera a"
+
+msgid "model year from"
+msgstr "año modelo desde"
+
+msgid "model year to"
+msgstr "año modelo a"
+
+msgid "engine capacity from"
+msgstr "capacidad del motor desde"
+
+msgid "engine capacity to"
+msgstr "capacidad del motor para"
+
+msgid "mileage from"
+msgstr "kilometraje desde"
+
+msgid "mileage to"
+msgstr "kilometraje a"
+
+msgid "latitude"
+msgstr "latitud"
+
+msgid "longitude"
+msgstr "longitud"
+
+msgid "radius"
+msgstr "radio"
+
+msgid "Vehicle Alert Subscribed Successfully"
+msgstr "Alerta de vehículo suscrita exitosamente"
+
+msgid "Failed While Subscribing Vehicle Alert"
+msgstr "Error al suscribirse Alerta de vehículo"
+
+msgid "Daily"
+msgstr "Diario"
+
+msgid "Weekly"
+msgstr "Semanal"
+
+msgid "Monthly"
+msgstr "Mensual"
+
+msgid "Criteria"
+msgstr "Criterios"
+
+msgid "Vehicle Type"
+msgstr "Tipo de vehículo"
+
+msgid " Vehicle Type "
+msgstr " Tipo de vehículo "
+
+msgid "Vehicles by Types"
+msgstr "Vehículos por tipos"
+
+msgid "Highway Fuel Consumption"
+msgstr "Consumo de combustible en carretera"
+
+msgid "Choose Files"
+msgstr "Seleccionar archivos"
+
+msgid "Registration City"
+msgstr "Ciudad de registro"
+
+msgid "Location City"
+msgstr "Ciudad de ubicación"
+
+msgid "Speedometer"
+msgstr "Velocímetro"
+
+msgid "Interior Color"
+msgstr "Color interior"
+
+msgid "City Fuel Consumption"
+msgstr "Consumo de combustible de la ciudad"
+
+msgid "Registration Number"
+msgstr "Número de registro"
+
+msgid "Engine Number"
+msgstr "Número de motor"
+
+msgid "Chassis Number"
+msgstr "Número de chasis"
+
+msgid "Acceleration"
+msgstr "Aceleración"
+
+msgid "Max Speed"
+msgstr "Velocidad máxima"
+
+msgid "CO2 Emission"
+msgstr "Emisión de CO2"
+
+msgid "Bargain Price"
+msgstr "Barato"
+
+msgid "Export Price"
+msgstr "Precio de exportación"
+
+msgid "Is Discount"
+msgstr "Es descuento"
+
+msgid "Brochure"
+msgstr "Folleto"
+
+msgid "BODY"
+msgstr "CUERPO"
+
+msgid "Drivetrain"
+msgstr "Tren motriz"
+
+msgid "EXTERIOR"
+msgstr "EXTERIOR"
+
+msgid "INTERIOR"
+msgstr "INTERIOR"
+
+msgid "ELECTRONICS"
+msgstr "ELECTRÓNICA"
+
+msgid "SAFETY_FEATURES"
+msgstr "CARACTERISTICAS DE SEGURIDAD"
+
+msgid "3 Door"
+msgstr "3 puertas"
+
+msgid "Used"
+msgstr "Usado"
+
+msgid "Diesel"
+msgstr "Diesel"
+
+msgid "Petrol"
+msgstr "Petróleo"
+
+msgid "Aston Martin"
+msgstr "Aston Martin"
+
+msgid "DB7"
+msgstr "DB7"
+
+msgid "M"
+msgstr "M"
+
+msgid "Exterior"
+msgstr "Exterior"
+
+msgid "4 Door"
+msgstr "4 puertas"
+
+msgid "BLUE"
+msgstr "AZUL"
+
+msgid "Addison, United States"
+msgstr "Addison, United States"
+
+msgid "New York, United States"
+msgstr "New York, United States"
+
+msgid "Alder Brook, United States"
+msgstr "Alder Brook, United States"
+
+msgid "Afton, United States"
+msgstr "Afton, United States"
+
+msgid "Car"
+msgstr "Automóvil"
+
+msgid "Over View"
+msgstr "Visión general"
+
+msgid "Print vehicle"
+msgstr "Imprimir vehículo"
+
+msgid "Radius Type"
+msgstr "Tipo de radio"
+
+msgid "Radius"
+msgstr "Radio"
+
+msgid "Kilometer"
+msgstr "Kilómetros"
+
+msgid "My Comments"
+msgstr "Mis comentarios"
+
+msgid "Are you sure to delete?"
+msgstr "¿Estás seguro de eliminar?"
+
+msgid "Alloy Wheels"
+msgstr "Llantas de aleación"
+
+msgid "Addison"
+msgstr "Addison"
+
+msgid "First name"
+msgstr "Nombres"
+
+msgid "Last name"
+msgstr "Apellidos"
+
+msgid "Password Again"
+msgstr "Repetir contraseña"
+
+msgid "Photo"
+msgstr "Foto"
+
+msgid "Pinterest"
+msgstr "Pinterest"
+
+msgid "Googleplus"
+msgstr "Googleplus"
+
+msgid "Register New Account"
+msgstr "Registrar nueva cuenta"
+
+msgid "Alfa Romeoa"
+msgstr "Alfa Romeoa"
+
+msgid "Trial Package"
+msgstr "Paquete de prueba"
+
+msgid "Vehicle Listing"
+msgstr "Listado de vehículos"
+
+msgid "Dollar"
+msgstr "Dolar"
+
+msgid "Albania"
+msgstr "Albania"

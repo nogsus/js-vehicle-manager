@@ -10,7 +10,7 @@ if (jsvehiclemanager::$_error_flag == null) {
 ?>
 <div id="jsvehiclemanager-wrapper">
         <div class="control-pannel-header">
-            <span class="heading"> 
+            <span class="heading">
                 <?php echo __('Seller List', 'js-vehicle-manager'); ?>
             </span>            
         </div>
@@ -47,7 +47,7 @@ if( is_array(jsvehiclemanager::$_data['searchfields']) && !empty(jsvehiclemanage
                     if($u_field){
                     ?>
                         <div class="jsvehiclemanager_field_box">
-                            <label for="for="<?php echo $field->field; ?>"" class="control-label"><?php echo sprintf(__('%s','js-vehicle-manager'), $field->fieldtitle);?></label>
+                            <label for="<?php echo $field->field; ?>" class="control-label"><?php echo sprintf(__('%s','js-vehicle-manager'), $field->fieldtitle);?></label>
                             <?php echo $u_field; ?>
                         </div>
                     <?php  
@@ -121,15 +121,16 @@ if(!empty(jsvehiclemanager::$_data[0])){
                             </span>
                         </div>
                     <?php } ?>
-                    <!--<div class="jsvehiclemanager_seller-info-wrp" >
+                <!--
+                    <div class="jsvehiclemanager_seller-info-wrp" >
                         <span class="jsvehiclemanager_cm-seller-info-bottom-bold-text">
-                            <?php //echo sprintf(__('%s','js-vehicle-manager'), jsvehiclemanager::$_data['fields']['cityid'])." : "; ?>
+                            <?php // echo sprintf(__('%s','js-vehicle-manager'), jsvehiclemanager::$_data['fields']['cityid'])." : "; ?>
                         </span>
                         <span class="jsvehiclemanager_cm-seller-info-bottom-text text-muted">
-                            <?php //echo __($data->location,'js-vehicle-manager'); ?>
+                            <?php // echo __($data->location,'js-vehicle-manager'); ?>
                         </span>
-                    </div>-->
-
+                    </div>
+                -->
 
                     <div class="jsvehiclemanager-vehicle-listing-total-vehicles" >
                     <span><?php
@@ -144,7 +145,6 @@ if(!empty(jsvehiclemanager::$_data[0])){
                     }
                     ?></strong>
                     </div>
-
 
                     <?php
                     $customfields = JSVEHICLEMANAGERincluder::getObjectClass('customfields')->userFieldsData(2,0,1);// 10 for main section of vehicle
@@ -166,7 +166,6 @@ if(!empty(jsvehiclemanager::$_data[0])){
         </div>
     </div>
     <?php
-        $isFirst++;
     }
      
     if (jsvehiclemanager::$_data[1]) {

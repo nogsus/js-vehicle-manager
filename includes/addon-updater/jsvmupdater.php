@@ -1,6 +1,6 @@
 <?php
 /* Update for custom plugins by joomsky */
-class JS_Updater {
+class JSVM_Updater {
 
 	private $api_key = '';
 	private $addon_update_data = array();
@@ -175,7 +175,7 @@ class JS_Updater {
 		$plugin_file_path = ABSPATH.'wp-content/plugins/'.$addon_slug.'/'.$addon_slug.'.php';
 		$plugin_data = get_plugin_data($plugin_file_path);
 
-		$response = jsServerCalls::jsvmPluginInformation( array(
+		$response = jsvmServerCalls::jsvmPluginInformation( array(
 			'plugin_slug'    => $addon_slug,
 			'version'        => $plugin_data['Version'],
 			'token'    => $transaction_key,
@@ -233,7 +233,7 @@ class JS_Updater {
 	}
 
 	public function getPluginVersionData() {
-			$response = jsServerCalls::jsvmPluginUpdateCheck($this->api_key);
+			$response = jsvmServerCalls::jsvmPluginUpdateCheck($this->api_key);
 
 			if ( isset( $response->errors ) ) {
 				$this->jsHandleErrors( $response->errors );
@@ -247,7 +247,7 @@ class JS_Updater {
 	}
 
 	public function getPluginLatestVersionData() {
-		$response = jsServerCalls::jsvmGetLatestVersions();
+		$response = jsvmServerCalls::jsvmGetLatestVersions();
 		// Set version variables
 		if ( isset( $response ) && is_array( $response ) && $response !== false ) {
 			return $response;
@@ -256,7 +256,7 @@ class JS_Updater {
 	}
 
 	public function jsvmGetTokenFromTransactionKey($transaction_key,$addon_name) {
-		$response = jsServerCalls::jsvmGenerateToken($transaction_key,$addon_name);
+		$response = jsvmServerCalls::jsvmGenerateToken($transaction_key,$addon_name);
 		// Set version variables
 		if (is_array($response) && isset($response['verfication_status']) && $response['verfication_status'] == 1 ) {
 			return $response['token'];

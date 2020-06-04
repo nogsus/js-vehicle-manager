@@ -2,14 +2,14 @@
 
 /**
  * @package WP Vehicle Manager
- * @version 1.1.3
+ * @version 1.1.4
  */
 /*
   Plugin Name: WP Vehicle Manager
   Plugin URI: https://wpvehiclemanager.com/
   Description: WP Vehicle Manager is Word Press most comprehensive and easist show room plugin.
   Author: Joom Sky
-  Version: 1.1.3
+  Version: 1.1.4
   Text Domain: js-vehicle-manager
   Author URI: https://wpvehiclemanager.com/
  */
@@ -60,7 +60,7 @@ class jsvehiclemanager {
         self::$_error_flag = null;
         self::$_error_flag_message = null;
         self::$_car_manager_theme = 0;
-        self::$_currentversion = '113';
+        self::$_currentversion = '114';
         self::$_addon_query = array('select'=>'','join'=>'','where'=>'');
         self::$_db = $wpdb;
         if(is_multisite()) {
@@ -116,8 +116,12 @@ class jsvehiclemanager {
     function jsvehiclemanager_cronjobs(){
         // Send email for the expiry credits packs
         $ck = JSVEHICLEMANAGERincluder::getJSModel('configuration')->getConfigValue('cron_job_alert_key');
-        JSVEHICLEMANAGERincluder::getJSModel('vehiclealert')->sendVehicleAlertByAlertType($ck);
-        jsvehiclemanager::getDataForExpiredCreditPacks();
+        if(in_array('vehiclealert', jsvehiclemanager::$_active_addons)){
+            JSVEHICLEMANAGERincluder::getJSModel('vehiclealert')->sendVehicleAlertByAlertType($ck);
+        }
+        if(in_array('credits', jsvehiclemanager::$_active_addons)){
+            jsvehiclemanager::getDataForExpiredCreditPacks();
+        }
     }
 
     public static function getDataForExpiredCreditPacks() {
@@ -566,7 +570,6 @@ class jsvehiclemanager {
             return $vehicle->nreg;
         }
     }
-
 }
 
 $jsvehiclemanager = new jsvehiclemanager();
@@ -725,12 +728,15 @@ add_filter( 'lostpassword_url', 'wdm_lostpassword_url', 20 );
 function wdm_lostpassword_url() {
     if(jsvehiclemanager::$_car_manager_theme == 1){
         return esc_url(jsvehiclemanager::makeUrl(array('jsvmme'=>'jsvehiclemanager', 'jsvmlt'=>'passwordlostform', 'jsvehiclemanagerpageid'=>jsvehiclemanager::getPageid())));
+    }else{
+        return esc_url(site_url().'/wp-login.php?action=lostpassword');
+        exit;
     }
 }
 
 if(!empty(jsvehiclemanager::$_active_addons)){
     require_once 'includes/addon-updater/jsvmupdater.php';
-    $JS_Updater  = new JS_Updater();
+    $JSVM_Updater  = new JSVM_Updater();
 }
 
 ?>

@@ -652,7 +652,7 @@ class JSVEHICLEMANAGERactivation {
 		('free_package_auto_approve', '0', 'package','credits'),
 		('register_user_redirect_page', '', 'user',NULL),
 		('producttype', 'free', 'default',NULL),
-		('productversion', '113', 'default',NULL),
+		('productversion', '114', 'default',NULL),
 		('recaptcha_contacttoseller', '1', 'recaptcha',NULL),
 		('recaptcha_makeanoffer', '0', 'recaptcha','makeanoffer'),
 		('recaptcha_privatekey', '6Lc-2TMUAAAAAPE7oZ5ow434v6gxV3HWlvhdFAPe', 'recaptcha',NULL),

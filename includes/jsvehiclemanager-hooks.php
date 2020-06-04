@@ -42,9 +42,9 @@ function jsvehiclemanager_custom_css_add() {
 
 // --------------------------Colorpickers for widgets--------
 // load colorpicker scripts
-add_action('admin_enqueue_scripts', 'my_custom_load');
+add_action('admin_enqueue_scripts', 'jsvm_my_custom_load');
 
-function my_custom_load() {
+function jsvm_my_custom_load() {
     wp_enqueue_style('wp-color-picker');
     wp_enqueue_script('wp-color-picker');
     //our styles

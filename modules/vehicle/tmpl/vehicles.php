@@ -305,7 +305,7 @@ if (jsvehiclemanager::$_error_flag == null) {
                         <div class="jsvehiclemanager_light-box-loading" style="display:none;" >
                             <img class="jsvehiclemanager_mainimage" src="<?php echo esc_attr(jsvehiclemanager::$_pluginpath.'includes/images/load.gif');?>" title="<?php echo esc_attr(__('Loading','js-vehicle-manager'));?>" alt="<?php echo esc_attr(__('Loading','js-vehicle-manager'));?>" />
                         </div>
-            <?php 
+            <?php
             // if (jsvehiclemanager::$_data[1]) {
             //     echo '<div class="jsvehiclemanager-pagination">' . jsvehiclemanager::$_data[1] . '</div>';
             // }

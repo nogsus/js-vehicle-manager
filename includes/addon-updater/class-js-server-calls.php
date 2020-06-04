@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class jsServerCalls extends JS_Updater{
+class jsvmServerCalls extends JSVM_Updater{
 
 	private static $server_url = 'https://wpvehiclemanager.com/setup/index.php';
 

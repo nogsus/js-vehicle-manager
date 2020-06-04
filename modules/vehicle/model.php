@@ -1172,7 +1172,7 @@ class JSVEHICLEMANAGERvehicleModel {
 
 
     function createThumbnail($filename,$width,$height,$file = null,$path,$crop_flag = 0,$watermark_flag = 0) {
-        $handle = new upload($file);
+        $handle = new JSVMupload($file);
         $parts = explode(".",$filename);
         $extension = end($parts);
         $filename = str_replace("." . $extension,"",$filename);

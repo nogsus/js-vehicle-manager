@@ -15,6 +15,8 @@ class JSVEHICLEMANAGERjsvehiclemanagerController {
         if (self::canaddfile()) {
             switch ($layout) {
                 case 'admin_controlpanel':
+                    include_once jsvehiclemanager::$_path . 'includes/updates/updates.php';
+                    JSVEHICLEMANAGERupdates::checkUpdates();
                     JSVEHICLEMANAGERincluder::getJSModel('jsvehiclemanager')->getAdminControlPanelData();
                     break;
                 case 'admin_jsvehiclemanagerstats':

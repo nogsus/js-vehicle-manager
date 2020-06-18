@@ -85,6 +85,7 @@ if (isset($linkarray)) {
     foreach ($linkarray AS $link) {
         $div .= '<a class="headerlinks" href="' . $link['link'] . '">' . $link['title'] . '</a>';
     }
+
     $div .= '</div>';
 }
 echo $div;

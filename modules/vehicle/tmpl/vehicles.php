@@ -197,8 +197,22 @@ if (jsvehiclemanager::$_error_flag == null) {
                                         </span>
                                         <span class="jsvehiclemanager_vehicle_price">
                                             <span class="price">
-                                            <?php $v_price = JSVEHICLEMANAGERincluder::getJSModel('common')->getPrice($vehicle->price,$vehicle->currencysymbol, $vehicle->isdiscount, $vehicle->discounttype, $vehicle->discount, $vehicle->discountstart, $vehicle->discountend); ?>
-                                             <?php echo esc_html($v_price); ?>
+                                            <?php 
+                                            $v_price = JSVEHICLEMANAGERincluder::getJSModel('common')->getPrice($vehicle->price,$vehicle->currencysymbol, $vehicle->isdiscount, $vehicle->discounttype, $vehicle->discount, $vehicle->discountstart, $vehicle->discountend);
+
+                                            $customflds = JSVEHICLEMANAGERincluder::getObjectClass('customfields')->userFieldsData(1,10,1);
+
+                                            $iva = NULL;
+
+                                            foreach($customflds AS $fld){
+                                                $arr = JSVEHICLEMANAGERincluder::getObjectClass('customfields')->showCustomFields($fld, 2,$vehicle->params); 
+                                                if(strtolower($arr[0]) == 'iva' && !empty($arr[1])) {
+                                                    $iva = ' + IVA';
+                                                }
+                                            }
+
+                                            echo esc_html($v_price) . $iva; 
+                                            ?>
                                             </span>
                                         </span>
                                     </div>
@@ -235,12 +249,23 @@ if (jsvehiclemanager::$_error_flag == null) {
                                     <?php
                                         $customfields = JSVEHICLEMANAGERincluder::getObjectClass('customfields')->userFieldsData(1,10,1);// 10 for main section of vehicle
                                         foreach($customfields AS $field){
-                                            $array = JSVEHICLEMANAGERincluder::getObjectClass('customfields')->showCustomFields($field, 2,$vehicle->params); ?>
+                                            $array = JSVEHICLEMANAGERincluder::getObjectClass('customfields')->showCustomFields($field, 2,$vehicle->params); 
+                                            if(strtolower($array[0]) != 'iva') {
+                                            ?>
                                             <div class="jsvehiclemanager_vehicle_detail_row">
-                                                <span class="jsvehiclemanager_vehicle_loction_title"><?php echo __($array[0],'js-vehicle-manager').': '; ?></span>
-                                                <span class="jsvehiclemanager_vehicle_location_value"><?php echo __($array[1],'js-vehicle-manager');?></span>
+                                                <span class="jsvehiclemanager_vehicle_loction_title">
+                                            <?php 
+                                            echo __($array[0],'js-vehicle-manager').': '; 
+                                            ?>
+                                                </span>
+                                                <span class="jsvehiclemanager_vehicle_location_value">
+                                            <?php 
+                                            echo __($array[1],'js-vehicle-manager');
+                                            ?>
+                                                </span>
                                             </div>
                                             <?php
+                                            }
                                         }
                                     ?>
                                     <?php if(checkLinks('vehiclelist_sellerimage')==true && !empty($vehicle->sellerphoto) ): ?>
@@ -252,8 +277,16 @@ if (jsvehiclemanager::$_error_flag == null) {
                                     <?php endif;?>
                                 </div>
                             </div>
+                            <?php
+                            $favorite = jsvehiclemanager::getFavoriteStatusById($vehicle->id);
+                            $classFav = (!empty($favorite))? 'dashicons-star-filled' : 'dashicons-star-empty';
+                            $favMsg = (!empty($favorite))? __('Short List vehicle','js-vehicle-manager') : __('Add To Short List','js-vehicle-manager');
+                            ?>
                             <div class="jsvehiclemanager_vehicle_bottom_wrap" class="jsvehiclemanager_frontend">
                                 <div class="jsvehiclemanager_vehicle_left">
+                                    <div class="jsvehiclemanager_vehicle_option">
+                                        <span class="fav_favorite" title="<?php echo $favMsg; ?>" id="<?php echo $vehicle->id; ?>" onClick="javascript:favSetFavorite(this);"><div class="dashicons <?php echo $classFav; ?>"></div></span>
+                                    </div>
                                     <div class="jsvehiclemanager_vehicle_option">
                                         <span class="jsvehiclemanager_vehicle_condions_new" style="background:#fff;font-weight:bold;color:<?php echo $vehicle->conditioncolor;?>;border:1px solid <?php echo $vehicle->conditioncolor;?>;">
                                           <?php echo __($vehicle->conditiontitle,'js-vehicle-manager');?>

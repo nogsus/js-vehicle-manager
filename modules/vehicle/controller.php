@@ -15,6 +15,7 @@ class JSVEHICLEMANAGERVehicleController {
     function handleRequest() {
         $layout = JSVEHICLEMANAGERrequest::getLayout('jsvmlt', null, 'vehicles');
         $uid = JSVEHICLEMANAGERincluder::getObjectClass('user')->uid();
+        
         if (self::canaddfile()) {
             switch ($layout) {
                 case 'admin_vehicles':

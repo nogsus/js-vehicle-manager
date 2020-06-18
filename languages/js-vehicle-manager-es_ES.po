@@ -11,7 +11,6 @@ msgstr ""
 "Language: es_ES\n"
 "X-Generator: Poedit 2.3\n"
 
-#, fuzzy
 msgid "Control Panel"
 msgstr "Panel de control"
 
@@ -46,7 +45,7 @@ msgid "Search Vehicle"
 msgstr "Buscador de vehículos"
 
 msgid "Shortlisted Vehicles"
-msgstr "Vehículos preseleccionados"
+msgstr "Mis favoritos"
 
 msgid "Compare Vehicles"
 msgstr "Comparador de vehículos"
@@ -343,7 +342,7 @@ msgid "Location"
 msgstr "Ubicación"
 
 msgid "Shortlist"
-msgstr "Preseleccionados"
+msgstr "Mis favoritos"
 
 msgid "Add To Compare"
 msgstr "Agregar al comparador"
@@ -367,7 +366,7 @@ msgid "Add Vehicle"
 msgstr "Agregar vehículo"
 
 msgid "Shortlist Vehicles"
-msgstr "Vehículos preseleccionados"
+msgstr "Mis favoritos"
 
 msgid "Vehicle By Cities"
 msgstr "Vehículos por ciudad"
@@ -587,6 +586,9 @@ msgstr "Lo sentimos..."
 
 msgid "No record found"
 msgstr "No hemos encontrado respuesta para tu búsqueda"
+
+msgid "Page not found....!"
+msgstr "Página no encontrada..."
 
 msgid "To Access This Page Please Login"
 msgstr "Para acceder a esta página, debe acceder o registrarse primero"
@@ -993,7 +995,7 @@ msgid "Featured Vehicles"
 msgstr "Vehículos destacados"
 
 msgid "Short Listed Vehicles"
-msgstr "Vehículos preseleccionados"
+msgstr "Mis favoritos"
 
 msgid "Misc"
 msgstr "Misceláneos"
@@ -1287,7 +1289,7 @@ msgid "Auto approve free package"
 msgstr "Aprobar paquete gratuito"
 
 msgid "Auto approve free package of new new user"
-msgstr ""
+msgstr "Aprobación automática de paquetes de nuevos usuarios"
 
 msgid "Purchase free package only once"
 msgstr "Compre el paquete gratis solo una vez"
@@ -1592,22 +1594,22 @@ msgid "Leave blank to hide editor used for feed content issue"
 msgstr "Deje en blanco para ocultar el editor utilizado para el problema de contenido del Feed"
 
 msgid "Time to live"
-msgstr ""
+msgstr "Tiempo de duración"
 
 msgid "Time to live for feed"
-msgstr ""
+msgstr "Tiempo de duración del feed"
 
 msgid "Web master"
 msgstr "Web master"
 
 msgid "Leave blank to hide webmaster used for technical issue"
-msgstr ""
+msgstr "Deje en blanco para ocultar los datos de Webmaster utilizado para problemas técnicos"
 
 msgid "Show Vehicle Condition"
 msgstr "Mostrar condición del vehículo"
 
 msgid "Categorize vehicle by condition in feeds"
-msgstr ""
+msgstr "Clasifique el vehículo por condición en los feeds"
 
 msgid "Facebook"
 msgstr "Facebook"
@@ -1622,7 +1624,7 @@ msgid "API Key"
 msgstr "API Key"
 
 msgid "API key is required for facebook app"
-msgstr ""
+msgstr "Se requiere clave API para la aplicación de Facebook"
 
 msgid "Secret"
 msgstr "Secret"
@@ -1634,10 +1636,10 @@ msgid "Login with linkedin"
 msgstr "Acceder con Linkedin"
 
 msgid "Linkedin user can login in js vehicle manager"
-msgstr ""
+msgstr "El usuario de Linkedin puede iniciar sesión en js vehicle manager"
 
 msgid "API key is required for linkedin app"
-msgstr ""
+msgstr "Se requiere la clave PI para la aplicación linkedin"
 
 msgid "Xing"
 msgstr "Xing"
@@ -1646,10 +1648,10 @@ msgid "Login with Xing"
 msgstr "Acceder con Xing"
 
 msgid "Xing user can login in js vehicle manager"
-msgstr ""
+msgstr "El usuario de Xing puede iniciar sesión en js vehicle manager"
 
 msgid "API key is required for xing app"
-msgstr ""
+msgstr "Se requiere clave API para la aplicación xing"
 
 msgid "Social Media"
 msgstr "Redes sociales"
@@ -1682,7 +1684,7 @@ msgid "Pintrest share"
 msgstr "Compartir con Pintrest"
 
 msgid "User Top Menu Links"
-msgstr ""
+msgstr "Enlaces del menú principal del usuario"
 
 msgid "Vehicle By Make"
 msgstr "Vehículo por marca"
@@ -1757,13 +1759,13 @@ msgid "Website"
 msgstr "Sitio Web"
 
 msgid "Recommended run script once a day"
-msgstr ""
+msgstr "Se recomienda ejecutar el script una vez al día"
 
 msgid "Configuration Of A Backup Job With"
-msgstr ""
+msgstr "Configuración de un trabajo de respaldo con"
 
 msgid "Name Of Cron Job"
-msgstr ""
+msgstr "Nombre de Cron Job"
 
 msgid "Log In To"
 msgstr "Acceder a"
@@ -1784,19 +1786,19 @@ msgid "Timeout"
 msgstr "Se acabó el tiempo"
 
 msgid "180 sec If The Backup Does Not Complete"
-msgstr ""
+msgstr "180 segundos si la copia de seguridad no se completa"
 
 msgid "Increase It"
 msgstr "Incrementar"
 
 msgid "Most Sites Will Work With A Setting Of 180 Or 600 Here"
-msgstr ""
+msgstr "La mayoría de los sitios funcionarán con una configuración de 180 o 600 aquí"
 
 msgid "If You Have A Very Big Site Which Takes More Than 5 Minutes To Back Itself Up"
 msgstr "Si tiene un sitio muy grande que toma más de 5 minutos para respaldarse"
 
 msgid "You Might Consider Using Akeeba Backup Professional And The Native Cli Cron Job Instead"
-msgstr ""
+msgstr "Puede considerar usar Akeeba Backup Professional y Native Cli Cron Job en su lugar"
 
 msgid "As Its Much More Cost-effective."
 msgstr "Como es mucho más rentable."
@@ -1814,7 +1816,7 @@ msgid "Execution Time"
 msgstr "Tiempo de ejecución"
 
 msgid "Thats The Grid Below The Other Options"
-msgstr ""
+msgstr "Esa es la cuadrícula debajo de las otras opciones"
 
 msgid "Select When And How Often You Want Your Cron Job To Run."
 msgstr "Seleccione cuándo y con qué frecuencia desea que se ejecute su Cron job."
@@ -1823,27 +1825,29 @@ msgid "Alerts"
 msgstr "Alertas"
 
 msgid "If You Have Already Set Up Alert Methods In"
-msgstr ""
+msgstr "Si ya ha configurado métodos de alerta en"
 
 msgid ""
 "We Recommend Choosing An Alert Method Here And Not Checking The only On Error So That You Always Get A "
 "Notification When The Backup Cron Job Runs"
 msgstr ""
+"Recomendamos elegir un método de alerta. No debe marcar solamente En caso de error, porque se obtiene siempre "
+"una notificación cuando se ejecuta el trabajo de copia de seguridad"
 
 msgid "Finally Click On The Submit Button To Finish Setting Up Your Cron Job."
-msgstr ""
+msgstr "Finalmente, haga clic en el botón Enviar para finalizar la configuración de su trabajo Cron."
 
 msgid "Cron Scheduling Using Wget most Hosts"
-msgstr ""
+msgstr "Programación Cron usando Wget en la mayoría de los hosts"
 
 msgid "Cron Scheduling Using Curl siteground And A Few Other Hosts"
-msgstr ""
+msgstr "Programación de Cron usando Curl siteground y algunos otros hosts"
 
 msgid "Or"
 msgstr "O"
 
 msgid "Custom Php Script To Run"
-msgstr ""
+msgstr "Script PHP personalizado para ejecutar"
 
 msgid "Sorry"
 msgstr "Lo sentimos"
@@ -1876,9 +1880,11 @@ msgid ""
 "Configure your credit system. How much credits required for action. if you don't enter any credit. it will be "
 "free"
 msgstr ""
+"Configura tu sistema de crédito. ¿Cuántos créditos se requieren para la acción? Si no ingresas ningún crédito, "
+"será gratis"
 
 msgid "You can define expiry date of action. i.e"
-msgstr ""
+msgstr "Puede definir la fecha de vencimiento de la acción. por ejemplo"
 
 msgid "Vehicle will be expire in 30 days"
 msgstr "El vehículo expira en 30 días"
@@ -1896,13 +1902,13 @@ msgid "will be expire"
 msgstr "va a expirar"
 
 msgid "How much credits required for"
-msgstr ""
+msgstr "Cuántos créditos se requieren para"
 
 msgid "Invalid Entry"
 msgstr "Entrada inválida"
 
 msgid "added to featured successfully"
-msgstr ""
+msgstr "agregado a destacado con éxito"
 
 msgid "New vehicle"
 msgstr "Nuevo Vehículo"
@@ -1923,7 +1929,7 @@ msgid "End"
 msgstr "Fin"
 
 msgid "Action On"
-msgstr ""
+msgstr "Acción sobre"
 
 msgid "Date and Time"
 msgstr "Fecha y hora"
@@ -2139,28 +2145,28 @@ msgid "rejected for featured"
 msgstr "rechazado para destacado"
 
 msgid "approved for featured"
-msgstr ""
+msgstr "aprobado para destacado"
 
 msgid "removed for featured"
-msgstr ""
+msgstr "eliminado para destacado"
 
 msgid "pending for featured"
-msgstr ""
+msgstr "pendiente para destacado"
 
 msgid "Due to rejection of vehicle you have not permission to see vehicle detail"
-msgstr ""
+msgstr "Debido al rechazo del vehículo, no tiene permiso para ver los detalles del vehículo"
 
 msgid "Due to pending status of vehicle you have not permission to see vehicle detail"
-msgstr ""
+msgstr "Debido al estado de pendiente del vehículo, no tiene permiso para ver los detalles del vehículo"
 
 msgid "Vehicles Queue"
-msgstr "Colo de vehículos"
+msgstr "Cola de vehículos"
 
 msgid "Package Detail"
 msgstr "Detalle de paquete"
 
 msgid "Visitor Vehicle"
-msgstr ""
+msgstr "Vehículo visitante"
 
 msgid "Subject"
 msgstr "Asunto"
@@ -2190,7 +2196,7 @@ msgid "Vehicle link"
 msgstr "Enlace del vehículo"
 
 msgid "Vehicle approve or reject"
-msgstr ""
+msgstr "Vehículo aprueba o rechaza"
 
 msgid "Package name"
 msgstr "Nombre del paquete"
@@ -2199,7 +2205,7 @@ msgid "Package price"
 msgstr "Precio del paquete"
 
 msgid "Package purchase date"
-msgstr ""
+msgstr "Fecha de compra del paquete"
 
 msgid "Package link"
 msgstr "Enlace del paquete"
@@ -2226,19 +2232,19 @@ msgid "Customer Email Address"
 msgstr "Dirección de correo del cliente"
 
 msgid "Customer mobile no"
-msgstr ""
+msgstr "Número móvil del cliente"
 
 msgid "Customer offered price"
-msgstr ""
+msgstr "Precio ofrecido por el cliente"
 
 msgid "Customer message"
-msgstr ""
+msgstr "Mensaje del cliente"
 
 msgid "Test Drive Date"
-msgstr ""
+msgstr "Fecha de prueba de manejo"
 
 msgid "Test Drive Time"
-msgstr ""
+msgstr "Prueba de tiempo de conducción"
 
 msgid "Message from sender"
 msgstr "Mensaje del remitente"
@@ -2247,7 +2253,7 @@ msgid "Email Templates Options"
 msgstr "Opciones de plantillas de correo"
 
 msgid "Visitor Seller"
-msgstr ""
+msgstr "Vendedor visitante"
 
 msgid "Add new vehicle"
 msgstr "Agregar un nuevo vehículo"
@@ -2259,7 +2265,7 @@ msgid "Do not send email"
 msgstr "No enviar correo"
 
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Misceláneo"
 
 msgid "Purchase Credits Pack"
 msgstr "Compara paquete de créditos"
@@ -2283,7 +2289,7 @@ msgid "Show On Listing"
 msgstr "Mostrar en el listado"
 
 msgid "Advanced"
-msgstr ""
+msgstr "Avanzado"
 
 msgid "Field Ordering"
 msgstr "Campo de ordenamiento"
@@ -2310,7 +2316,7 @@ msgid "Cannot unpublished"
 msgstr "No es posible publicar"
 
 msgid "Cannot required"
-msgstr ""
+msgstr "No se puede requerir"
 
 msgid "Upload File"
 msgstr "Cargar archivos"
@@ -2475,7 +2481,7 @@ msgid "This shortcode is for compare vehicles page"
 msgstr "Este shortcode es para comparar vehículos"
 
 msgid "This shortcode is for shortlisted vehicles listing page"
-msgstr "Este shortcode es para mostrar vehículos preseleccionados"
+msgstr "Este shortcode es para mostrar Mis favoritos"
 
 msgid "This shortcode is for vehicles by city page"
 msgstr "Este shortcode es para vehículos por página de ciudad"
@@ -2532,7 +2538,7 @@ msgid "delete record Not Validate"
 msgstr "borrar registro no validado"
 
 msgid "drop table Not Validate"
-msgstr ""
+msgstr "tabla desplegable no validar"
 
 msgid "file downloaded Not Validate"
 msgstr "archivo descargado no validado"
@@ -2697,19 +2703,19 @@ msgid "Aqua"
 msgstr "Agua"
 
 msgid "Blue Jeans"
-msgstr ""
+msgstr "Blue Jeans"
 
 msgid "Grass"
-msgstr ""
+msgstr "Cesped"
 
 msgid "Grape fruit"
-msgstr ""
+msgstr "Pomelo"
 
 msgid "Lavender"
-msgstr ""
+msgstr "Lavanda"
 
 msgid "Get Vehicle Manager Translations"
-msgstr ""
+msgstr "Obtenga las traducciones del administrador de vehículos"
 
 msgid "Get Translations"
 msgstr "Obtener traducción"
@@ -2799,7 +2805,7 @@ msgid "JS Vehicle Manager successfully install"
 msgstr "JS Vehicle Manager se instaló correctamente"
 
 msgid "JS Vehicle Manager Site Settings"
-msgstr ""
+msgstr "Configuración del sitio de JS Vehicle Manager"
 
 msgid "Default Expiry in days"
 msgstr "Vencimiento en día por defecto"
@@ -2808,13 +2814,13 @@ msgid "Sender Email Address"
 msgstr "Dirección de correo del remitente"
 
 msgid "Default sender email address"
-msgstr ""
+msgstr "Dirección de correo electrónico predeterminada del remitente"
 
 msgid "Email Sender Name"
 msgstr "Nombre del remitente"
 
 msgid "Default email sender name"
-msgstr "Nobre por defecto del remitente"
+msgstr "Nombre por defecto del remitente"
 
 msgid "Admin Email address"
 msgstr "Dirección de correo del administrador"
@@ -2823,7 +2829,7 @@ msgid "Date Format"
 msgstr "Formato de fecha"
 
 msgid "Address Display Style"
-msgstr ""
+msgstr "Estilo de visualización de dirección"
 
 msgid "User Can Add Vehicle"
 msgstr "Los visitantes pueden agregar vehículos"
@@ -2838,7 +2844,7 @@ msgid "Visitor can add new vehicle"
 msgstr "Los visitantes pueden agregar un nuevo vehículo"
 
 msgid "Auto approve vehicle created from front end"
-msgstr ""
+msgstr "Auto aprobar vehículo creado desde la parte delantera"
 
 msgid "Sample User Data"
 msgstr "Datos de ejemplo del usuario"
@@ -2913,13 +2919,13 @@ msgid "YYYY MM DD"
 msgstr "YYYY MM DD"
 
 msgid "System slug"
-msgstr ""
+msgstr "Dirección URL visible del sistema"
 
 msgid "Select default page"
 msgstr "Seleccionar página por defecto"
 
 msgid "Select JS Jobs default page, on action system will redirect on selected page"
-msgstr ""
+msgstr "Seleccione la página predeterminada de JS Jobs, el sistema redirigirá a la página seleccionada"
 
 msgid "If not select default page, email links and support icon might not work"
 msgstr ""
@@ -2942,10 +2948,10 @@ msgid "Sender name that will be used in emails"
 msgstr "Nombre del remitente que se usará en los correos electrónicos"
 
 msgid "Show breadcrumbs"
-msgstr ""
+msgstr "Mostrar migas de pan"
 
 msgid "Select breadcrumbs"
-msgstr ""
+msgstr "Seleccionar migas de pan"
 
 msgid "Show navigation in breadcrumbs"
 msgstr "Mostrar navegación en migas de pan"
@@ -2966,7 +2972,7 @@ msgid "Job Seeker default role"
 msgstr "Rol predeterminado de buscador de trabajo"
 
 msgid "This role will auto assign to new job seeker"
-msgstr ""
+msgstr "Este rol se asignará automáticamente al nuevo buscador de trabajo"
 
 msgid "Visitor can apply to job"
 msgstr "Los visitantes pueden postular a un trabajo"
@@ -2984,7 +2990,7 @@ msgid "Job short list"
 msgstr "Lista de trabajo"
 
 msgid "Job short list setting effects on job listing pages"
-msgstr ""
+msgstr "Configuración de efectos de la lista corta de trabajos"
 
 msgid "Tell a friend"
 msgstr "Cuéntale a un amigo"
@@ -2996,7 +3002,7 @@ msgid "Mark Job New"
 msgstr "Marcar como nuevo trabajo"
 
 msgid "How many days system show New tag"
-msgstr ""
+msgstr "Cuántos días muestra el sistema Nueva etiqueta"
 
 msgid "Employer Configuration"
 msgstr "Configuración del empleador"
@@ -3005,7 +3011,7 @@ msgid "Enable Employer Area"
 msgstr "Habilitar área del empleador"
 
 msgid "If no then front end employer area is not accessible"
-msgstr ""
+msgstr "Si no, entonces no se puede acceder al área del empleador"
 
 msgid "Allow user register as employer"
 msgstr "Permitir el registro de usuarios como empleados"
@@ -3020,7 +3026,7 @@ msgid "This role will auto assign to new employer"
 msgstr "Este rol se asignará automáticamente al nuevo empleador"
 
 msgid "Employer can view job seeker area"
-msgstr ""
+msgstr "El empleador puede ver el área de búsqueda de empleo"
 
 msgid "Visitor can post job"
 msgstr "El visitante puede publicar trabajo"
@@ -3359,9 +3365,8 @@ msgstr "Twitter"
 msgid "Google Plus"
 msgstr "Google Plus"
 
-#, fuzzy
 msgid "Pintrest"
-msgstr "Pintrest"
+msgstr "Compartir con Pintrest"
 
 msgid "Instagram"
 msgstr "Instagram"
@@ -3413,7 +3418,7 @@ msgid "by seller"
 msgstr "por tienda"
 
 msgid "Short List vehicle"
-msgstr "Vehículos preseleccionados"
+msgstr "Mi favorito"
 
 msgid "Rate"
 msgstr "Tasa"
@@ -3677,7 +3682,7 @@ msgid "Refine Search"
 msgstr "Mejorar la búsqueda"
 
 msgid "Shortlisted vehicles"
-msgstr "Vehículos preseleccionados"
+msgstr "Mis favoritos"
 
 msgid "Schedule a test drive"
 msgstr "Agendar prueba de manejo"
@@ -3782,7 +3787,7 @@ msgid "Tumbler"
 msgstr "Tumbler"
 
 msgid "Add To Short List"
-msgstr "Agregar a preseleccionados"
+msgstr "Agregar a mis favoritos"
 
 msgid "Comments/Conditions"
 msgstr "Comentarios / Condiciones"
@@ -3827,7 +3832,7 @@ msgid "Seller Photo"
 msgstr "Foto o logotipo de la tienda"
 
 msgid "shortlist"
-msgstr "preseleccionados"
+msgstr "mis favoritos"
 
 msgid "Add to compare"
 msgstr "Agregar al comparador"
@@ -4143,3 +4148,9 @@ msgstr "Dolar"
 
 msgid "Albania"
 msgstr "Albania"
+
+msgid "Visits"
+msgstr "Visitas"
+
+msgid "Visited"
+msgstr "Visitado"

@@ -5,6 +5,7 @@ $msgkey = JSVEHICLEMANAGERincluder::getJSModel('user')->getMessagekey();
 JSVEHICLEMANAGERmessages::getLayoutMessage($msgkey);
 JSVEHICLEMANAGERbreadcrumbs::getBreadcrumbs();
 include_once(jsvehiclemanager::$_path . 'includes/header.php');
+
 if (jsvehiclemanager::$_error_flag == null) {
 
 ?>
@@ -106,7 +107,10 @@ if(!empty(jsvehiclemanager::$_data[0])){
                             </span>
                         </div>
                     <?php   } ?>
-                    <?php if (jsvehiclemanager::$_data['listingfields']['weblink'] == 1) { ?>
+                    <?php if (jsvehiclemanager::$_data['listingfields']['weblink'] == 1) { 
+
+                            $totVisits = jsvehiclemanager::getCountOfVisitsBySeller($data->id);
+                        ?>
                         <div class="jsvehiclemanager_seller-info-wrp" >
                             <span class="jsvehiclemanager_cm-seller-info-bottom-bold-text">
                                 <?php echo sprintf(__('%s','js-vehicle-manager'), jsvehiclemanager::$_data['fields']['weblink'])." : "; ?>
@@ -118,6 +122,15 @@ if(!empty(jsvehiclemanager::$_data[0])){
                                     $weblink = $data->weblink;
                                 } ?>
                                 <a href="<?php echo $weblink; ?>" ><?php echo $data->weblink; ?></a>
+                            </span>
+
+
+
+                            <span class="jsvehiclemanager_cm-seller-info-bottom-bold-text">
+                                <?php echo __('Visits','js-vehicle-manager'); ?> :
+                            </span>
+                            <span class="jsvehiclemanager_cm-seller-info-bottom-text text-muted">
+                                <?php echo $totVisits; ?>
                             </span>
                         </div>
                     <?php } ?>

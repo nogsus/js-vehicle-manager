@@ -43,7 +43,7 @@ function getRowForVideoView($value, $vtype) {
         </div>
         <div id="jsvehiclemanager-content">
 
-<div class="jsvehiclemanager_cm-seller-wrap single">
+<div class="jsvehiclemanager_cm-seller-wrap">
     <div class="row jsvehiclemanager_cm-margin jsvehiclemanager_cm-seller-det">
         <div class="jsvehiclemanager_cm-seller-det-left">
             <img class="img-reponsive jsvehiclemanager_cm-seller-img" src="<?php echo esc_attr($seller->photo != '' ? $seller->photo : jsvehiclemanager::$_pluginpath."includes/images/default-images/profile-image.png");?>" title="<?php echo esc_attr(__('Seller', 'js-vehicle-manager')); ?>" alt="<?php echo esc_attr(__('Seller', 'js-vehicle-manager')); ?>" />
@@ -137,26 +137,20 @@ function getRowForVideoView($value, $vtype) {
                         <a href="<?php echo $weblink; ?>" ><?php echo $seller->weblink; ?></a>
                     </span>
                 </div>
-                <!--<div class="jsvehiclemanager_seller-info-wrp" >
+                <div class="jsvehiclemanager_seller-info-wrp" >
                     <span class="jsvehiclemanager_cm-seller-info-bottom-bold-text">
-                        <?php //echo __(jsvehiclemanager::$_data['fields']['cityid'],'js-vehicle-manager')." : "; ?>
+                        <?php echo __(jsvehiclemanager::$_data['fields']['cityid'],'js-vehicle-manager')." : "; ?>
                     </span>
                     <span class="jsvehiclemanager_cm-seller-info-bottom-text text-muted">
-                        <?php //echo __($seller->location,'js-vehicle-manager'); ?>
+                        <?php echo __($seller->location,'js-vehicle-manager'); ?>
                     </span>
-                </div>-->
+                </div>
                 <div class="jsvehiclemanager_seller-info-wrp" >
                     <span class="jsvehiclemanager_cm-seller-info-bottom-bold-text">
                         <?php echo __(jsvehiclemanager::$_data['fields']['address'],'js-vehicle-manager')." : "; ?>
                     </span>
                     <span class="jsvehiclemanager_cm-seller-info-bottom-text text-muted">
-                        <?php 
-                        if(!empty($seller->latitude) && !empty($seller->longitude)) {
-                            echo '<a href="https://maps.google.com/?q=' . $seller->latitude . ',' . $seller->longitude . '" target="_blank">' . esc_html($seller->address) . '</a>'; 
-                        } else {
-                            echo esc_html($seller->address); 
-                        }
-                        ?>
+                        <?php echo esc_html($seller->address); ?>
                     </span>
                 </div>
                 <?php

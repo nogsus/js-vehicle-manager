@@ -12,7 +12,8 @@ class jsvmServerCalls extends JSVM_Updater{
 		$args = array(
 			'request' => 'pluginupdatecheck',
 			'token' => $token_arrray_json,
-			'domain' => site_url()
+			// 'domain' => site_url()
+			'domain' => network_site_url()
 		);
 
 		$url = self::$server_url . '?' . http_build_query( $args, '', '&' );
@@ -40,7 +41,8 @@ class jsvmServerCalls extends JSVM_Updater{
 				'request' => 'generatetoken',
 				'transactionkey' => $transaction_key,
 				'productcode' => $addon_name,
-				'domain' => site_url()
+				// 'domain' => site_url()
+				'domain' => network_site_url()
 			);
 
 			$url = self::$server_url . '?' . http_build_query( $args, '', '&' );
@@ -100,7 +102,8 @@ class jsvmServerCalls extends JSVM_Updater{
 			'plugin_slug'    => '',
 			'version'        => '',
 			'token'    => '',
-			'domain'          => site_url()
+			// 'domain'          => site_url()
+			'domain'          => network_site_url()
 		);
 
 		$args    = wp_parse_args( $args, $defaults );

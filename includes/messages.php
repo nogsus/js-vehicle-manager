@@ -50,7 +50,7 @@ class JSVEHICLEMANAGERMessages {
                             }
                             $divHtml .= '<div class="alert alert-' . $alert_class . '" role="alert" id="autohidealert">
                                             <img class="leftimg" src="'.jsvehiclemanager::$_pluginpath.'includes/images/'.$img_name.'" />
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                             '. $_SESSION[$msgkey]['msg'][$i] . '

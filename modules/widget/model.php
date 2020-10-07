@@ -12,7 +12,7 @@ class JSVehicleManagerwidgetModel {
         $html = '';
         $html .= '
                     <div class="jsvehiclemanager_vehicles_widget_wrapper" >
-                            
+
                         <div class="jsvehiclemanager_vehicles_widget_top" >
                             <div class="jsvehiclemanager_vehicles_widget_title" >
                                 '. __($heading,'js-vehicle-manager') .'
@@ -37,18 +37,11 @@ class JSVehicleManagerwidgetModel {
                 $title = JSVEHICLEMANAGERincluder::getJSModel('common')->returnVehicleTitle($vehicle->maketitle , $vehicle->modeltitle , $vehicle->modelyeartitle);
                 $location = JSVEHICLEMANAGERincluder::getJSModel('common')->getLocationForView($vehicle->cityname,$vehicle->statename, $vehicle->countryname);
                 $price = JSVEHICLEMANAGERincluder::getJSModel('common')->getPrice($vehicle->price,$vehicle->currencysymbol, $vehicle->isdiscount, $vehicle->discounttype, $vehicle->discount, $vehicle->discountstart, $vehicle->discountend);
-
-
-                $iva = jsvehiclemanager::getCustomParamsByKey('IVA', $vehicle->id);
-                $favorite = jsvehiclemanager::getFavoriteStatusById($vehicle->id);
-                $classFav = (!empty($favorite))? 'dashicons-star-filled' : 'dashicons-star-empty';
-                $favMsg = (!empty($favorite))? __('Short List vehicle','js-vehicle-manager') : __('Add To Short List','js-vehicle-manager');
-                
                 $html .='    <div class="jsvehiclemanager_vehicles_widget_data_record" '.$number_of_columns_css.' >';
                 $html .='       <div class="jsvehiclemanager_vehicles_widget_data_record_image_wrap" >';
                 $html .='          <img src="'.$imagesrc.'" class="jsvehiclemanager_vehicles_widget_data_record_image" />';
                 $html .='          <div class="jsvehiclemanager_vehicles_widget_data_record_price" >
-                                    '.$price . ((!empty($iva))? ' + IVA' : NULL);
+                                    '.$price;
                 $html .='          </div>';
                 $html .='       </div>';
                 $html .='       <div class="jsvehiclemanager_vehicles_widget_data_record_data">';
@@ -56,9 +49,6 @@ class JSVehicleManagerwidgetModel {
                 $html .=                $title;
                 $html .='           </a>';
                 $html .='           <div class="jsvehiclemanager_vehicles_widget_data_record_middle" >';
-
-                $html .= '<span class="jsvehiclemanager_vehicles_widget_data_record_middle_data fav_favorite" title="' . $favMsg . '" id="' . $vehicle->id . '" onClick="javascript:favSetFavorite(this);"><div class="dashicons ' . $classFav . '"></div></span>';
-
                 $html .='               <span class="jsvehiclemanager_vehicles_widget_data_record_middle_data" style="background:#fff;color:'.$vehicle->conditioncolor.';border:1px solid '.$vehicle->conditioncolor.';" >';
                 $html .=                    $vehicle->conditiontitle;
                 $html .='               </span>';
@@ -68,7 +58,6 @@ class JSVehicleManagerwidgetModel {
                 $html .='               <span class="jsvehiclemanager_vehicles_widget_data_record_middle_data" >';
                 $html .=                    $vehicle->fueltypetitle;
                 $html .='               </span>';
-
                 $html .='           </div>';
                 if($location != ''){
                     $html .='           <div class="jsvehiclemanager_vehicles_widget_data_record_bottom" >';
@@ -84,7 +73,7 @@ class JSVehicleManagerwidgetModel {
         ';
         return $html;
     }
- 
+
     function getVehiclesByCitiesWidgetHTMl($cities,$pageid,$heading,$description,$number_of_columns,$layout_name){
     	$html = '';
     	$html .= '

@@ -9,7 +9,6 @@ class JSVEHICLEMANAGERlayout {
         if($message == null){
             $message = __('Could not find any matching results', 'js-vehicle-manager');
         }
-        
         $html = '
                 <div class="js_vehiclemanager_error_messages_wrapper">
                     <div class="jsvehiclemanager_message1">

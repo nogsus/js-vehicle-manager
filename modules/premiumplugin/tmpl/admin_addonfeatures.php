@@ -148,7 +148,7 @@
                                 <a href="https://wpvehiclemanager.com/product/vehicle-alert/" target="__blank" class="add-on-btn"><?php echo __("buy now","js-vehicle-manager"); ?></a>
                             </div>
                             <div class="add-on-item jsvm_addressdata">
-                                <img class="add-on-img" src="<?php echo jsvehiclemanager::$_pluginpath; ?>includes/images/add-on-list/load-address-data.png" alt="<?php echo __("Address Data","js-vehicle-manager"); ?>" />
+                                <img class="add-on-img" src="<?php echo jsvehiclemanager::$_pluginpath; ?>includes/images/add-on-list/addressdata.png" alt="<?php echo __("Address Data","js-vehicle-manager"); ?>" />
                                 <div class="add-on-name"><?php echo __("Address Data","js-vehicle-manager"); ?></div>
                                 <div class="add-on-txt"><?php echo __("In Address Data Add-on, a user has an option to upload the data file for cities, states or both. User will upload the data file if he doesn’t change the country id or states id from the database.","js-vehicle-manager"); ?></div>
                                 <a href="https://wpvehiclemanager.com/product/address-data/" target="__blank" class="add-on-btn"><?php echo __("buy now","js-vehicle-manager"); ?></a>

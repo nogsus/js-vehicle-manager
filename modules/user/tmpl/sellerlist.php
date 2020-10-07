@@ -5,7 +5,6 @@ $msgkey = JSVEHICLEMANAGERincluder::getJSModel('user')->getMessagekey();
 JSVEHICLEMANAGERmessages::getLayoutMessage($msgkey);
 JSVEHICLEMANAGERbreadcrumbs::getBreadcrumbs();
 include_once(jsvehiclemanager::$_path . 'includes/header.php');
-
 if (jsvehiclemanager::$_error_flag == null) {
 
 ?>
@@ -48,7 +47,7 @@ if( is_array(jsvehiclemanager::$_data['searchfields']) && !empty(jsvehiclemanage
                     if($u_field){
                     ?>
                         <div class="jsvehiclemanager_field_box">
-                            <label for="<?php echo $field->field; ?>" class="control-label"><?php echo sprintf(__('%s','js-vehicle-manager'), $field->fieldtitle);?></label>
+                            <label for="for="<?php echo $field->field; ?>"" class="control-label"><?php echo sprintf(__('%s','js-vehicle-manager'), $field->fieldtitle);?></label>
                             <?php echo $u_field; ?>
                         </div>
                     <?php  
@@ -58,8 +57,8 @@ if( is_array(jsvehiclemanager::$_data['searchfields']) && !empty(jsvehiclemanage
         }
         ?>
         <div class="jsvehiclemanager_seller-list-btn-wrapper">
-            <input class="jsvehiclemanager-seller-list-btn-search" type="submit" value="<?php echo esc_attr(__('Search','js-vehicle-manager')); ?>"  />
             <input class="jsvehiclemanager-seller-list-btn-reset" type="button" value="<?php echo esc_attr(__('Reset','js-vehicle-manager')); ?>" onClick="restFrom(isPluginCall);" />
+            <input class="jsvehiclemanager-seller-list-btn-search" type="submit" value="<?php echo esc_attr(__('Search','js-vehicle-manager')); ?>"  />
         </div>
         <?php echo JSVEHICLEMANAGERformfield::hidden('JSVEHICLEMANAGER_form_search', 'JSVEHICLEMANAGER_SEARCH'); ?>
         <input type="hidden" id="jsvm_issearch" name="issearch" value="1"/>
@@ -67,12 +66,9 @@ if( is_array(jsvehiclemanager::$_data['searchfields']) && !empty(jsvehiclemanage
 <?php
 }
 if(!empty(jsvehiclemanager::$_data[0])){
-    $isFirst = 0;
-
     foreach (jsvehiclemanager::$_data[0] as $data) {
-        $activeElem = ($isFirst < 1)? ' id="fvlFirst"' : NULL;
         ?>
-    <div class="jsvehiclemanager_cm-seller-wrap"<?php echo $activeElem; ?>>
+    <div class="jsvehiclemanager_cm-seller-wrap">
         <div class="row jsvehiclemanager_cm-margin jsvehiclemanager_cm-seller-det">
             <div class="jsvehiclemanager_cm-seller-det-left">
                 <img class="img-reponsive jsvehiclemanager_cm-seller-img" src="<?php echo esc_attr($data->photo != '' ? $data->photo : jsvehiclemanager::$_pluginpath.'includes/images/default-images/profile-image.png');?>" title="<?php echo esc_attr(__('Seller', 'js-vehicle-manager')); ?>" alt="<?php echo esc_attr(__('Seller', 'js-vehicle-manager')); ?>"/>
@@ -107,10 +103,7 @@ if(!empty(jsvehiclemanager::$_data[0])){
                             </span>
                         </div>
                     <?php   } ?>
-                    <?php if (jsvehiclemanager::$_data['listingfields']['weblink'] == 1) { 
-
-                            $totVisits = jsvehiclemanager::getCountOfVisitsBySeller($data->id);
-                        ?>
+                    <?php if (jsvehiclemanager::$_data['listingfields']['weblink'] == 1) { ?>
                         <div class="jsvehiclemanager_seller-info-wrp" >
                             <span class="jsvehiclemanager_cm-seller-info-bottom-bold-text">
                                 <?php echo sprintf(__('%s','js-vehicle-manager'), jsvehiclemanager::$_data['fields']['weblink'])." : "; ?>
@@ -123,42 +116,16 @@ if(!empty(jsvehiclemanager::$_data[0])){
                                 } ?>
                                 <a href="<?php echo $weblink; ?>" ><?php echo $data->weblink; ?></a>
                             </span>
-
-
-
-                            <span class="jsvehiclemanager_cm-seller-info-bottom-bold-text">
-                                <?php echo __('Visits','js-vehicle-manager'); ?> :
-                            </span>
-                            <span class="jsvehiclemanager_cm-seller-info-bottom-text text-muted">
-                                <?php echo $totVisits; ?>
-                            </span>
                         </div>
                     <?php } ?>
-                <!--
                     <div class="jsvehiclemanager_seller-info-wrp" >
                         <span class="jsvehiclemanager_cm-seller-info-bottom-bold-text">
-                            <?php // echo sprintf(__('%s','js-vehicle-manager'), jsvehiclemanager::$_data['fields']['cityid'])." : "; ?>
+                            <?php echo sprintf(__('%s','js-vehicle-manager'), jsvehiclemanager::$_data['fields']['cityid'])." : "; ?>
                         </span>
                         <span class="jsvehiclemanager_cm-seller-info-bottom-text text-muted">
-                            <?php // echo __($data->location,'js-vehicle-manager'); ?>
+                            <?php echo __($data->location,'js-vehicle-manager'); ?>
                         </span>
                     </div>
-                -->
-
-                    <div class="jsvehiclemanager-vehicle-listing-total-vehicles" >
-                    <span><?php
-                        $totVehicles = jsvehiclemanager::getCountOfVehicleBySeller($data->id);
-                        echo $totVehicles;
-                    ?></span><strong>
-                    <?php 
-                    if($totVehicles > 1) {
-                        echo __('vehicles','js-vehicle-manager').'&nbsp;'; 
-                    } else {
-                        echo __('Vehicle','js-vehicle-manager').'&nbsp;'; 
-                    }
-                    ?></strong>
-                    </div>
-
                     <?php
                     $customfields = JSVEHICLEMANAGERincluder::getObjectClass('customfields')->userFieldsData(2,0,1);// 10 for main section of vehicle
                     foreach($customfields AS $field){

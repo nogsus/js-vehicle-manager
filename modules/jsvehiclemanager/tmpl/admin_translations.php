@@ -84,7 +84,7 @@
                             jQuery('#jsvm_js-emessage-wrapper div').html(data['error']);
                             jQuery('#jsvm_js-emessage-wrapper').show();
                             jQuery('#jsvm_jscodeinputbox').slideUp('400' , 'swing' , function(){
-                                jQuery('input#jsvm_languagecode').val("");
+                                jQuery('input#languagecode').val("");
                             });
                         }else{
                             jQuery('#jsvm_js-emessage-wrapper').hide();
@@ -98,8 +98,8 @@
 
         jQuery('#jsvm_jsdownloadbutton').click(function(){
             jQuery('#jsvm_js-emessage-wrapper_ok').hide();
-            var lang_name = jQuery('#jsvm_translations').val();
-            var file_name = jQuery('#jsvm_languagecode').val();
+            var lang_name = jQuery('#translations').val();
+            var file_name = jQuery('#languagecode').val();
             if(lang_name != '' && file_name != ''){
                 jsShowLoading();
                 jQuery.post(ajaxurl, {action: 'jsvehiclemanager_ajax', jsvmme: 'jsvehiclemanager', task: 'getlanguagetranslation',langname:lang_name , filename: file_name,wpnoncecheck:common.wp_vm_nonce}, function (data) {

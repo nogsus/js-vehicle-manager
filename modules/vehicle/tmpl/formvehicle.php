@@ -1170,7 +1170,7 @@ if (jsvehiclemanager::$_error_flag_message == null) {
             if(jsvehiclemanager::$_data['sellerflag'] == 0){ ?>
                <div class="jsvehiclemanager-form-sellerinfo-wrap">
                  <div class="jsvehiclemanager-form-sellerinfo-headings">
-                        <?php echo __('Contact Info','js-vehicle-manager'); ?>
+                        <?php echo __('Contact Info','jsvehiclemanager'); ?>
                  </div>
                  <div class="jsvehiclemanager-form-field-wrapper">
                 <?php

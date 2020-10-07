@@ -17,7 +17,8 @@ class JSVM_Updater {
 		foreach (jsvehiclemanager::$_active_addons AS $addon) {
 			$addon_installed_array[] = 'js-vehicle-manager-'.$addon;
 			$option_name = 'transaction_key_for_js-vehicle-manager-'.$addon;
-			$transaction_key = get_option($option_name);
+			// $transaction_key = get_option($option_name);
+			$transaction_key = $GLOBALS['wpdb']->get_var( "SELECT `option_value` FROM " . jsvehiclemanager::$_wpprefixforuser . "options WHERE option_name = '$option_name'");
 			if(!in_array($transaction_key, $transaction_key_array)){
 				$transaction_key_array[] = $transaction_key;
 			}
@@ -53,7 +54,8 @@ class JSVM_Updater {
 			$addon_name = str_replace('js-vehicle-manager-', '', $addon_slug);
 			if(isset($this->addon_update_data[$file]) || !in_array($addon_name, jsvehiclemanager::$_active_addons)){ // Only checking which addon have update version
 				$option_name = 'transaction_key_for_js-vehicle-manager-'.$addon_name;
-				$transaction_key = get_option($option_name);
+				// $transaction_key = get_option($option_name);
+				$transaction_key = $GLOBALS['wpdb']->get_var( "SELECT `option_value` FROM " . jsvehiclemanager::$_wpprefixforuser . "options WHERE option_name = '$option_name'");
 				$verify_results = JSVEHICLEMANAGERincluder::getJSModel('premiumplugin')->activate( array(
 		            'token'    => $transaction_key,
 		            'plugin_slug'    => $addon_name
@@ -165,7 +167,8 @@ class JSVM_Updater {
 	public function jsGetPluginInfo($addon_slug) {
 
 		$option_name = 'transaction_key_for_'.$addon_slug;
-		$transaction_key = get_option($option_name);
+		// $transaction_key = get_option($option_name);
+		$transaction_key = $GLOBALS['wpdb']->get_var( "SELECT `option_value` FROM " . jsvehiclemanager::$_wpprefixforuser . "options WHERE option_name = '$option_name'");
 
 		if(!$transaction_key){
 			die('transient');
@@ -179,7 +182,8 @@ class JSVM_Updater {
 			'plugin_slug'    => $addon_slug,
 			'version'        => $plugin_data['Version'],
 			'token'    => $transaction_key,
-			'domain'          => site_url()
+			// 'domain'          => site_url()
+			'domain'          => network_site_url()
 		) );
 
 		if ( isset( $response->errors ) ) {

@@ -26,9 +26,6 @@ if (jsvehiclemanager::$_error_flag_message == null) { ?>
             </div>
             <?php do_action('jsvm_featuredvehicle_total_featurevehicle_for_stats',jsvehiclemanager::$_data['featuredvehicles']); ?>
         </div>
-        <?php 
-        $usrNfo = jsvehiclemanager::getUserProfileNfo(); 
-        ?>
         <table id="jsvehiclemanager-table" class="jsvehiclemanager-first-table">
             <thead class="stats">
                 <tr>
@@ -36,7 +33,6 @@ if (jsvehiclemanager::$_error_flag_message == null) { ?>
                     <th class="total center"> <?php echo __('total','js-vehicle-manager');?> </th>
                     <th class="publish center"> <?php echo __('Publish','js-vehicle-manager');?> </th>
                     <th class="expired center"> <?php echo __('Expired','js-vehicle-manager');?> </th>
-                    <th class="expired center"> <?php echo __('Visited','js-vehicle-manager');?> </th>
                 </tr>
             </thead>
             <tbody class="stats">
@@ -45,7 +41,6 @@ if (jsvehiclemanager::$_error_flag_message == null) { ?>
                     <td class="total center responsive_feature"><?php echo jsvehiclemanager::$_data['totalvehicles']; ?></td>
                     <td class="publish center responsive_feature"><?php echo jsvehiclemanager::$_data['totalvehicles'] - jsvehiclemanager::$_data['expiredvehicles']; ?></td>
                     <td class="expired center responsive_feature"><?php echo jsvehiclemanager::$_data['expiredvehicles']; ?></td>
-                    <td class="expired center responsive_feature"><?php echo (!empty($usrNfo))? jsvehiclemanager::getCountOfVisitsBySeller($usrNfo->id) : NULL; ?></td>
                 </tr>
                 <?php
                 $totalfeature = jsvehiclemanager::$_data['featuredvehicles'];

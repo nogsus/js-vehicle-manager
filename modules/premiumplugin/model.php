@@ -9,7 +9,8 @@ class JSVEHICLEMANAGERpremiumpluginModel {
 
     function verfifyAddonActivation($addon_name){
         $option_name = 'transaction_key_for_js-vehicle-manager-'.$addon_name;
-        $transaction_key = get_option($option_name);
+        $transaction_key = $GLOBALS['wpdb']->get_var( "SELECT `option_value` FROM " . jsvehiclemanager::$_wpprefixforuser . "options WHERE option_name = '$option_name'");
+        // $transaction_key = get_option($option_name);
         try {
             if (! $transaction_key ) {
                 throw new Exception( 'License key not found' );
@@ -39,7 +40,8 @@ class JSVEHICLEMANAGERpremiumpluginModel {
 
     function logAddonDeactivation($addon_name){
         $option_name = 'transaction_key_for_js-vehicle-manager-'.$addon_name;
-        $transaction_key = get_option($option_name);
+        // $transaction_key = get_option($option_name);
+        $transaction_key = $GLOBALS['wpdb']->get_var( "SELECT `option_value` FROM " . jsvehiclemanager::$_wpprefixforuser . "options WHERE option_name = '$option_name'");
 
         $activate_results = $this->deactivate( array(
             'token'    => $transaction_key,
@@ -49,7 +51,9 @@ class JSVEHICLEMANAGERpremiumpluginModel {
 
     function logAddonDeletion($addon_name){
         $option_name = 'transaction_key_for_js-vehicle-manager-'.$addon_name;
-        $transaction_key = get_option($option_name);
+        // $transaction_key = get_option($option_name);
+        $transaction_key = $GLOBALS['wpdb']->get_var( "SELECT `option_value` FROM " . jsvehiclemanager::$_wpprefixforuser . "options WHERE option_name = '$option_name'");
+
         $activate_results = $this->delete( array(
             'token'    => $transaction_key,
             'plugin_slug'    => $addon_name
@@ -59,7 +63,8 @@ class JSVEHICLEMANAGERpremiumpluginModel {
     public static function activate( $args ) {
         $defaults = array(
             'request'  => 'activate',
-            'domain' => site_url(),
+            // 'domain' => site_url(),
+            'domain' => network_site_url(),
             'activation_call' => 1
         );
 
@@ -84,7 +89,8 @@ class JSVEHICLEMANAGERpremiumpluginModel {
     public static function deactivate( $dargs ) {
         $defaults = array(
             'request'  => 'deactivate',
-            'domain' => site_url()
+            // 'domain' => site_url()
+            'domain' => network_site_url()
         );
 
         $args    = wp_parse_args( $defaults, $dargs );
@@ -101,7 +107,8 @@ class JSVEHICLEMANAGERpremiumpluginModel {
     public static function delete( $args ) {
         $defaults = array(
             'request'  => 'delete',
-            'domain' => site_url(),
+            // 'domain' => site_url(),
+            'domain' => network_site_url(),
         );
 
         $args    = wp_parse_args( $defaults, $args );
@@ -115,12 +122,13 @@ class JSVEHICLEMANAGERpremiumpluginModel {
 
     function verifyAddonSqlFile($addon_name,$addon_version){
         $option_name = 'transaction_key_for_js-vehicle-manager-'.$addon_name;
-        $transaction_key = get_option($option_name);
+        // $transaction_key = get_option($option_name);
+        $transaction_key = $GLOBALS['wpdb']->get_var( "SELECT `option_value` FROM " . jsvehiclemanager::$_wpprefixforuser . "options WHERE option_name = '$option_name'");
         // $addonversion = str_replace('.', '', $addon_version);
         $defaults = array(
             'request'  => 'getactivatesql',
             'domain' => network_site_url(),
-            'subsite' => site_url(),
+            'subsite' => network_site_url(),
             'activation_call' => 1,
             'plugin_slug' => $addon_name,
             'addonversion' => $addon_version,
@@ -141,11 +149,12 @@ class JSVEHICLEMANAGERpremiumpluginModel {
 
     function getAddonSqlForUpdation($plugin_slug,$installed_version,$new_version){
         $option_name = 'transaction_key_for_js-vehicle-manager-'.$plugin_slug;
-        $transaction_key = get_option($option_name);
+        // $transaction_key = get_option($option_name);
+        $transaction_key = $GLOBALS['wpdb']->get_var( "SELECT `option_value` FROM " . jsvehiclemanager::$_wpprefixforuser . "options WHERE option_name = '$option_name'");
         $defaults = array(
             'request'  => 'getupdatesql',
             'domain' => network_site_url(),
-            'subsite' => site_url(),
+            'subsite' => network_site_url(),
             'activation_call' => 1,
             'plugin_slug' => $plugin_slug,
             'installedversion' => $installed_version,

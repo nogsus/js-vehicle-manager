@@ -19,14 +19,15 @@ class JSVEHICLEMANAGERincluder {
             if (file_exists(jsvehiclemanager::$_path . 'includes/css/inc-css/' . $module_name . '-' . $filename . '.css.php')) {
                 require_once(jsvehiclemanager::$_path . 'includes/css/inc-css/' . $module_name . '-' . $filename . '.css.php');
             }
-            
+
             if(is_array($file_path) && file_exists($file_path['tmpl_file'])){
                 if (file_exists($file_path['inc_file'])) {
                     require_once($file_path['inc_file']);
                 }
                 include_once $file_path['tmpl_file'];
             }else if(file_exists($file_path)){
-                $incfilepath = explode('.', $file_path);
+                //$incfilepath = explode('.', $file_path);
+		$incfilepath = explode('.php', $file_path);
                 $incfilename = $incfilepath[0].'.inc.php';
                 if (file_exists($incfilename)) {
                     require_once($incfilename);
@@ -49,6 +50,8 @@ class JSVEHICLEMANAGERincluder {
                 include_once $file_path; //
             }
         }
+
+
 
         return;
     }
@@ -121,6 +124,7 @@ class JSVEHICLEMANAGERincluder {
     }
 
     public static function getPluginPath($module,$type,$file_name = '') {
+
         $addons_secondry = array('facebook','linkedin','creditslog','creditspack','paymentmethodconfiguration','purchase','purchasehistory','paymenthistory','usercredits','popup');
 
         if(in_array($module, jsvehiclemanager::$_active_addons)){

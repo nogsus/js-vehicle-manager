@@ -5,7 +5,7 @@
 
 class js_vehicle_manager_vehicles_widget extends WP_Widget {
 
-	
+
 	/* ---------------------------------------------------------------------------
 	 * Constructor
 	 * --------------------------------------------------------------------------- */
@@ -14,8 +14,8 @@ class js_vehicle_manager_vehicles_widget extends WP_Widget {
 		parent::__construct( 'widget_js_vehicle_manager_vehicles_widget_options', esc_html__( 'JS Vehicle Manager Vehicles', 'js-vehicle-manager' ), $widget_ops );
 		$this->alt_option_name = 'widget_js_vehicle_manager_vehicles_widget_options';
 	}
-	
-	
+
+
 	/* ---------------------------------------------------------------------------
 	 * Outputs the HTML for this widget.
 	 * --------------------------------------------------------------------------- */
@@ -44,22 +44,22 @@ class js_vehicle_manager_vehicles_widget extends WP_Widget {
 	 * --------------------------------------------------------------------------- */
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-		
+
 		$instance['heading'] = strip_tags ($new_instance['heading']);
 		$instance['description'] = strip_tags( $new_instance['description'] );
 		$instance['typeofvehicles'] = (int) $new_instance['typeofvehicles'];
 		$instance['number_of_columns'] = (int) $new_instance['number_of_columns'];
 		$instance['numberofvehicles'] = (int) $new_instance['numberofvehicles'];
-		
+
 		return $instance;
 	}
 
-	
+
 	/* ---------------------------------------------------------------------------
 	 * Displays the form for this widget on the Widgets page of the WP Admin area.
 	 * --------------------------------------------------------------------------- */
 	function form( $instance ) {
-		
+
 		$heading = isset( $instance['heading']) ? esc_attr( $instance['heading'] ) : esc_html__('Latest Vehicles','js-vehicle-manager');
 		$description = isset( $instance['description']) ? esc_attr( $instance['description'] ) : '';
 		$typeofvehicles = isset( $instance['typeofvehicles'] ) ? absint( $instance['typeofvehicles'] ) : 1;
@@ -70,12 +70,12 @@ class js_vehicle_manager_vehicles_widget extends WP_Widget {
 				<label for="<?php echo esc_attr( $this->get_field_id( 'heading' ) ); ?>"><?php _e( 'heading', 'js-vehicle-manager' ); ?>:</label>
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'heading' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'heading' ) ); ?>" type="text" value="<?php echo esc_attr( $heading ); ?>" />
 			</p>
-			
+
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'description' ) ); ?>"><?php _e( 'description', 'js-vehicle-manager' ); ?>:</label>
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'description' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'description' ) ); ?>" type="text" value="<?php echo esc_attr( $description ); ?>" />
 			</p>
-			
+
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'typeofvehicles' ) ); ?>"><?php _e( 'Type Of Vehicles', 'js-vehicle-manager' ); ?>:</label>
 				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'typeofvehicles' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'typeofvehicles' ) ); ?>" >
@@ -93,7 +93,7 @@ class js_vehicle_manager_vehicles_widget extends WP_Widget {
 				<label for="<?php echo esc_attr( $this->get_field_id( 'numberofvehicles' ) ); ?>"><?php _e( 'Number of Vehicles', 'js-vehicle-manager' ); ?>:</label>
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'numberofvehicles' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'numberofvehicles' ) ); ?>" type="text" value="<?php echo esc_attr( $numberofvehicles ); ?>" size="3"/>
 			</p>
-			
+
 		<?php
 	}
 }

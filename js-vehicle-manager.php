@@ -2,14 +2,14 @@
 
 /**
  * @package WP Vehicle Manager
- * @version 1.1.4
+ * @version 1.1.6
  */
 /*
   Plugin Name: WP Vehicle Manager
   Plugin URI: https://wpvehiclemanager.com/
   Description: WP Vehicle Manager is Word Press most comprehensive and easist show room plugin.
   Author: Joom Sky
-  Version: 1.1.4
+  Version: 1.1.6
   Text Domain: js-vehicle-manager
   Author URI: https://wpvehiclemanager.com/
  */
@@ -60,14 +60,16 @@ class jsvehiclemanager {
         self::$_error_flag = null;
         self::$_error_flag_message = null;
         self::$_car_manager_theme = 0;
-        self::$_currentversion = '114';
+        self::$_currentversion = '116';
         self::$_addon_query = array('select'=>'','join'=>'','where'=>'');
         self::$_db = $wpdb;
+
         if(is_multisite()) {
             self::$_wpprefixforuser = $wpdb->base_prefix;
         }else{
             self::$_wpprefixforuser = self::$_db->prefix;
         }
+
         JSVEHICLEMANAGERincluder::getJSModel('configuration')->getConfiguration();
         register_activation_hook(__FILE__, array($this, 'jsvehiclemanager_activate'));
         register_deactivation_hook(__FILE__, array($this, 'jsvehiclemanager_deactivate'));
@@ -83,8 +85,8 @@ class jsvehiclemanager {
         add_action('jsvehiclemanager_cronjobs_action', array($this,'jsvehiclemanager_cronjobs'));
         add_action('reset_jsvm_aadon_query', array($this,'reset_jsvm_aadon_query') );
         // current theme to handle vehicle manager calls to car manager
-        $theme = wp_get_theme();
-        if($theme == 'Car Manager'){
+        $theme = get_template();
+        if($theme == 'car-manager'){
             self::$_car_manager_theme = 1;
         }else{
             define( 'CAR_MANAGER_IMAGE', self::$_pluginpath . 'includes/images' );
@@ -558,91 +560,6 @@ class jsvehiclemanager {
         return false;
     }
 
-    public static function getCountOfVehicleBySeller ($usrid) {
-        $db = new jsvehiclemanagerdb();
-        $query = "SELECT COUNT(*) AS nreg
-            FROM `#__js_vehiclemanager_vehicles` AS vehicles
-            LEFT JOIN `#__js_vehiclemanager_users` AS user ON user.id = vehicles.uid
-            WHERE  user.id = " . $usrid;
-        $db->setQuery($query);
-        $vehicle = $db->loadObject();
-        if($vehicle != ''){
-            return $vehicle->nreg;
-        }
-    }
-
-    public static function getCountOfVisitsBySeller ($usrid) {
-        $db = new jsvehiclemanagerdb();
-        $query = "SELECT COUNT(*) AS nreg
-            FROM `#__js_vehiclemanager_visits` 
-            WHERE  store = " . $usrid;
-        $db->setQuery($query);
-        $vehicle = $db->loadObject();
-        if($vehicle != ''){
-            return $vehicle->nreg;
-        }
-    }
-
-    public static function getUserProfileNfo () {
-        $user = wp_get_current_user();
-        $userDta = NULL;
-
-        if(isset($user->ID)) {
-            if(!empty($user->ID)) {
-                $db = new jsvehiclemanagerdb();
-                $query = "SELECT * FROM `#__js_vehiclemanager_users` 
-                    WHERE  uid = " . $user->ID;
-                $db->setQuery($query);
-                $userDta = $db->loadObject();
-                
-                if($userDta != ''){
-                    return $userDta;
-                }
-            }
-        }
-
-        return $userDta;
-    }
-
-    public static function getCustomParamsByKey ($key, $id) {
-        $db = new jsvehiclemanagerdb();
-        $param = NULL;
-        $query = "SELECT field FROM `#__js_vehiclemanager_fieldsordering` 
-                WHERE LOWER(fieldtitle) LIKE '%" . strtolower($key) . "%'";
-
-        $db->setQuery($query);
-        $field = $db->loadObject();
-        
-        if(isset($field->field)){
-            $qry = "SELECT params FROM `#__js_vehiclemanager_vehicles` 
-                WHERE params LIKE '%" . $field->field . "%' AND id=$id";
-            $db->setQuery($qry);
-            $param = $db->loadObject();
-            
-            if(isset($param->params)){
-                return $param;
-            }
-        }
-
-        return $param;
-    }
-
-    public static function getFavoriteStatusById ($id) {
-        $db = new jsvehiclemanagerdb();
-        $user = wp_get_current_user();
-
-        $query = "SELECT * FROM `#__js_vehiclemanager_favorite` 
-                WHERE idVehicle='$id' AND idUser='$user->ID'";
-
-        $db->setQuery($query);
-        $fav = $db->loadObject();
-        
-        if(isset($fav->id)){
-            return $fav->id;
-        }
-    
-        return NULL;
-    }
 }
 
 $jsvehiclemanager = new jsvehiclemanager();

@@ -1112,6 +1112,7 @@ div#jsvehiclemanageradmin-wrapper div.post-installtion-content div.pic-config di
 div#jsvehiclemanageradmin-wrapper div.post-installtion-content div.pic-config div.desc{display: inline-block;width: 100%;padding-left: 25%;color: #999;margin-top:10px;}
 div#jsvehiclemanageradmin-wrapper div.post-installtion-content div.pic-config div.sample-data-wrp {display: inline-block;width: 100%;padding-left: 25%;}
 div#jsvehiclemanageradmin-wrapper div.post-installtion-content div.pic-config div.sample-data-wrp div.sample-data-heading {color: #333333;margin: 5px 0;float: left;width: 100%;}
+div#jsvehiclemanageradmin-wrapper div.post-installtion-content div.pic-config div.sample-data-wrp div.sample-data-heading span{color: #FF0000;font-weight: bolder;}
 div#jsvehiclemanageradmin-wrapper div.post-installtion-content div.pic-config div.sample-data-wrp div.sample-data-text {background-color: #f1f1f1;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;float: left;width: 100%;padding: 7px 0;color: #999;}
 div#jsvehiclemanageradmin-wrapper div.post-installtion-content div.pic-config div.sample-data-wrp div.sample-data-text::after{display: block;content: '';clear: both;}
 div#jsvehiclemanageradmin-wrapper div.post-installtion-content div.pic-config div.sample-data-wrp div.sample-data-text div.name-part{float: left;width: 40%;}

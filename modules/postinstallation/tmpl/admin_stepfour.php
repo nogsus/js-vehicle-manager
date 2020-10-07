@@ -26,7 +26,7 @@ if (!defined('ABSPATH')) die('Restricted Access'); ?>
         jQuery("a.next-step").click(function(){
             jQuery("div#overlay").show();
         });
-    })
+    });
 </script>
 <div id="jsvehiclemanageradmin-wrapper" class="post-installation">
     <div class="js-admin-title-installtion">
@@ -144,6 +144,9 @@ if (!defined('ABSPATH')) die('Restricted Access'); ?>
                                     <span class="value">demo</span>
                                 </div>
                             </div>
+                            <div class="sample-data-heading">
+                               <span><?php echo __("It takes sometime for downloading sample data.","js-vehicle-manager"); ?></span>
+                            </div>
                         </div>
                     </div>
                 <?php
@@ -211,6 +214,6 @@ if (!defined('ABSPATH')) die('Restricted Access'); ?>
 <div id="overlay">
     <div class="overlay-data">
         <img src="<?php echo jsvehiclemanager::$_pluginpath; ?>includes/images/postinstallation/loading-1.gif" />
-        <span class="overlay-msg"><?php echo __("Please wait for a few minute.","js-vehicle-manager");?></span>
+        <span class="overlay-msg"><?php echo __("Please wait for a few minute. It takes some time.","js-vehicle-manager");?></span>
     </div>
 </div>

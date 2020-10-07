@@ -294,16 +294,30 @@ function jsvehiclemanager_add_new_member() {
 
         // only create the user in if there are no errors
         if (empty($errors)) {
-            $new_user_id = wp_insert_user(array(
-                'user_login' => $user_login,
-                'user_pass' => $user_pass,
-                'user_email' => $user_email,
-                'first_name' => $user_first,
-                'last_name' => $user_last,
-                'user_registered' => date_i18n('Y-m-d H:i:s'),
-                'role' => 'subscriber'
-                )
-            );
+
+            $wperrors = register_new_user(  $user_login,  $user_email );
+            $new_user_id = "";
+            if (!is_wp_error($wperrors)) {
+                $new_user_id = $wperrors;
+                if ( $user_first && $user_last ) {
+                    $display_name = sprintf( _x( '%1$s %2$s', 'Display name based on first name and last name' ), $user_first, $user_last );
+                } elseif ( $user_first ) {
+                    $display_name = $user_first;
+                } elseif ( $user_last ) {
+                    $display_name = $user_last;
+                } else {
+                    $display_name = $user_login;
+                }
+                //update_user_option( $new_user_id, 'default_password_nag', false, true );
+                wp_set_password( $user_pass, $new_user_id );
+                update_user_option( $new_user_id, 'first_name', $user_first, true );
+                update_user_option( $new_user_id, 'last_name', $user_last, true );
+                wp_update_user( array ('ID' => $new_user_id,  'display_name' => $display_name) ) ;
+            } else {
+                jsvehiclemanager_errors()->add('email_invalid', __($wperrors->get_error_message(), 'js-vehicle-manager'));
+            }
+
+
             if ($new_user_id) {
                 // send an email to the admin alerting them of the registration
                 wp_new_user_notification($new_user_id);

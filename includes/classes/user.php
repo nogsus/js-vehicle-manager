@@ -22,8 +22,20 @@ class JSVehicleManagerUser {
             if($currentuser == '' AND ($jsvehiclemanager_registerform == '' && $registerform == 0) ){// inserting a record in our table
                 $userdata = get_userdata($wpuserid);
                 $profile['id'] = '';
+                // User display name
+                $user_first = get_user_meta($wpuserid , 'first_name' , true);
+                $user_last = get_user_meta($wpuserid , 'last_name' , true);
+                if ( $user_first && $user_last ) {
+                    $display_name = sprintf( _x( '%1$s %2$s', 'Display name based on first name and last name' ), $user_first, $user_last );
+                } elseif ( $user_first ) {
+                    $display_name = $user_first;
+                } elseif ( $user_last ) {
+                    $display_name = $user_last;
+                } else {
+                    $display_name = $userdata->display_name;
+                }
 
-                $profile['name'] = $userdata->display_name;
+                $profile['name'] = $display_name;
                 if($userdata->display_name == ''){
                     $profile['name'] = $userdata->user_nicename;
                 }

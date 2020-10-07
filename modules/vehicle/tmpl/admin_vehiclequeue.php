@@ -288,6 +288,10 @@ if(jsvehiclemanager::$_config['date_format'] == 'd-m-Y' ){
                                 </div><!--left side-->
                                 <div id="jsvehiclemanager_vehicle_right_button">
                                     <div id="jsvehiclemanager_vehicle_button_area">
+                                        <a id="jsvehiclemanager_vehicle_btn" href="<?php echo admin_url('admin.php?page=jsvm_vehicle&jsvmlt=formvehicle&jsvehiclemanagerid='.$row->vehicleid.' '); ?>">
+                                            <img src="<?php echo jsvehiclemanager::$_pluginpath; ?>includes/images/edit-icon.png">
+                                            <span id="jsvehiclemanager_vehicle_btn_title"><?php echo __("Edit",'js-vehicle-manager'); ?></span>
+                                        </a>
                                         <?php
                                         $t = count($arr);
                                         if( $t == 1 ){

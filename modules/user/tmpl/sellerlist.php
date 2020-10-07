@@ -103,7 +103,11 @@ if(!empty(jsvehiclemanager::$_data[0])){
                             </span>
                         </div>
                     <?php   } ?>
-                    <?php if (jsvehiclemanager::$_data['listingfields']['weblink'] == 1) { ?>
+                    <?php if (jsvehiclemanager::$_data['listingfields']['weblink'] == 1) { 
+
+                            $totVisits = jsvehiclemanager::getCountOfVisitsBySeller($data->id);
+                        ?>
+
                         <div class="jsvehiclemanager_seller-info-wrp" >
                             <span class="jsvehiclemanager_cm-seller-info-bottom-bold-text">
                                 <?php echo sprintf(__('%s','js-vehicle-manager'), jsvehiclemanager::$_data['fields']['weblink'])." : "; ?>
@@ -116,8 +120,16 @@ if(!empty(jsvehiclemanager::$_data[0])){
                                 } ?>
                                 <a href="<?php echo $weblink; ?>" ><?php echo $data->weblink; ?></a>
                             </span>
+
+                            <span class="jsvehiclemanager_cm-seller-info-bottom-bold-text">
+                                <?php echo __('Visits','js-vehicle-manager'); ?> :
+                            </span>
+                            <span class="jsvehiclemanager_cm-seller-info-bottom-text text-muted">
+                                <?php echo $totVisits; ?>
+                            </span>
                         </div>
                     <?php } ?>
+                    <!--
                     <div class="jsvehiclemanager_seller-info-wrp" >
                         <span class="jsvehiclemanager_cm-seller-info-bottom-bold-text">
                             <?php echo sprintf(__('%s','js-vehicle-manager'), jsvehiclemanager::$_data['fields']['cityid'])." : "; ?>
@@ -126,6 +138,21 @@ if(!empty(jsvehiclemanager::$_data[0])){
                             <?php echo __($data->location,'js-vehicle-manager'); ?>
                         </span>
                     </div>
+                    -->
+                    <div class="jsvehiclemanager-vehicle-listing-total-vehicles" >
+                    <span><?php
+                        $totVehicles = jsvehiclemanager::getCountOfVehicleBySeller($data->id);
+                        echo $totVehicles;
+                    ?></span><strong>
+                    <?php 
+                    if($totVehicles > 1) {
+                        echo __('vehicles','js-vehicle-manager').'&nbsp;'; 
+                    } else {
+                        echo __('Vehicle','js-vehicle-manager').'&nbsp;'; 
+                    }
+                    ?></strong>
+                    </div>
+
                     <?php
                     $customfields = JSVEHICLEMANAGERincluder::getObjectClass('customfields')->userFieldsData(2,0,1);// 10 for main section of vehicle
                     foreach($customfields AS $field){

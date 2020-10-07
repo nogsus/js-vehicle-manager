@@ -560,6 +560,92 @@ class jsvehiclemanager {
         return false;
     }
 
+    public static function getCountOfVehicleBySeller ($usrid) {
+        $db = new jsvehiclemanagerdb();
+        $query = "SELECT COUNT(*) AS nreg
+     FROM `#__js_vehiclemanager_vehicles` AS vehicles
+            LEFT JOIN `#__js_vehiclemanager_users` AS user ON user.id = vehicles.uid
+            WHERE  user.id = " . $usrid;
+        $db->setQuery($query);
+        $vehicle = $db->loadObject();
+        if($vehicle != ''){
+            return $vehicle->nreg;
+        }
+    }
+
+    public static function getCountOfVisitsBySeller ($usrid) {
+        $db = new jsvehiclemanagerdb();
+        $query = "SELECT COUNT(*) AS nreg
+            FROM `#__js_vehiclemanager_visits` 
+            WHERE  store = " . $usrid;
+        $db->setQuery($query);
+        $vehicle = $db->loadObject();
+        if($vehicle != ''){
+            return $vehicle->nreg;
+        }
+    }
+
+    public static function getUserProfileNfo () {
+        $user = wp_get_current_user();
+        $userDta = NULL;
+
+        if(isset($user->ID)) {
+            if(!empty($user->ID)) {
+                $db = new jsvehiclemanagerdb();
+                $query = "SELECT * FROM `#__js_vehiclemanager_users` 
+                    WHERE  uid = " . $user->ID;
+                $db->setQuery($query);
+                $userDta = $db->loadObject();
+
+                if($userDta != ''){
+                    return $userDta;
+                }
+            }
+        }
+
+        return $userDta;
+    }
+
+    public static function getCustomParamsByKey ($key, $id) {
+        $db = new jsvehiclemanagerdb();
+        $param = NULL;
+        $query = "SELECT field FROM `#__js_vehiclemanager_fieldsordering` 
+                WHERE LOWER(fieldtitle) LIKE '%" . strtolower($key) . "%'";
+
+        $db->setQuery($query);
+        $field = $db->loadObject();
+
+        if(isset($field->field)){
+            $qry = "SELECT params FROM `#__js_vehiclemanager_vehicles` 
+                WHERE params LIKE '%" . $field->field . "%' AND id=$id";
+            $db->setQuery($qry);
+            $param = $db->loadObject();
+
+            if(isset($param->params)){
+                return $param;
+            }
+        }
+
+        return $param;
+    }
+
+    public static function getFavoriteStatusById ($id) {
+        $db = new jsvehiclemanagerdb();
+        $user = wp_get_current_user();
+
+        $query = "SELECT * FROM `#__js_vehiclemanager_favorite` 
+                WHERE idVehicle='$id' AND idUser='$user->ID'";
+
+        $db->setQuery($query);
+        $fav = $db->loadObject();
+
+        if(isset($fav->id)){
+            return $fav->id;
+        }
+
+        return NULL;
+    }
+
 }
 
 $jsvehiclemanager = new jsvehiclemanager();

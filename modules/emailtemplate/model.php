@@ -128,22 +128,26 @@ class JSVEHICLEMANAGEREmailtemplateModel {
                     case 2: // Vehicle Delete
                         $getEmailStatus = JSVEHICLEMANAGERincluder::getJSModel('emailtemplatestatus')->getEmailTemplateStatus('delete_vehicle');
                         if ($getEmailStatus->seller == 1) {
+                            if(isset($_COOKIE['autoz-email-useremail'])){
+                                $matcharray = array(
+                                    '{SELLER_NAME}' => isset($_COOKIE['autoz-email-sellername']) ? $_COOKIE['autoz-email-sellername'] : '',
+                                    '{VEHICLE_TITLE}' => isset($_COOKIE['autoz-email-vehicletitle']) ? $_COOKIE['autoz-email-vehicletitle'] : ''
+                                );
+                                $email = isset($_COOKIE['autoz-email-useremail']) ? $_COOKIE['autoz-email-useremail'] : '';
 
-                            $matcharray = array(
-                                '{SELLER_NAME}' => $_SESSION['autoz-email']['sellername'],
-                                '{VEHICLE_TITLE}' => $_SESSION['autoz-email']['vehicletitle']
-                            );
-                            $email = $_SESSION['autoz-email']['useremail'];
+                                $template = $this->getTemplateForEmail('delete-vehicle');
+                                $msgSubject = $template->subject;
+                                $msgBody = $template->body;
+                                $this->replaceMatches($msgSubject, $matcharray);
+                                $this->replaceMatches($msgBody, $matcharray);
 
-                            $template = $this->getTemplateForEmail('delete-vehicle');
-                            $msgSubject = $template->subject;
-                            $msgBody = $template->body;
-                            $this->replaceMatches($msgSubject, $matcharray);
-                            $this->replaceMatches($msgBody, $matcharray);
-
-                            unset($_SESSION['autoz-email']);
-                            // vehicle Delete mail to User
-                            $this->sendEmail($email, $msgSubject, $msgBody, $senderEmail, $senderName, '');
+                                setcookie('autoz-email-useremail' , '' , time()-3600 , COOKIEPATH);
+                                if ( SITECOOKIEPATH != COOKIEPATH ){
+                                    setcookie('autoz-email-useremail' , '' , time() - 3600 , SITECOOKIEPATH);
+                                }
+                                // vehicle Delete mail to User
+                                $this->sendEmail($email, $msgSubject, $msgBody, $senderEmail, $senderName, '');
+                            }
                         }
                         break;
                     case 3: // VEHICLE approve OR reject

@@ -379,14 +379,30 @@ class JSVEHICLEMANAGERjsvehiclemanagerModel {
         }
         return $html;
     }
+    function makeDir($path) {
+        if (!file_exists($path)) { // create directory
+            mkdir($path, 0755);
+            $ourFileName = $path . '/index.html';
+            $ourFileHandle = fopen($ourFileName, 'w') or die(__('Cannot open file', 'js-support-ticket'));
+            fclose($ourFileHandle);
+        }
+    }
 
     function getListTranslations() {
         check_ajax_referer( 'wp_js_vm_nonce_check', 'wpnoncecheck' );
         $result = array();
         $result['error'] = false;
 
-        $path = jsvehiclemanager::$_path.'languages';
-
+        // $path = jsvehiclemanager::$_path.'languages';
+        $path = WP_LANG_DIR;
+        if(!is_dir($path)){
+            $this->makeDir($path);
+        }else{
+            $path = WP_LANG_DIR . '/plugins/';
+            if(!is_dir($path)){
+                $this->makeDir($path);
+            }
+        }
         if( ! is_writeable($path)){
             $result['error'] = __('Dir is not writable','js-vehicle-manager').' '.$path;
 
@@ -397,7 +413,7 @@ class JSVEHICLEMANAGERjsvehiclemanagerModel {
                 $url = "http://www.wpvehiclemanager.com/translations/api/1.0/index.php";
                 $post_data['product'] ='js-vehicle-manager';
                 $post_data['domain'] = get_site_url();
-                $post_data['producttype'] = $version['versiontype'];
+                // $post_data['producttype'] = $version['versiontype'];
                 $post_data['productcode'] = 'js-vehicle-manager';
                 $post_data['productversion'] = $version['version'];
                 $post_data['JVERSION'] = get_bloginfo('version');
@@ -461,14 +477,16 @@ class JSVEHICLEMANAGERjsvehiclemanagerModel {
         if($lang_name == '') return '';
         $result = array();
         $f_result = $this->makeLanguageCode($lang_name);
-        $path = jsvehiclemanager::$_path.'languages';
+        // $path = jsvehiclemanager::$_path.'languages';
+        $path = WP_LANG_DIR . '/plugins/';
+
         $result['error'] = false;
         if($f_result['match'] === false){
             $result['error'] = $lang_name. ' ' . __('Language is not installed','js-vehicle-manager');
         }elseif( ! is_writeable($path)){
             $result['error'] = $lang_name. ' ' . __('Language directory is not writable','js-vehicle-manager').': '.$path;
         }else{
-            $result['input'] = '<input id="languagecode" class="text_area" type="text" value="'.$lang_name.'" name="languagecode">';
+            $result['input'] = '<input id="languagecode" class="text_area" type="text" value="'.$f_result['lang_name'].'" name="languagecode">';
             if($f_result['match'] === 2){
                 $result['input'] .= '<div id="js-emessage-wrapper" style="display:block;margin:20px 0px 20px;">';
                 $result['input'] .= __('Required language is not installed but similar language[s] like').': "<b>'.$f_result['lang_name'].'</b>" '.__('is found in your system','js-vehicle-manager');
@@ -488,8 +506,13 @@ class JSVEHICLEMANAGERjsvehiclemanagerModel {
 
         $result = array();
         $result['error'] = false;
-        $path = jsvehiclemanager::$_path.'languages';
-
+        // $path = jsvehiclemanager::$_path.'languages';
+        $path = WP_LANG_DIR . '/plugins/';
+       
+        if(!is_dir($path)){
+            mkdir($path);
+        }
+       
         if($lang_name == '' || $language_code == ''){
             $result['error'] = __('Empty values','js-vehicle-manager');
             return json_encode($result);

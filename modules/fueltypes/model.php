@@ -22,24 +22,14 @@ class JSVEHICLEMANAGERfueltypesModel {
         $query = "SELECT title FROM `#__js_vehiclemanager_fueltypes` WHERE id = " . $id;
         $db->setQuery($query);
         return $db->loadResult();
-        
+
     }
 
     function getAllFueltypes() {
         // Filter
-        $title = JSVEHICLEMANAGERrequest::getVar('title');
-        $status = JSVEHICLEMANAGERrequest::getVar('status');
-        $formsearch = JSVEHICLEMANAGERrequest::getVar('JSVEHICLEMANAGER_form_search', 'post');
-        if ($formsearch == 'JSVEHICLEMANAGER_SEARCH') {
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] = $title;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] = $status;
-        }
-        if (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null) {
-            $title = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['title']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] : null;
-            $status = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['status']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] : null;
-        } elseif ($formsearch !== 'JSVEHICLEMANAGER_SEARCH') {
-            unset($_SESSION['JSVEHICLEMANAGER_SEARCH']);
-        }
+        $title = jsvehiclemanager::$_search['fuel']['title'];
+        $status = jsvehiclemanager::$_search['fuel']['status'];
+
         $inquery = '';
         $clause = ' WHERE ';
         if ($title != null) {

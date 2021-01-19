@@ -1,4 +1,4 @@
-<?php 
+<?php
 if (!defined('ABSPATH'))
     die('Restricted Access');
 $msgkey = JSVEHICLEMANAGERincluder::getJSModel('user')->getMessagekey();
@@ -12,7 +12,7 @@ if (jsvehiclemanager::$_error_flag == null) {
         <div class="control-pannel-header">
             <span class="heading">
                 <?php echo __('Seller List', 'js-vehicle-manager'); ?>
-            </span>            
+            </span>
         </div>
         <div id="jsvehiclemanager-content">
 <?php
@@ -22,7 +22,7 @@ if( is_array(jsvehiclemanager::$_data['searchfields']) && !empty(jsvehiclemanage
         foreach (jsvehiclemanager::$_data['searchfields'] AS $field) {
             switch ($field->field) {
                 case 'name':?>
-                    <div class="jsvehiclemanager_field_box">                        
+                    <div class="jsvehiclemanager_field_box">
                             <label for="registrationnumber" class="control-label"><?php echo sprintf(__('%s','js-vehicle-manager'), $field->fieldtitle);?></label>
                             <?php echo JSVEHICLEMANAGERformfield::text('searchname', isset(jsvehiclemanager::$_data['filter']['searchname']) ? jsvehiclemanager::$_data['filter']['searchname']: '' , array('class' => 'form-control')) ?>
                     </div>
@@ -50,7 +50,7 @@ if( is_array(jsvehiclemanager::$_data['searchfields']) && !empty(jsvehiclemanage
                             <label for="for="<?php echo $field->field; ?>"" class="control-label"><?php echo sprintf(__('%s','js-vehicle-manager'), $field->fieldtitle);?></label>
                             <?php echo $u_field; ?>
                         </div>
-                    <?php  
+                    <?php
                     }
                 break;
             }
@@ -62,6 +62,7 @@ if( is_array(jsvehiclemanager::$_data['searchfields']) && !empty(jsvehiclemanage
         </div>
         <?php echo JSVEHICLEMANAGERformfield::hidden('JSVEHICLEMANAGER_form_search', 'JSVEHICLEMANAGER_SEARCH'); ?>
         <input type="hidden" id="jsvm_issearch" name="issearch" value="1"/>
+        <input type="hidden" id="jsvmlt" name="jsvmlt" value="sellerlist"/>
 </form>
 <?php
 }
@@ -79,7 +80,7 @@ if(!empty(jsvehiclemanager::$_data[0])){
                         <a class="jsvehiclemanager_cm-seller-info-left-text" href="<?php echo esc_url(jsvehiclemanager::makeUrl(array('jsvmme'=>'user', 'jsvmlt'=>'viewsellerinfo', 'jsvehiclemanagerid'=>$data->id))); ?>" title="<?php echo esc_attr($data->name); ?>" ><?php echo esc_html($data->name); ?></a>
                     </h4>
                     <span class="jsvehiclemanager_cm-seller-info-right">
-                        <a title="<?php echo esc_attr(__('seller info','js-vehicle-manager')); ?>" href="<?php echo esc_url(jsvehiclemanager::makeUrl(array('jsvmme'=>'user', 'jsvmlt'=>'viewsellerinfo', 'jsvehiclemanagerid'=>$data->id))); ?>" class="jsvehiclemanager_cm-seller-info-btn btn-lg"><?php echo esc_html__('View Seller Info','js-vehicle-manager'); ?></a> 
+                        <a title="<?php echo esc_attr(__('seller info','js-vehicle-manager')); ?>" href="<?php echo esc_url(jsvehiclemanager::makeUrl(array('jsvmme'=>'user', 'jsvmlt'=>'viewsellerinfo', 'jsvehiclemanagerid'=>$data->id))); ?>" class="jsvehiclemanager_cm-seller-info-btn btn-lg"><?php echo esc_html__('View Seller Info','js-vehicle-manager'); ?></a>
                     </span>
                 </div>
                 <div class="row jsvehiclemanager_cm-margin jsvehiclemanager_cm-sellers-info-bottom">
@@ -102,12 +103,12 @@ if(!empty(jsvehiclemanager::$_data[0])){
                                 <?php echo esc_html($data->phone); ?>
                             </span>
                         </div>
-                    <?php   } ?>
-                    <?php if (jsvehiclemanager::$_data['listingfields']['weblink'] == 1) { 
-
-                            $totVisits = jsvehiclemanager::getCountOfVisitsBySeller($data->id);
-                        ?>
-
+                    <?php   } 
+                    
+                    if (jsvehiclemanager::$_data['listingfields']['weblink'] == 1) {
+                        $totVisits = jsvehiclemanager::getCountOfVisitsBySeller($data->id);
+                        
+                    ?>
                         <div class="jsvehiclemanager_seller-info-wrp" >
                             <span class="jsvehiclemanager_cm-seller-info-bottom-bold-text">
                                 <?php echo sprintf(__('%s','js-vehicle-manager'), jsvehiclemanager::$_data['fields']['weblink'])." : "; ?>
@@ -120,7 +121,6 @@ if(!empty(jsvehiclemanager::$_data[0])){
                                 } ?>
                                 <a href="<?php echo $weblink; ?>" ><?php echo $data->weblink; ?></a>
                             </span>
-
                             <span class="jsvehiclemanager_cm-seller-info-bottom-bold-text">
                                 <?php echo __('Visits','js-vehicle-manager'); ?> :
                             </span>
@@ -132,10 +132,10 @@ if(!empty(jsvehiclemanager::$_data[0])){
                     <!--
                     <div class="jsvehiclemanager_seller-info-wrp" >
                         <span class="jsvehiclemanager_cm-seller-info-bottom-bold-text">
-                            <?php echo sprintf(__('%s','js-vehicle-manager'), jsvehiclemanager::$_data['fields']['cityid'])." : "; ?>
+                            <?php //echo sprintf(__('%s','js-vehicle-manager'), jsvehiclemanager::$_data['fields']['cityid'])." : "; ?>
                         </span>
                         <span class="jsvehiclemanager_cm-seller-info-bottom-text text-muted">
-                            <?php echo __($data->location,'js-vehicle-manager'); ?>
+                            <?php //echo __($data->location,'js-vehicle-manager'); ?>
                         </span>
                     </div>
                     -->
@@ -152,7 +152,6 @@ if(!empty(jsvehiclemanager::$_data[0])){
                     }
                     ?></strong>
                     </div>
-
                     <?php
                     $customfields = JSVEHICLEMANAGERincluder::getObjectClass('customfields')->userFieldsData(2,0,1);// 10 for main section of vehicle
                     foreach($customfields AS $field){
@@ -174,7 +173,7 @@ if(!empty(jsvehiclemanager::$_data[0])){
     </div>
     <?php
     }
-     
+
     if (jsvehiclemanager::$_data[1]) {
         echo '<div id="jsvehiclemanager-pagination">' . jsvehiclemanager::$_data[1] . '</div>';    }
     }else{

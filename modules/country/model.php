@@ -41,25 +41,11 @@ class JSVEHICLEMANAGERcountryModel {
 
     function getAllCountries() {
 
-        $countryname = JSVEHICLEMANAGERrequest::getVar("countryname");
-        $Status = JSVEHICLEMANAGERrequest::getVar("status");
-        $states = JSVEHICLEMANAGERrequest::getVar("states");
-        $city = JSVEHICLEMANAGERrequest::getVar("city");
-        $formsearch = JSVEHICLEMANAGERrequest::getVar('JSVEHICLEMANAGER_form_search', 'post');
-        if ($formsearch == 'JSVEHICLEMANAGER_SEARCH') {
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['countryname'] = $countryname;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] = $Status;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['states'] = $states;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['city'] = $city;
-        }
-        if (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null) {
-            $countryname = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['countryname']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['countryname'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['countryname'] : null;
-            $Status = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['status']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] : null;
-            $states = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['states']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['states'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['states'] : null;
-            $city = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['city']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['city'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['city'] : null;
-        } elseif ($formsearch !== 'JSVEHICLEMANAGER_SEARCH') {
-            unset($_SESSION['JSVEHICLEMANAGER_SEARCH']);
-        }
+        $countryname = jsvehiclemanager::$_search['country']['countryname'];
+        $Status = jsvehiclemanager::$_search['country']['status'];
+        $states = jsvehiclemanager::$_search['country']['states'];
+        $city = jsvehiclemanager::$_search['country']['city'];
+
         $inquery = '';
         $clause = ' WHERE ';
         if ($countryname) {
@@ -87,7 +73,7 @@ class JSVEHICLEMANAGERcountryModel {
         jsvehiclemanager::$_data['filter']['city'] = $city;
         $db = new jsvehiclemanagerdb();
         // Pagination
-        $query = "SELECT COUNT(country.id) 
+        $query = "SELECT COUNT(country.id)
                     FROM `#__js_vehiclemanager_countries` AS country";
         $query .= $inquery;
         $db->setQuery($query);
@@ -154,7 +140,7 @@ class JSVEHICLEMANAGERcountryModel {
                 if(is_numeric($id)){
                     if (!$row->update(array('id' => $id, 'enabled' => $status))) {
                         $total += 1;
-                    }                    
+                    }
                 }else{
                     $total += 1;
                 }
@@ -180,15 +166,15 @@ class JSVEHICLEMANAGERcountryModel {
             return false;
         $db = new jsvehiclemanagerdb();
         $query = "SELECT
-                    ( SELECT COUNT(veh.id) 
+                    ( SELECT COUNT(veh.id)
                         FROM `#__js_vehiclemanager_vehicles` AS veh
                         JOIN `#__js_vehiclemanager_cities` AS city ON city.id = veh.loccity
                         WHERE city.countryid = " . $countryid . ")
-                    + ( SELECT COUNT(veh.id) 
+                    + ( SELECT COUNT(veh.id)
                         FROM `#__js_vehiclemanager_vehicles` AS veh
                         JOIN `#__js_vehiclemanager_cities` AS city ON city.id = veh.regcity
                         WHERE city.countryid = " . $countryid . ")
-                    + ( SELECT COUNT(user.id) 
+                    + ( SELECT COUNT(user.id)
                             FROM `#__js_vehiclemanager_users` AS user
                             JOIN `#__js_vehiclemanager_cities` AS city ON city.id = user.cityid
                             WHERE city.countryid = " . $countryid . ")

@@ -1,4 +1,5 @@
-<?php if (!defined('ABSPATH')) die('Restricted Access'); ?>
+<?php
+if (!defined('ABSPATH')) die('Restricted Access'); ?>
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
         $.validate();
@@ -26,7 +27,7 @@
                     <div class="jsvm_js-field-title"><?php echo __('Title', 'js-vehicle-manager'); ?><font class="jsvm_required-notifier">*</font></div>
                     <div class="jsvm_js-field-obj"><?php echo JSVEHICLEMANAGERformfield::text('title', isset(jsvehiclemanager::$_data[0]->title) ? __(jsvehiclemanager::$_data[0]->title,'js-vehicle-manager') : '', array('class' => 'jsvm_inputbox jsvm_one', 'data-validation' => 'required')) ?></div>
                 </div>
-                
+
                 <div class="jsvm_js-field-wrapper">
                     <div class="jsvm_js-field-title"><?php echo __('Published', 'js-vehicle-manager'); ?></div>
                     <div class="jsvm_js-field-obj"><?php echo JSVEHICLEMANAGERformfield::radiobutton('status', array('1' => __('Yes', 'js-vehicle-manager'), '0' => __('No', 'js-vehicle-manager')), isset(jsvehiclemanager::$_data[0]->status) ? jsvehiclemanager::$_data[0]->status : 1, array('class' => 'jsvm_radiobutton')); ?></div>
@@ -35,7 +36,7 @@
                     <div class="jsvm_js-field-title"><?php echo __('Default', 'js-vehicle-manager'); ?></div>
                     <div class="jsvm_js-field-obj"><?php echo JSVEHICLEMANAGERformfield::radiobutton('isdefault', array('1' => __('Yes', 'js-vehicle-manager'), '0' => __('No', 'js-vehicle-manager')), isset(jsvehiclemanager::$_data[0]->isdefault) ? jsvehiclemanager::$_data[0]->isdefault : 0, array('class' => 'jsvm_radiobutton')); ?></div>
                 </div>
-                
+
                 <div class="jsvm_js-field-wrapper">
                     <div class="jsvm_js-field-title"><?php echo __('Logo', 'js-vehicle-manager'); ?></div>
                     <div class="jsvm_js-field-obj">
@@ -44,7 +45,7 @@
                             <br><span><?php echo __('Allowed extension', 'js-vehicle-manager').' ( '.JSVEHICLEMANAGERincluder::getJSModel('configuration')->getConfigurationByConfigName('image_file_type').' )'; ?></span>
                             <br><span><?php echo __('File size allowed', 'js-vehicle-manager').' ( '.JSVEHICLEMANAGERincluder::getJSModel('configuration')->getConfigurationByConfigName('allowed_file_size').' KB )'; ?></span>
                         </div>
-                        <?php if(isset(jsvehiclemanager::$_data[0]->logo) AND !empty(jsvehiclemanager::$_data[0]->logo)){ 
+                        <?php if(isset(jsvehiclemanager::$_data[0]->logo) AND !empty(jsvehiclemanager::$_data[0]->logo)){
                             $pth = JSVEHICLEMANAGERincluder::getJSModel('vehicletype')->getVehicleTypeImage(jsvehiclemanager::$_data[0]->logo);
                             ?>
                             <div class="jsvm_js-logo-wrap">
@@ -53,7 +54,7 @@
                                     <img id="jsvm_js-deletelogo" src="<?php echo jsvehiclemanager::$_pluginpath; ?>includes/images/form_delete.png" />
                                 </div>
                             </div>
-                            <?php 
+                            <?php
                         } ?>
                     </div>
                 </div>
@@ -65,7 +66,7 @@
                 <?php echo JSVEHICLEMANAGERformfield::hidden('form_request', 'jsvehiclemanager'); ?>
                 <?php echo JSVEHICLEMANAGERformfield::hidden('_wpnonce', wp_create_nonce('save-vehicletype')); ?>
                 <div class="jsvm_js-submit-container">
-                    <div class="jsvm_js-button-container"> 
+                    <div class="jsvm_js-button-container">
                         <a id="jsvm_form-cancel-button" href="<?php echo admin_url('admin.php?page=jsvm_vehicletype'); ?>" ><?php echo __('Cancel', 'js-vehicle-manager'); ?></a>
                         <?php echo JSVEHICLEMANAGERformfield::submitbutton('save', __('Save','js-vehicle-manager') .' '. __('Vehicle Type', 'js-vehicle-manager'), array('class' => 'button')); ?>                    </div>
                 </div>

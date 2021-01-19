@@ -54,7 +54,7 @@ class JSVEHICLEMANAGERModelController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'save-model') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $data = JSVEHICLEMANAGERrequest::get('post');
         $makeid = JSVEHICLEMANAGERrequest::getVar('makeid');
@@ -71,14 +71,14 @@ class JSVEHICLEMANAGERModelController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'delete-model') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $ids = JSVEHICLEMANAGERrequest::getVar('jsvehiclemanager-cb');
         $makeid = JSVEHICLEMANAGERrequest::getVar('makeid');
         if(!is_numeric($makeid)){
-            $makeid = $_SESSION['jsvehiclemanager-models']['makeid'];
-            unset($_SESSION['jsvehiclemanager-models']);
-        }        
+            $makeid = get_option( 'jsvehiclemanager-models-makeid' );
+            delete_option( 'jsvehiclemanager-models-makeid' );
+        }
         $result = JSVEHICLEMANAGERincluder::getJSModel('model')->deleteModel($ids);
         $msg = JSVEHICLEMANAGERmessages::getMessage($result, 'model');
         JSVEHICLEMANAGERmessages::setLayoutMessage($msg['message'], $msg['status'], $this->_msgkey);
@@ -92,15 +92,15 @@ class JSVEHICLEMANAGERModelController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'publish-model') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $pagenum = JSVEHICLEMANAGERrequest::getVar('pagenum');
         $ids = JSVEHICLEMANAGERrequest::getVar('jsvehiclemanager-cb');
         $makeid = JSVEHICLEMANAGERrequest::getVar('makeid');
         if(!is_numeric($makeid)){
-            $makeid = $_SESSION['jsvehiclemanager-models']['makeid'];
-            unset($_SESSION['jsvehiclemanager-models']);
-        }        
+            $makeid = update_option( 'jsvehiclemanager-models-makeid' , $makeid);
+            delete_option( 'jsvehiclemanager-models-makeid' );
+        }
         $result = JSVEHICLEMANAGERincluder::getJSModel('model')->publishUnpublish($ids, 1); //  for publish
         $msg = JSVEHICLEMANAGERmessages::getMessage($result, 'record');
         JSVEHICLEMANAGERmessages::setLayoutMessage($msg['message'], $msg['status'], $this->_msgkey);
@@ -116,15 +116,16 @@ class JSVEHICLEMANAGERModelController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'unpublish-model') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $pagenum = JSVEHICLEMANAGERrequest::getVar('pagenum');
         $ids = JSVEHICLEMANAGERrequest::getVar('jsvehiclemanager-cb');
         $makeid = JSVEHICLEMANAGERrequest::getVar('makeid');
+
         if(!is_numeric($makeid)){
-            $makeid = $_SESSION['jsvehiclemanager-models']['makeid'];
-            unset($_SESSION['jsvehiclemanager-models']);
-        }        
+            $makeid = update_option( 'jsvehiclemanager-models-makeid' , $makeid);
+            delete_option( 'jsvehiclemanager-models-makeid' );
+        }
         $result = JSVEHICLEMANAGERincluder::getJSModel('model')->publishUnpublish($ids, 0); //  for unpublish
         $msg = JSVEHICLEMANAGERmessages::getMessage($result, 'record');
         JSVEHICLEMANAGERmessages::setLayoutMessage($msg['message'], $msg['status'], $this->_msgkey);

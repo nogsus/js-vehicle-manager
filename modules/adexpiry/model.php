@@ -17,22 +17,10 @@ class JSVEHICLEMANAGERadexpiryModel {
 
     function getAllAdexpiries() {
         // Filter
-        $advalue = JSVEHICLEMANAGERrequest::getVar('advalue');
-        $type = JSVEHICLEMANAGERrequest::getVar('type');
-        $status = JSVEHICLEMANAGERrequest::getVar('status');
-        $formsearch = JSVEHICLEMANAGERrequest::getVar('JSVEHICLEMANAGER_form_search', 'post');
-        if ($formsearch == 'JSVEHICLEMANAGER_SEARCH') {
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['advalue'] = $advalue;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['type'] = $type;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] = $status;
-        }
-        if (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null) {
-            $advalue = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['advalue']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['advalue'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['advalue'] : null;
-            $type = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['type']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['type'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['type'] : null;
-            $status = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['status']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] : null;
-        } elseif ($formsearch !== 'JSVEHICLEMANAGER_SEARCH') {
-            unset($_SESSION['JSVEHICLEMANAGER_SEARCH']);
-        }
+        $advalue = jsvehiclemanager::$_search['adexpiry']['advalue'];
+        $type = jsvehiclemanager::$_search['adexpiry']['type'];
+        $status = jsvehiclemanager::$_search['adexpiry']['status'];
+
         $inquery = '';
         $clause = ' WHERE ';
         if (is_numeric($advalue)) {

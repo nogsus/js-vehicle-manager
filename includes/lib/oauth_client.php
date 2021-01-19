@@ -1191,10 +1191,10 @@ class oauth_client_class {
             return $this->SetError('Session variables are not accessible in this PHP environment');
         if (session_id() === '' && !session_start())
             return($this->SetPHPError('it was not possible to start the PHP session', $php_errormsg));
-        if (IsSet($_SESSION['OAUTH_STATE']))
-            $state = $_SESSION['OAUTH_STATE'];
+        if (IsSet($_COOKIE['OAUTH_STATE']))
+            $state = $_COOKIE['OAUTH_STATE'];
         else
-            $state = $_SESSION['OAUTH_STATE'] = time() . '-' . substr(md5(rand() . time()), 0, 6);
+            $state = $_COOKIE['OAUTH_STATE'] = time() . '-' . substr(md5(rand() . time()), 0, 6);
         return(true);
     }
 
@@ -1321,7 +1321,15 @@ class oauth_client_class {
             return($this->SetPHPError('it was not possible to start the PHP session', $php_errormsg));
         if (!$this->GetAccessTokenURL($access_token_url))
             return false;
-        $_SESSION['OAUTH_ACCESS_TOKEN'][$access_token_url] = $access_token;
+
+        $tokenurl = array("url" => $access_token_url , "token" => $access_token);
+        $data = json_encode( $tokenurl );
+        $data = base64_encode($data);
+
+        setcookie('OAUTH_ACCESS_TOKEN_URL' , $data , time() + (10 * 365 * 24 * 60 * 60) , COOKIEPATH);
+        if ( SITECOOKIEPATH != COOKIEPATH ){
+          setcookie('OAUTH_ACCESS_TOKEN_URL' , $data , time() + (10 * 365 * 24 * 60 * 60) , SITECOOKIEPATH);
+        }
         return true;
     }
 
@@ -1375,10 +1383,17 @@ class oauth_client_class {
             return($this->SetPHPError('it was not possible to start the PHP session', $php_errormsg));
         if (!$this->GetAccessTokenURL($access_token_url))
             return false;
-        if (IsSet($_SESSION['OAUTH_ACCESS_TOKEN'][$access_token_url]))
-            $access_token = $_SESSION['OAUTH_ACCESS_TOKEN'][$access_token_url];
-        else
+        if (IsSet($_COOKIE['OAUTH_ACCESS_TOKEN_URL'])){
+            $data = json_decode( base64_decode($_COOKIE['OAUTH_ACCESS_TOKEN_URL']) , true );
+            if($data['url'] == $access_token_url){
+              $access_token = $data['token'];
+            }else{
+              $access_token = array();
+            }
+
+        }else{
             $access_token = array();
+          }
         return true;
     }
 
@@ -1427,8 +1442,15 @@ class oauth_client_class {
             return $this->SetError('Session variables are not accessible in this PHP environment');
         if (session_id() === '' && !session_start())
             return($this->SetPHPError('it was not possible to start the PHP session', $php_errormsg));
-        Unset($_SESSION['OAUTH_ACCESS_TOKEN'][$access_token_url]);
-        UnSet($_SESSION['OAUTH_STATE']);
+
+        setcookie('OAUTH_ACCESS_TOKEN_URL' , '' , time() - 3600 , COOKIEPATH);
+        if ( SITECOOKIEPATH != COOKIEPATH ){
+          setcookie('OAUTH_ACCESS_TOKEN_URL' , '' , time() - 3600 , SITECOOKIEPATH);
+        }
+        setcookie('OAUTH_STATE' , '' , time() - 3600 , COOKIEPATH);
+        if ( SITECOOKIEPATH != COOKIEPATH ){
+          setcookie('OAUTH_STATE' , '' , time() - 3600 , SITECOOKIEPATH);
+        }
         return true;
     }
 

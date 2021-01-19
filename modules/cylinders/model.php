@@ -25,19 +25,9 @@ class JSVEHICLEMANAGERcylindersModel {
 
     function getAllCylinders() {
         // Filter
-        $title = JSVEHICLEMANAGERrequest::getVar('title');
-        $status = JSVEHICLEMANAGERrequest::getVar('status');
-        $formsearch = JSVEHICLEMANAGERrequest::getVar('JSVEHICLEMANAGER_form_search', 'post');
-        if ($formsearch == 'JSVEHICLEMANAGER_SEARCH') {
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] = $title;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] = $status;
-        }
-        if (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null) {
-            $title = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['title']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] : null;
-            $status = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['status']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] : null;
-        } elseif ($formsearch !== 'JSVEHICLEMANAGER_SEARCH') {
-            unset($_SESSION['JSVEHICLEMANAGER_SEARCH']);
-        }
+        $title = jsvehiclemanager::$_search['cylinder']['title'];
+        $status = jsvehiclemanager::$_search['cylinder']['status'];
+
         $inquery = '';
         $clause = ' WHERE ';
         if ($title != null) {
@@ -276,7 +266,7 @@ class JSVEHICLEMANAGERcylindersModel {
         $db = new jsvehiclemanagerdb();
         $query = "SELECT  id, title FROM `#__js_vehiclemanager_cylinders` WHERE status = 1 ORDER BY title ASC ";
         $db->setQuery($query);
-        $rows = $db->loadObjectList(); 
+        $rows = $db->loadObjectList();
         $cylinders = array();
         if ($title)
             $cylinders[] = array('value' => '' , 'text' => $title);

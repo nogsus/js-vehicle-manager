@@ -31,19 +31,8 @@ class JSVEHICLEMANAGERCityModel {
             return false;
 
         //Filter
-        $searchname = JSVEHICLEMANAGERrequest::getVar('searchname');
-        $status = JSVEHICLEMANAGERrequest::getVar('status');
-        $formsearch = JSVEHICLEMANAGERrequest::getVar('JSVEHICLEMANAGER_form_search', 'post');
-        if ($formsearch == 'JSVEHICLEMANAGER_SEARCH') {
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['searchname'] = $searchname;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] = $status;
-        }
-        if (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null) {
-            $status = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['status']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] : null;
-            $searchname = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['searchname']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['searchname'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['searchname'] : null;
-        } elseif ($formsearch !== 'JSVEHICLEMANAGER_SEARCH') {
-            unset($_SESSION['JSVEHICLEMANAGER_SEARCH']);
-        }
+        $searchname = jsvehiclemanager::$_search['city']['searchname'];
+        $status = jsvehiclemanager::$_search['city']['status'];
 
         $inquery = '';
         $clause = ' WHERE ';

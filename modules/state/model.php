@@ -19,22 +19,10 @@ class JSVEHICLEMANAGERStateModel {
         if (!is_numeric($countryid))
             return false;
         //Filters
-        $searchname = JSVEHICLEMANAGERrequest::getVar('searchname');
-        $city = JSVEHICLEMANAGERrequest::getVar("city");
-        $status = JSVEHICLEMANAGERrequest::getVar("status");
-        $formsearch = JSVEHICLEMANAGERrequest::getVar('JSVEHICLEMANAGER_form_search', 'post');
-        if ($formsearch == 'JSVEHICLEMANAGER_SEARCH') {
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['searchname'] = $searchname;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] = $status;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['city'] = $city;
-        }
-        if (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null) {
-            $searchname = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['searchname']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['searchname'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['searchname'] : null;
-            $status = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['status']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] : null;
-            $city = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['city']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['city'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['city'] : null;
-        } elseif ($formsearch !== 'JSVEHICLEMANAGER_SEARCH') {
-            unset($_SESSION['JSVEHICLEMANAGER_SEARCH']);
-        }
+        $searchname = jsvehiclemanager::$_search['state']['searchname'];
+        $city = jsvehiclemanager::$_search['state']['city'];
+        $status = jsvehiclemanager::$_search['state']['status'];
+
 
 
         $inquery = '';
@@ -127,7 +115,7 @@ class JSVEHICLEMANAGERStateModel {
         if (!is_numeric($stateid))
             return false;
         $db = new jsvehiclemanagerdb();
-        $query = "SELECT 
+        $query = "SELECT
             ( SELECT COUNT(veh.id)
                 FROM `#__js_vehiclemanager_cities` AS city
                 JOIN `#__js_vehiclemanager_vehicles` AS veh ON veh.loccity = city.id
@@ -149,7 +137,7 @@ class JSVEHICLEMANAGERStateModel {
             ( SELECT COUNT(city.id)
                 FROM `#__js_vehiclemanager_cities` AS city
                 WHERE city.stateid = " . $stateid . "
-            ) 
+            )
             AS total";
 
         $db->setQuery($query);

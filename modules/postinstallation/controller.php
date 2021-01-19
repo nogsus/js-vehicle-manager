@@ -67,7 +67,7 @@ class JSVEHICLEMANAGERpostinstallationController {
         $vehicle_manager_menu = JSVEHICLEMANAGERrequest::getVar('vehicle_manager_menu','',0);
         $result = JSVEHICLEMANAGERincluder::getJSModel('postinstallation')->installSampleData($vehicle_manager_data, $vehicle_manager_menu);
         if(jsvehiclemanager::$_car_manager_theme == 1){
-            $_SESSION['vehicles_sample_data'] = 1;
+            update_option( 'vehicles_sample_data', 1 );
             $url = admin_url("admin.php?page=jsvm_postinstallation&jsvmlt=demoimporter");
         }else{
             $url = admin_url("admin.php?page=jsvm_postinstallation&jsvmlt=stepfive");

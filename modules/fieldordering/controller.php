@@ -60,7 +60,7 @@ class JSVEHICLEMANAGERfieldorderingController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'required-field') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $pagenum = JSVEHICLEMANAGERrequest::getVar('pagenum');
         $fieldfor = JSVEHICLEMANAGERrequest::getVar('ff');
@@ -80,7 +80,7 @@ class JSVEHICLEMANAGERfieldorderingController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'notrequired-field') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $pagenum = JSVEHICLEMANAGERrequest::getVar('pagenum');
         $fieldfor = JSVEHICLEMANAGERrequest::getVar('ff');
@@ -100,7 +100,7 @@ class JSVEHICLEMANAGERfieldorderingController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'publish-field') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $pagenum = JSVEHICLEMANAGERrequest::getVar('pagenum');
         $fieldfor = JSVEHICLEMANAGERrequest::getVar('ff');
@@ -120,7 +120,7 @@ class JSVEHICLEMANAGERfieldorderingController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'unpublish-field') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $pagenum = JSVEHICLEMANAGERrequest::getVar('pagenum');
         $fieldfor = JSVEHICLEMANAGERrequest::getVar('ff');
@@ -140,7 +140,7 @@ class JSVEHICLEMANAGERfieldorderingController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'vpublish-field') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $pagenum = JSVEHICLEMANAGERrequest::getVar('pagenum');
         $fieldfor = JSVEHICLEMANAGERrequest::getVar('ff');
@@ -160,7 +160,7 @@ class JSVEHICLEMANAGERfieldorderingController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'vunpublish-field') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $pagenum = JSVEHICLEMANAGERrequest::getVar('pagenum');
         $fieldfor = JSVEHICLEMANAGERrequest::getVar('ff');
@@ -180,7 +180,7 @@ class JSVEHICLEMANAGERfieldorderingController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'fieldup-field') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $pagenum = JSVEHICLEMANAGERrequest::getVar('pagenum');
         $fieldfor = JSVEHICLEMANAGERrequest::getVar('ff');
@@ -200,7 +200,7 @@ class JSVEHICLEMANAGERfieldorderingController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'fielddown-field') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $pagenum = JSVEHICLEMANAGERrequest::getVar('pagenum');
         $fieldfor = JSVEHICLEMANAGERrequest::getVar('ff');
@@ -220,7 +220,7 @@ class JSVEHICLEMANAGERfieldorderingController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'save-field') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $data = JSVEHICLEMANAGERrequest::get('post');
         $fieldfor = JSVEHICLEMANAGERrequest::getVar('fieldfor');
@@ -243,7 +243,7 @@ class JSVEHICLEMANAGERfieldorderingController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'delete-field') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $pagenum = JSVEHICLEMANAGERrequest::getVar('pagenum');
         $id = JSVEHICLEMANAGERrequest::getVar('fieldid');
@@ -256,12 +256,12 @@ class JSVEHICLEMANAGERfieldorderingController {
             $url .= "&pagenum=" . $pagenum;
         wp_redirect($url);
         die();
-    }   
+    }
 
     function savesearchfieldordering() {
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'savesearch-field') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $data = JSVEHICLEMANAGERrequest::get('post');
         $fieldfor = JSVEHICLEMANAGERrequest::getVar('fieldfor');
@@ -279,7 +279,7 @@ class JSVEHICLEMANAGERfieldorderingController {
     function savesearchfieldorderingFromForm() {
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'savesearch-field') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $data = JSVEHICLEMANAGERrequest::get('post');
         $fieldfor = JSVEHICLEMANAGERrequest::getVar('fieldfor');

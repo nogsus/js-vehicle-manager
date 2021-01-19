@@ -3,8 +3,8 @@ Contributors: rabilal
 Donate link: https://wpvehiclemanager.com/
 Tags: car sales, car dealer, automotive, auto dealer, auto listing, car, vehicle, vehicle manager,motor, sell, car listings, cars, user registration, vehicle sale, auto, car market, marketplace, car dealer, car classifieds, auto dealer, auto classifieds, autostock, selling cars, dealer, car-dealer, cardealer, automotive, sales, lots, auto, motorcycle, bike, boat, airplane, rvs, tractors, motorhomes, trailers, car sales
 Requires at least: 4.5 
-Tested up to: 5.4.2
-Stable tag: 1.1.6
+Tested up to: 5.5.3
+Stable tag: 1.1.7
 Requires PHP: 5.2.4
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -244,6 +244,9 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 
 == Changelog ==
+= 1.1.7
+* Improve session implementation
+* Translation File issue solved
 
 = 1.1.6
 * Improve sample data

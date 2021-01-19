@@ -7,9 +7,9 @@
     }
 </script>
 <?php wp_enqueue_script('jsauto-res-tables', jsvehiclemanager::$_pluginpath . 'includes/js/responsivetable.js'); ?>
-<?php 
+<?php
 $msgkey = JSVEHICLEMANAGERincluder::getJSModel('city')->getMessagekey();
-JSVEHICLEMANAGERmessages::getLayoutMessage($msgkey); 
+JSVEHICLEMANAGERmessages::getLayoutMessage($msgkey);
 ?>
 <div id="jsvehiclemanageradmin-wrapper">
     <div id="jsvehiclemanageradmin-leftmenu">
@@ -17,11 +17,11 @@ JSVEHICLEMANAGERmessages::getLayoutMessage($msgkey);
     </div>
     <div id="jsvehiclemanageradmin-data">
         <?php
-        $countryid = $_SESSION["countryid"];
-        $stateid = $_SESSION["stateid"];
+        $countryid = get_option( 'jsvm_countryid_for_city');
+        $stateid = get_option( 'jsvm_stateid_for_city');
         ?>
         <span class="jsvm_js-admin-title">
-            <a href="<?php echo admin_url('admin.php?page=jsvm_state&countryid='.$_SESSION["countryid"]); ?>"><img src="<?php echo jsvehiclemanager::$_pluginpath; ?>includes/images/back-icon.png" /></a>
+            <a href="<?php echo admin_url('admin.php?page=jsvm_state&countryid='.$countryid); ?>"><img src="<?php echo jsvehiclemanager::$_pluginpath; ?>includes/images/back-icon.png" /></a>
             <?php echo __('Cities', 'js-vehicle-manager') ?>
             <a class="jsvm_js-button-link button" href="<?php echo admin_url('admin.php?page=jsvm_city&jsvmlt=formcity'); ?>"><img src="<?php echo jsvehiclemanager::$_pluginpath; ?>includes/images/add_icon.png" /><?php echo __('Add New','js-vehicle-manager') .' '. __('Cities', 'js-vehicle-manager') ?></a>
         </span>
@@ -58,7 +58,7 @@ JSVEHICLEMANAGERmessages::getLayoutMessage($msgkey);
                         for ($i = 0, $n = count(jsvehiclemanager::$_data[0]); $i < $n; $i++) {
                             $row = jsvehiclemanager::$_data[0][$i];
                             $link = admin_url('admin.php?page=jsvm_city&jsvmlt=formcity&jsvehiclemanagerid=' . $row->id);
-                            ?>			
+                            ?>
                             <tr>
                                 <td class="jsvm_grid-rows">
                                     <input type="checkbox" class="jsvehiclemanager-cb" id="jsvehiclemanager-cb" name="jsvehiclemanager-cb[]" value="<?php echo $row->id; ?>" />

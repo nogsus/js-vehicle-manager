@@ -27,19 +27,9 @@ class JSVEHICLEMANAGERmodelModel {
     function getAllModels($makeid) {
         if(!is_numeric($makeid)) return false;
         // Filter
-        $title = JSVEHICLEMANAGERrequest::getVar('title');
-        $status = JSVEHICLEMANAGERrequest::getVar('status');
-        $formsearch = JSVEHICLEMANAGERrequest::getVar('JSVEHICLEMANAGER_form_search', 'post');
-        if ($formsearch == 'JSVEHICLEMANAGER_SEARCH') {
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] = $title;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] = $status;
-        }
-        if (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null) {
-            $title = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['title']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] : null;
-            $status = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['status']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] : null;
-        } elseif ($formsearch !== 'JSVEHICLEMANAGER_SEARCH') {
-            unset($_SESSION['JSVEHICLEMANAGER_SEARCH']);
-        }
+        $title = jsvehiclemanager::$_search['modelyear']['title'];
+        $status = jsvehiclemanager::$_search['modelyear']['status'];
+
         $inquery = '';
         if ($title != null) {
             //$title = esc_sql($title);

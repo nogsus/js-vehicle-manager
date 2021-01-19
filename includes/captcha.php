@@ -8,8 +8,9 @@ class JSVEHICLEMANAGERcaptcha {
     function getCaptchaForForm() {
         $config_array = JSVEHICLEMANAGERincluder::getJSModel('configuration')->getConfigByFor('captcha');
         $rand = $this->randomNumber();
-        $_SESSION['jsvehiclemanager_spamcheckid'] = $rand;
-        $_SESSION['jsvehiclemanager_rot13'] = mt_rand(0, 1);
+        JSVEHICLEMANAGERincluder::getObjectClass('wpvmnotification')->addSessionNotificationDataToTable($rand,'','jsvehiclemanager_spamcheckid');
+        $jsvehiclemanager_rot13 = mt_rand(0, 1);
+        JSVEHICLEMANAGERincluder::getObjectClass('wpvmnotification')->addSessionNotificationDataToTable($jsvehiclemanager_rot13,'','jsvehiclemanager_rot13');
         $operator = 2;
         if ($operator == 2) {
             $tcalc = $config_array['owncaptcha_calculationtype'];
@@ -53,36 +54,36 @@ class JSVEHICLEMANAGERcaptcha {
             $tcalc = mt_rand(1, 2);
 
         if ($tcalc == 1) { // Addition
-            if ($_SESSION['jsvehiclemanager_rot13'] == 1) { // ROT13 coding
+            if ($jsvehiclemanager_rot13 == 1) { // ROT13 coding
                 if ($operand == 2) {
-                    $_SESSION['jsvehiclemanager_spamcheckresult'] = str_rot13(base64_encode($operend_1 + $operend_2));
+                    JSVEHICLEMANAGERincluder::getObjectClass('wpvmnotification')->addSessionNotificationDataToTable(str_rot13(base64_encode($operend_1 + $operend_2)),'','jsvehiclemanager_spamcheckresult');
                 } elseif ($operand == 3) {
-                    $_SESSION['jsvehiclemanager_spamcheckresult'] = str_rot13(base64_encode($operend_1 + $operend_2 + $operend_3));
+                    JSVEHICLEMANAGERincluder::getObjectClass('wpvmnotification')->addSessionNotificationDataToTable(str_rot13(base64_encode($operend_1 + $operend_2 + $operend_3)),'','jsvehiclemanager_spamcheckresult');
                 }
             } else {
                 if ($operand == 2) {
-                    $_SESSION['jsvehiclemanager_spamcheckresult'] = base64_encode($operend_1 + $operend_2);
+                    JSVEHICLEMANAGERincluder::getObjectClass('wpvmnotification')->addSessionNotificationDataToTable(base64_encode($operend_1 + $operend_2),'','jsvehiclemanager_spamcheckresult');
                 } elseif ($operand == 3) {
-                    $_SESSION['jsvehiclemanager_spamcheckresult'] = base64_encode($operend_1 + $operend_2 + $operend_3);
+                    JSVEHICLEMANAGERincluder::getObjectClass('wpvmnotification')->addSessionNotificationDataToTable(base64_encode($operend_1 + $operend_2 + $operend_3),'','jsvehiclemanager_spamcheckresult');
                 }
             }
         } elseif ($tcalc == 2) { // Subtraction
-            if ($_SESSION['jsvehiclemanager_rot13'] == 1) {
+            if ($jsvehiclemanager_rot13 == 1) {
                 if ($operand == 2) {
-                    $_SESSION['jsvehiclemanager_spamcheckresult'] = str_rot13(base64_encode($operend_1 - $operend_2));
+                    JSVEHICLEMANAGERincluder::getObjectClass('wpvmnotification')->addSessionNotificationDataToTable(str_rot13(base64_encode($operend_1 - $operend_2)),'','jsvehiclemanager_spamcheckresult');
                 } elseif ($operand == 3) {
-                    $_SESSION['jsvehiclemanager_spamcheckresult'] = str_rot13(base64_encode($operend_1 - $operend_2 - $operend_3));
+                    JSVEHICLEMANAGERincluder::getObjectClass('wpvmnotification')->addSessionNotificationDataToTable(str_rot13(base64_encode($operend_1 - $operend_2 - $operend_3)),'','jsvehiclemanager_spamcheckresult');
                 }
             } else {
                 if ($operand == 2) {
-                    $_SESSION['jsvehiclemanager_spamcheckresult'] = base64_encode($operend_1 - $operend_2);
+                    JSVEHICLEMANAGERincluder::getObjectClass('wpvmnotification')->addSessionNotificationDataToTable(base64_encode($operend_1 - $operend_2),'','jsvehiclemanager_spamcheckresult');
                 } elseif ($operand == 3) {
-                    $_SESSION['jsvehiclemanager_spamcheckresult'] = base64_encode($operend_1 - $operend_2 - $operend_3);
+                    JSVEHICLEMANAGERincluder::getObjectClass('wpvmnotification')->addSessionNotificationDataToTable(base64_encode($operend_1 - $operend_2 - $operend_3),'','jsvehiclemanager_spamcheckresult');
                 }
             }
         }
         $add_string = "";
-        $add_string .= '<div><label for="' . $_SESSION['jsvehiclemanager_spamcheckid'] . '">';
+        $add_string .= '<div><label for="' . $rand . '">';
 
         if ($tcalc == 1) {
             if ($operand == 2) {
@@ -100,7 +101,7 @@ class JSVEHICLEMANAGERcaptcha {
         }
 
         $add_string .= '</label>';
-        $add_string .= '<input type="text" name="' . $_SESSION['jsvehiclemanager_spamcheckid'] . '" id="' . $_SESSION['jsvehiclemanager_spamcheckid'] . '" size="3" class="inputbox ' . $rand . '" value="" data-validation="required" />';
+        $add_string .= '<input type="text" name="' . $rand . '" id="' . $rand . '" size="3" class="inputbox ' . $rand . '" value="" data-validation="required" />';
         $add_string .= '</div>';
 
         return $add_string;
@@ -126,18 +127,14 @@ class JSVEHICLEMANAGERcaptcha {
     }
 
     private function performChecks() {
-        if(!isset($_SESSION['jsvehiclemanager_rot13']) && !isset($_SESSION['jsvehiclemanager_spamcheckresult'])){
-            return false;
-        }
-        if ($_SESSION['jsvehiclemanager_rot13'] == 1) {
-            $spamcheckresult = base64_decode(str_rot13($_SESSION['jsvehiclemanager_spamcheckresult']));
+        $jsvehiclemanager_rot13 = JSVEHICLEMANAGERincluder::getObjectClass('wpvmnotification')->getNotificationDatabySessionId('jsvehiclemanager_rot13',true);
+        if ($jsvehiclemanager_rot13 == 1) {
+            $spamcheckresult = base64_decode(str_rot13(JSVEHICLEMANAGERincluder::getObjectClass('wpvmnotification')->getNotificationDatabySessionId('jsvehiclemanager_spamcheckresult',true)));
         } else {
-            $spamcheckresult = base64_decode($_SESSION['jsvehiclemanager_spamcheckresult']);
+            $spamcheckresult = base64_decode(JSVEHICLEMANAGERincluder::getObjectClass('wpvmnotification')->getNotificationDatabySessionId('jsvehiclemanager_spamcheckresult',true));
         }
-        $spamcheck = JSVEHICLEMANAGERrequest::getVar($_SESSION['jsvehiclemanager_spamcheckid'], '', 'post');
-        unset($_SESSION['jsvehiclemanager_rot13']);
-        unset($_SESSION['jsvehiclemanager_spamcheckid']);
-        unset($_SESSION['jsvehiclemanager_spamcheckresult']);
+        $spamcheck = JSVEHICLEMANAGERincluder::getObjectClass('wpvmnotification')->getNotificationDatabySessionId('jsvehiclemanager_spamcheckid',true);
+        $spamcheck = JSVEHICLEMANAGERrequest::getVar($spamcheck, '', 'post');
         if (!is_numeric($spamcheckresult) || $spamcheckresult != $spamcheck) {
             return false; // Failed
         }

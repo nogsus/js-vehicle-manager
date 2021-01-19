@@ -22,24 +22,14 @@ class JSVEHICLEMANAGERmodelyearsModel {
         $query = "SELECT title FROM `#__js_vehiclemanager_modelyears` WHERE id = " . $id;
         $db->setQuery($query);
         return $db->loadResult();
-        
+
     }
 
     function getAllModelyears() {
         // Filter
-        $title = JSVEHICLEMANAGERrequest::getVar('title');
-        $status = JSVEHICLEMANAGERrequest::getVar('status');
-        $formsearch = JSVEHICLEMANAGERrequest::getVar('JSVEHICLEMANAGER_form_search', 'post');
-        if ($formsearch == 'JSVEHICLEMANAGER_SEARCH') {
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] = $title;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] = $status;
-        }
-        if (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null) {
-            $title = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['title']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] : null;
-            $status = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['status']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] : null;
-        } elseif ($formsearch !== 'JSVEHICLEMANAGER_SEARCH') {
-            unset($_SESSION['JSVEHICLEMANAGER_SEARCH']);
-        }
+        $title = jsvehiclemanager::$_search['modelyear']['title'];
+        $status = jsvehiclemanager::$_search['modelyear']['status'];
+
         $inquery = '';
         $clause = ' WHERE ';
         if ($title != null) {
@@ -177,7 +167,7 @@ class JSVEHICLEMANAGERmodelyearsModel {
         $total = 0;
         if ($status == 1) {
             foreach ($ids as $id) {
-                if(is_numeric($id)){                
+                if(is_numeric($id)){
                     if (!$row->update(array('id' => $id, 'status' => $status))) {
                         $total += 1;
                     }
@@ -253,7 +243,7 @@ class JSVEHICLEMANAGERmodelyearsModel {
         $ages = $db->loadObjectList();
         return $ages;
     }
-    
+
     function getModelyearsTitleForCombo() {
         $db = new jsvehiclemanagerdb();
         $query = "SELECT title AS id, title AS text FROM `#__js_vehiclemanager_modelyears` WHERE status = 1 ORDER BY ordering ASC ";
@@ -283,8 +273,8 @@ class JSVEHICLEMANAGERmodelyearsModel {
 
     function getVehiclesModelyears(){
         $db = new jsvehiclemanagerdb();
-        $query = "SELECT modelyears.title,modelyears.id, CONCAT(modelyears.alias,'-',modelyears.id) AS aliasid, 
-                    (SELECT COUNT(veh.id) FROM `#__js_vehiclemanager_vehicles` AS veh WHERE veh.modelyearid = modelyears.id AND veh.status = 1 AND DATE(veh.adexpiryvalue) >= CURDATE()) AS vehicles 
+        $query = "SELECT modelyears.title,modelyears.id, CONCAT(modelyears.alias,'-',modelyears.id) AS aliasid,
+                    (SELECT COUNT(veh.id) FROM `#__js_vehiclemanager_vehicles` AS veh WHERE veh.modelyearid = modelyears.id AND veh.status = 1 AND DATE(veh.adexpiryvalue) >= CURDATE()) AS vehicles
                     FROM `#__js_vehiclemanager_modelyears` AS modelyears WHERE modelyears.status = 1 ";
         $db->setQuery($query);
         jsvehiclemanager::$_data[0] = $db->loadObjectList();

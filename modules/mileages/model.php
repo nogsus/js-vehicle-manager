@@ -17,19 +17,9 @@ class JSVEHICLEMANAGERmileagesModel {
 
     function getAllMileages() {
         // Filter
-        $title = JSVEHICLEMANAGERrequest::getVar('title');
-        $status = JSVEHICLEMANAGERrequest::getVar('status');
-        $formsearch = JSVEHICLEMANAGERrequest::getVar('JSVEHICLEMANAGER_form_search', 'post');
-        if ($formsearch == 'JSVEHICLEMANAGER_SEARCH') {
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] = $title;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] = $status;
-        }
-        if (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null) {
-            $title = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['title']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] : null;
-            $status = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['status']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] : null;
-        } elseif ($formsearch !== 'JSVEHICLEMANAGER_SEARCH') {
-            unset($_SESSION['JSVEHICLEMANAGER_SEARCH']);
-        }
+        $title = jsvehiclemanager::$_search['milage']['title'];
+        $status = jsvehiclemanager::$_search['milage']['status'];
+
         $inquery = '';
         $clause = ' WHERE ';
         if ($title != null) {
@@ -144,7 +134,7 @@ class JSVEHICLEMANAGERmileagesModel {
                     }
                 } else {
                     $notdeleted += 1;
-                }                
+                }
             }else{
                 $notdeleted += 1;
             }
@@ -171,7 +161,7 @@ class JSVEHICLEMANAGERmileagesModel {
                 if(is_numeric($id)){
                     if (!$row->update(array('id' => $id, 'status' => $status))) {
                         $total += 1;
-                    }                    
+                    }
                 }else{
                     $total += 1;
                 }
@@ -185,7 +175,7 @@ class JSVEHICLEMANAGERmileagesModel {
                         }
                     } else {
                         $total += 1;
-                    }                
+                    }
                 }else{
                     $total += 1;
                 }

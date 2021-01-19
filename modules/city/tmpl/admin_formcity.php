@@ -9,17 +9,18 @@
         <?php JSVEHICLEMANAGERincluder::getClassesInclude('jsvehiclemanageradminsidemenu'); ?>
     </div>
     <div id="jsvehiclemanageradmin-data">
+        <?php
+        $countryid = get_option( 'jsvm_countryid_for_city');
+        $stateid = get_option( 'jsvm_stateid_for_city');
+        ?>
         <span class="jsvm_js-admin-title">
-            <a href="<?php echo admin_url('admin.php?page=jsvm_city&countryid='.$_SESSION["countryid"]); ?>&stateid=<?php echo $_SESSION["stateid"]; ?>"><img src="<?php echo jsvehiclemanager::$_pluginpath; ?>includes/images/back-icon.png" /></a>
+            <a href="<?php echo admin_url('admin.php?page=jsvm_city&countryid='.$countryid); ?>&stateid=<?php echo $stateid; ?>"><img src="<?php echo jsvehiclemanager::$_pluginpath; ?>includes/images/back-icon.png" /></a>
             <?php
             $heading = isset(jsvehiclemanager::$_data[0]) ? __('Edit', 'js-vehicle-manager') : __('Add New', 'js-vehicle-manager');
             echo $heading . '&nbsp' . __('City', 'js-vehicle-manager');
             ?>
         </span>
-        <?php
-        $countryid = $_SESSION["countryid"];
-        $stateid = $_SESSION["stateid"];
-        ?>
+
         <div class="jsvehiclemanager-form-wrap">
             <form id="jsvehiclemanager-form" method="post" action="<?php echo admin_url("admin.php?page=jsvm_city&task=savecity&action=jsvmtask"); ?>">
                 <div class="jsvm_js-field-wrapper js-row no-margin">
@@ -53,7 +54,7 @@
                 <?php echo JSVEHICLEMANAGERformfield::hidden('_wpnonce', wp_create_nonce('save-city')); ?>
                 <div class="jsvm_js-submit-container">
                     <div class="jsvm_js-button-container">
-                        <a id="jsvm_form-cancel-button" href="<?php echo admin_url('admin.php?page=jsvm_city&countryid='.$_SESSION["countryid"]); ?>&stateid=<?php echo $_SESSION["stateid"]; ?>" ><?php echo __('Cancel', 'js-vehicle-manager'); ?></a>
+                        <a id="jsvm_form-cancel-button" href="<?php echo admin_url('admin.php?page=jsvm_city&countryid='.$countryid); ?>&stateid=<?php echo $stateid; ?>" ><?php echo __('Cancel', 'js-vehicle-manager'); ?></a>
                         <?php echo JSVEHICLEMANAGERformfield::submitbutton('save', __('Save','js-vehicle-manager') .' '. __('City', 'js-vehicle-manager'), array('class' => 'button')); ?>
                     </div>
                 </div>

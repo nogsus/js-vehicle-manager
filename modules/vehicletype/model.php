@@ -14,7 +14,7 @@ class JSVEHICLEMANAGERvehicletypeModel {
         jsvehiclemanager::$_data[0] = $db->loadObject();
         return;
     }
-    
+
     function getVehicleTypeTitlebyId($id) {
         if (is_numeric($id) == false)
             return false;
@@ -26,19 +26,9 @@ class JSVEHICLEMANAGERvehicletypeModel {
 
     function getAllVehicletypes() {
         // Filter
-        $title = JSVEHICLEMANAGERrequest::getVar('title');
-        $status = JSVEHICLEMANAGERrequest::getVar('status');
-        $formsearch = JSVEHICLEMANAGERrequest::getVar('JSVEHICLEMANAGER_form_search', 'post');
-        if ($formsearch == 'JSVEHICLEMANAGER_SEARCH') {
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] = $title;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] = $status;
-        }
-        if (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null) {
-            $title = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['title']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] : null;
-            $status = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['status']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] : null;
-        } elseif ($formsearch !== 'JSVEHICLEMANAGER_SEARCH') {
-            unset($_SESSION['JSVEHICLEMANAGER_SEARCH']);
-        }
+        $title = jsvehiclemanager::$_search['type']['title'];
+        $status = jsvehiclemanager::$_search['type']['status'];
+
         $inquery = '';
         $clause = ' WHERE ';
         if ($title != null) {
@@ -129,7 +119,7 @@ class JSVEHICLEMANAGERvehicletypeModel {
         $data['alias'] = JSVEHICLEMANAGERincluder::getJSModel('common')->removeSpecialCharacter($data['title']);
         if($data['removelogo'] == 1){
             $data['logo'] = '';
-        }        
+        }
         if (!$row->bind($data)) {
             return SAVE_ERROR;
         }
@@ -173,7 +163,7 @@ class JSVEHICLEMANAGERvehicletypeModel {
                         foreach($files as $file){
                             if(is_file($file)) unlink($file);
                         }
-                        if(is_dir($filepath)) rmdir($filepath);                        
+                        if(is_dir($filepath)) rmdir($filepath);
                     }
                 } else {
                     $notdeleted += 1;
@@ -291,8 +281,8 @@ class JSVEHICLEMANAGERvehicletypeModel {
 
     function getVehiclesTypes(){
         $db = new jsvehiclemanagerdb();
-        $query = "SELECT vehtype.title,vehtype.id, CONCAT(vehtype.alias,'-',vehtype.id) AS aliasid, vehtype.logo, 
-                    (SELECT COUNT(veh.id) FROM `#__js_vehiclemanager_vehicles` AS veh WHERE veh.vehicletypeid = vehtype.id AND veh.status = 1 AND DATE(veh.adexpiryvalue) >= CURDATE()) AS vehicles 
+        $query = "SELECT vehtype.title,vehtype.id, CONCAT(vehtype.alias,'-',vehtype.id) AS aliasid, vehtype.logo,
+                    (SELECT COUNT(veh.id) FROM `#__js_vehiclemanager_vehicles` AS veh WHERE veh.vehicletypeid = vehtype.id AND veh.status = 1 AND DATE(veh.adexpiryvalue) >= CURDATE()) AS vehicles
                     FROM `#__js_vehiclemanager_vehicletypes` AS vehtype WHERE vehtype.status = 1 ";
         $db->setQuery($query);
         $data = $db->loadObjectList();

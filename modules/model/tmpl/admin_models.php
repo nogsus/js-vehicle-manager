@@ -33,11 +33,12 @@ wp_enqueue_script('jsauto-res-tables', jsvehiclemanager::$_pluginpath . 'include
             <?php echo JSVEHICLEMANAGERformfield::text('title', jsvehiclemanager::$_data['filter']['title'], array('class' => 'inputbox', 'placeholder' => __('Title', 'js-vehicle-manager'))); ?>
             <?php echo JSVEHICLEMANAGERformfield::select('status', JSVEHICLEMANAGERincluder::getJSModel('common')->getstatus(), jsvehiclemanager::$_data['filter']['status'], __('Select status', 'js-vehicle-manager'), array('class' => 'inputbox')); ?>
             <?php echo JSVEHICLEMANAGERformfield::hidden('JSVEHICLEMANAGER_form_search', 'JSVEHICLEMANAGER_SEARCH'); ?>
+            <?php echo JSVEHICLEMANAGERformfield::hidden('makeid', jsvehiclemanager::$_data['makeid']); ?>
             <?php echo JSVEHICLEMANAGERformfield::submitbutton('btnsubmit', __('Search', 'js-vehicle-manager'), array('class' => 'button')); ?>
             <?php echo JSVEHICLEMANAGERformfield::button('reset', __('Reset', 'js-vehicle-manager'), array('class' => 'button', 'onclick' => 'resetFrom();')); ?>
         </form>
         <?php
-        $_SESSION['jsvehiclemanager-models']['makeid'] = jsvehiclemanager::$_data['makeid'];
+        update_option( 'jsvehiclemanager-models-makeid', jsvehiclemanager::$_data['makeid'] );
         if (!empty(jsvehiclemanager::$_data[0])) {
             ?>
             <form id="jsvehiclemanager-list-form" method="post" action="<?php echo admin_url("admin.php?page=jsvm_model"); ?>">
@@ -110,6 +111,7 @@ wp_enqueue_script('jsauto-res-tables', jsvehiclemanager::$_pluginpath . 'include
                 <?php echo JSVEHICLEMANAGERformfield::hidden('task', ''); ?>
                 <?php echo JSVEHICLEMANAGERformfield::hidden('form_request', 'jsvehiclemanager'); ?>
                 <?php echo JSVEHICLEMANAGERformfield::hidden('_wpnonce', wp_create_nonce('delete-model')); ?>
+                <?php echo JSVEHICLEMANAGERformfield::hidden('makeid', jsvehiclemanager::$_data['makeid']); ?>
             </form>
             <?php
             if (jsvehiclemanager::$_data[1]) {

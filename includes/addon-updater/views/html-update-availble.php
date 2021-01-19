@@ -34,8 +34,8 @@ if(!empty($this->addon_installed_array)){
 
 }
 
-if(isset($_SESSION['jsvm-addon-key-error-message']) && $_SESSION['jsvm-addon-key-error-message'] != ''){
-	echo '<div class="notice notice-error is-dismissible"><p>'. $_SESSION['jsvm-addon-key-error-message'] .'</p></div>';
-	unset($_SESSION['jsvm-addon-key-error-message']);
+if(get_option( 'jsvm-addon-key-error-message', '' ) != ''){
+	echo '<div class="notice notice-error is-dismissible"><p>'. get_option( 'jsvm-addon-key-error-message') .'</p></div>';
+	delete_option( 'jsvm-addon-key-error-message' );
 }
 ?>

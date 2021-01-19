@@ -58,7 +58,7 @@ class JSVehicleManagerUser {
     }
 
     function isguest() {
-        if (isset($_SESSION['jsvehiclemanager-socialid']) && !empty($_SESSION['jsvehiclemanager-socialid'])) {
+        if (isset($_COOKIE['jsvehiclemanager-socialid']) && !empty($_COOKIE['jsvehiclemanager-socialid'])) {
             if(in_array('sociallogin', jsvehiclemanager::$_active_addons)){
                 return false;
             }else{
@@ -136,8 +136,8 @@ class JSVehicleManagerUser {
                 return false;
             }
         } else {
-            if (isset($_SESSION['jsvehiclemanager-socialid']) && !empty($_SESSION['jsvehiclemanager-socialid'])) { // social user is logged in
-                $query = "SELECT COUNT(id) FROM `#__js_vehiclemanager_users` WHERE socialid = '" . $_SESSION['jsvehiclemanager-socialid'] . "'";
+            if (isset($_COOKIE['jsvehiclemanager-socialid']) && !empty($_COOKIE['jsvehiclemanager-socialid'])) { // social user is logged in
+                $query = "SELECT COUNT(id) FROM `#__js_vehiclemanager_users` WHERE socialid = '" . $_COOKIE['jsvehiclemanager-socialid'] . "'";
                 $db->setQuery($query);
                 $result = $db->loadResult();
                 if ($result > 0) {
@@ -150,7 +150,7 @@ class JSVehicleManagerUser {
     }
 
     function isSocialLogin() {
-        if (isset($_SESSION['jsvehiclemanager-socialid']) && !empty($_SESSION['jsvehiclemanager-socialid'])) {
+        if (isset($_COOKIE['jsvehiclemanager-socialid']) && !empty($_COOKIE['jsvehiclemanager-socialid'])) {
             return true;
         } else {
             return false;

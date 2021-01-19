@@ -45,25 +45,11 @@ class JSVEHICLEMANAGERFieldorderingModel {
     function getFieldsOrdering($fieldfor) {
         if (is_numeric($fieldfor) == false)
             return false;
-        $title = JSVEHICLEMANAGERrequest::getVar('title');
-        $ustatus = JSVEHICLEMANAGERrequest::getVar('ustatus');
-        $vstatus = JSVEHICLEMANAGERrequest::getVar('vstatus');
-        $required = JSVEHICLEMANAGERrequest::getVar('required');
-        $formsearch = JSVEHICLEMANAGERrequest::getVar('JSVEHICLEMANAGER_form_search', 'post');
-        if ($formsearch == 'JSVEHICLEMANAGER_SEARCH') {
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] = $title;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['ustatus'] = $ustatus;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['vstatus'] = $vstatus;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['required'] = $required;
-        }
-        if (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null) {
-            $title = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['title']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] : null;
-            $ustatus = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['ustatus']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['ustatus'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['ustatus'] : null;
-            $vstatus = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['vstatus']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['vstatus'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['vstatus'] : null;
-            $required = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['required']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['required'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['required'] : null;
-        } else if ($formsearch !== 'JSVEHICLEMANAGER_SEARCH') {
-            unset($_SESSION['JSVEHICLEMANAGER_SEARCH']);
-        }
+        $title = jsvehiclemanager::$_search['fieldsordering']['title'];
+        $ustatus = jsvehiclemanager::$_search['fieldsordering']['ustatus'];
+        $vstatus = jsvehiclemanager::$_search['fieldsordering']['vstatus'];
+        $required = jsvehiclemanager::$_search['fieldsordering']['required'];
+
         $inquery = '';
         if ($title != null)
             $inquery .= " AND field.fieldtitle LIKE '%$title%'";
@@ -94,7 +80,7 @@ class JSVEHICLEMANAGERFieldorderingModel {
         $query .= $inquery;
         $query .= ' ORDER BY';
         $query .= ' field.section, field.ordering ASC';
-        
+
 
         $query .=" LIMIT " . JSVEHICLEMANAGERpagination::$_offset . "," . JSVEHICLEMANAGERpagination::$_limit;
         $db->setQuery($query);
@@ -129,7 +115,7 @@ class JSVEHICLEMANAGERFieldorderingModel {
         $db->setQuery($query);
         $published_count = $db->loadResult();
         $fields = (object) array();
-        
+
         if($published_count != 0 || $section == 10){
             $query = "SELECT  * FROM `#__js_vehiclemanager_fieldsordering`
                         WHERE ".$published." = 1 AND fieldfor =  1 AND section = ".$section." ORDER BY ordering";
@@ -646,11 +632,11 @@ class JSVEHICLEMANAGERFieldorderingModel {
         $fields = $db->loadObjectList();
         return $fields;
     }
-    
+
     function getUserfieldsforEmail() {
         $published = ' published = 1 ';
         $db = new jsvehiclemanagerdb();
-        $query = "SELECT field,userfieldparams,userfieldtype,fieldfor FROM `#__js_vehiclemanager_fieldsordering` WHERE isuserfield = 1 AND " . $published;
+        $query = "SELECT field,userfieldparams,userfieldtype,fieldfor,fieldtitle FROM `#__js_vehiclemanager_fieldsordering` WHERE isuserfield = 1 AND " . $published;
         $db->setQuery($query);
         $fields = $db->loadObjectList();
         return $fields;
@@ -747,7 +733,7 @@ class JSVEHICLEMANAGERFieldorderingModel {
         $result = $db->loadResult();
         return $result;
     }
-    
+
     function getFieldPublishStatusByfieldForListing($field,$fieldfor){
         if(!is_numeric($fieldfor)) return false;
         $db = new jsvehiclemanagerdb();
@@ -770,7 +756,7 @@ class JSVEHICLEMANAGERFieldorderingModel {
         }
         jsvehiclemanager::$_data['filter']['search'] = $search;
         //Data
-        $query = "SELECT field.fieldtitle,field.id,field.search_user,field.search_visitor,field.search_ordering 
+        $query = "SELECT field.fieldtitle,field.id,field.search_user,field.search_visitor,field.search_ordering
                     FROM `#__js_vehiclemanager_fieldsordering` AS field
                     WHERE field.fieldfor = " . $fieldfor;
         $query .= $inquery;
@@ -782,7 +768,7 @@ class JSVEHICLEMANAGERFieldorderingModel {
         return;
     }
 
-       function storeSearchFieldOrdering($data) {// 
+       function storeSearchFieldOrdering($data) {//
         if (empty($data)) {
             return false;
         }
@@ -799,7 +785,7 @@ class JSVEHICLEMANAGERFieldorderingModel {
         return SAVED;
     }
 
-    function storeSearchFieldOrderingByForm($data) {// 
+    function storeSearchFieldOrderingByForm($data) {//
         if (empty($data)) {
             return false;
         }
@@ -807,12 +793,48 @@ class JSVEHICLEMANAGERFieldorderingModel {
         $sorted_array = reset($sorted_array);
         if(!empty($sorted_array)){
             $row = JSVEHICLEMANAGERincluder::getJSTable('fieldsordering');
-            for ($i=0; $i < count($sorted_array) ; $i++) { 
+            for ($i=0; $i < count($sorted_array) ; $i++) {
                 $row->update(array('id' => $sorted_array[$i], 'search_ordering' => 1 + $i));
                 //$row->update(array('id' => $sorted_array[$i], 'search_ordering' => 1 + $i));
             }
         }
         return SAVED;
+    }
+
+    /* Fieldordering Search data, admin setting and delete cookies */
+    function getAdminFieldorderingSearchFormData(){
+        $jsvm_search_array = array();
+        $jsvm_search_array['title'] = JSVEHICLEMANAGERrequest::getVar('title');
+        $jsvm_search_array['ustatus'] = JSVEHICLEMANAGERrequest::getVar('ustatus');
+        $jsvm_search_array['vstatus'] = JSVEHICLEMANAGERrequest::getVar('vstatus');
+        $jsvm_search_array['required'] = JSVEHICLEMANAGERrequest::getVar('required');
+        $jsvm_search_array['search_from_fieldordering'] = 1;
+        return $jsvm_search_array;
+    }
+
+    function setSearchVariableForAdminFieldordering($jsvm_search_array){
+        jsvehiclemanager::$_search['fieldsordering']['title'] = isset($jsvm_search_array['title']) ? $jsvm_search_array['title'] : null;
+        jsvehiclemanager::$_search['fieldsordering']['ustatus'] = isset($jsvm_search_array['ustatus']) ? $jsvm_search_array['ustatus'] : null;
+        jsvehiclemanager::$_search['fieldsordering']['vstatus'] = isset($jsvm_search_array['vstatus']) ? $jsvm_search_array['vstatus'] : null;
+        jsvehiclemanager::$_search['fieldsordering']['required'] = isset($jsvm_search_array['required']) ? $jsvm_search_array['required'] : null;
+        jsvehiclemanager::$_search['fieldsordering']['search_from_fieldordering'] = isset($jsvm_search_array['search_from_fieldordering']) ? $jsvm_search_array['search_from_fieldordering'] : null;
+    }
+
+    function getCookiesSavedSearchDataFieldordering(){
+        $jsvm_search_array = array();
+        $vehicle_search_cookie_data = '';
+        if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+            $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+            $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+        }
+        if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_fieldordering']) && $vehicle_search_cookie_data['search_from_fieldordering'] == 1){
+            $jsvm_search_array['title'] = $vehicle_search_cookie_data['title'];
+            $jsvm_search_array['ustatus'] = $vehicle_search_cookie_data['ustatus'];
+            $jsvm_search_array['vstatus'] = $vehicle_search_cookie_data['vstatus'];
+            $jsvm_search_array['required'] = $vehicle_search_cookie_data['required'];
+            $jsvm_search_array['search_from_fieldordering'] = $vehicle_search_cookie_data['search_from_fieldordering'];
+        }
+        return $jsvm_search_array;
     }
 
     function getMessagekey(){

@@ -1,6 +1,6 @@
 <div id="jsvehiclemanageradmin-wrapper">
 	<div id="jsvehiclemanageradmin-data">
-		<?php 
+		<?php
 			$over_write = array(
 							(object) array('id'=>1,'text'=>'Remove and insert'),
 							(object) array('id'=>0,'text'=>'Ignore and insert')
@@ -34,16 +34,16 @@
 						$demo_flag = 'demo6';
 					break;
 					default:
-						$demo_flag = -1;			
+						$demo_flag = -1;
 						break;
 				}
 			}
 		}
-	
-		if(isset($_SESSION['vehicles_sample_data']) && $_SESSION['vehicles_sample_data'] == 1){ ?>
+
+		if(get_option( 'vehicles_sample_data', '' ) == 1){ ?>
 			<div class="frontend updated"><p><?php echo __("Vehicles data has been successfully imported","js-vehicle-manager"); ?></p></div>
-		<?php 
-		unset($_SESSION['vehicles_sample_data']);
+		<?php
+		delete_option( 'vehicles_sample_data' );
 		}
 		?>
 		<div id="jsvehiclemanageradmin-wrapper">
@@ -54,9 +54,9 @@
 							<div class="jsvehiclemanager-temp-sample-data-content-demo-title" >
 								<?php echo __('Select the demo data to import','js-vehicle-manager').'&nbsp;!';?>
 							</div>
-							<div class="jsvehiclemanager-temp-sample-data-content-demo-combo" ><?php 
+							<div class="jsvehiclemanager-temp-sample-data-content-demo-combo" ><?php
 								if(isset(jsvehiclemanager::$_data[0]) && !empty(jsvehiclemanager::$_data[0])){
-									echo JSVEHICLEMANAGERformfield::select('demoid', jsvehiclemanager::$_data[0], $demo_flag, __('Select demo', 'js-vehicle-manager'), array('class' => 'jsvm_inputbox', 'data-validation' => 'required', 'onchange' => 'demoChanged(this.options[this.selectedIndex].value);')); 
+									echo JSVEHICLEMANAGERformfield::select('demoid', jsvehiclemanager::$_data[0], $demo_flag, __('Select demo', 'js-vehicle-manager'), array('class' => 'jsvm_inputbox', 'data-validation' => 'required', 'onchange' => 'demoChanged(this.options[this.selectedIndex].value);'));
 								}?>
 							</div>
 							<div class="jsvehiclemanager-temp-sample-data-content-demo-desc" id="demo_desc" >
@@ -94,8 +94,8 @@
 	var descs = new Array();
 	var folders = new Array();
 	var demo_flag_js = "<?php echo $demo_flag;?>";
-	<?php 
-		foreach (jsvehiclemanager::$_data[1] as $key => $value) { 
+	<?php
+		foreach (jsvehiclemanager::$_data[1] as $key => $value) {
 			echo 'images["'.$value['foldername'].'"] = "'.$value['imagepath'].'";';
 			echo 'names["'.$value['foldername'].'"] = "'.$value['name'].'";';
 			echo 'descs["'.$value['foldername'].'"] = "'.$value['desc'].'";';
@@ -117,7 +117,7 @@
 		var $image = jQuery("#demo_image");
 		var $downloadingImage = jQuery("<img>");
 		$downloadingImage.load(function(){
-			$image.attr("src", jQuery(this).attr("src"));	
+			$image.attr("src", jQuery(this).attr("src"));
 		});
 		$downloadingImage.attr("src",images[demoid]);
 		jQuery('#demo_name').html(names[demoid]);
@@ -134,7 +134,7 @@
 			}
 		}
 	}
-	
+
 	function showMessage(optionid){
 		if(optionid == 1){
 			jQuery('#demo_warning').html('<?php echo __('All the content of previus demo data will be deleted.','js-jobs');?>');

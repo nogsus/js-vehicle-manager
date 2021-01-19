@@ -216,7 +216,7 @@ class JSVEHICLEMANAGERcustomfields {
                 }
             }
             $cssClass =  !is_admin() ? 'col-sm-12 col-md-4 jsvm_cm-veh-fm-checkbox' : 'jsvm_vehicle-details-checkbox jsvm_checkboxes';
-         
+
             $html = '<div class= "'.$cssClass.'">';
             $html .= '<div class="checkbox jsvm_cm-veh-fm-inputbox">
                             <label>
@@ -414,7 +414,7 @@ class JSVEHICLEMANAGERcustomfields {
         }
         if($isadmin == 1){
             return $html;
-            
+
         }
         $html .= '</div></div>';
         return $html;

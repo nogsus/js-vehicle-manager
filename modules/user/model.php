@@ -50,22 +50,9 @@ class JSVEHICLEMANAGERUserModel {
         // sorting
         $sort_string = $this->sorting();
         //Filters
-        $searchname = JSVEHICLEMANAGERrequest::getVar('searchname');
-        $email = JSVEHICLEMANAGERrequest::getVar('email');
-        $status = JSVEHICLEMANAGERrequest::getVar("status");
-        $formsearch = JSVEHICLEMANAGERrequest::getVar('JSVEHICLEMANAGER_form_search', 'post');
-        if ($formsearch == 'JSVEHICLEMANAGER_SEARCH') {
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['searchname'] = $searchname;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['email'] = $email;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] = $status;
-        }
-        if (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null) {
-            $searchname = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['searchname']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['searchname'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['searchname'] : null;
-            $email = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['email']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['email'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['email'] : null;
-            $status = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['status']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] : null;
-        } elseif ($formsearch !== 'JSVEHICLEMANAGER_SEARCH') {
-            unset($_SESSION['JSVEHICLEMANAGER_SEARCH']);
-        }
+        $searchname = jsvehiclemanager::$_search['user']['searchname'];
+        $email = jsvehiclemanager::$_search['user']['email'];
+        $status = jsvehiclemanager::$_search['user']['status'];
 
         $inquery = '';
         $clause = ' WHERE ';
@@ -143,8 +130,8 @@ class JSVEHICLEMANAGERUserModel {
         $search_userfields = JSVEHICLEMANAGERincluder::getObjectClass('customfields')->userFieldsForSearch(2);
 
 
-        $searchname = JSVEHICLEMANAGERrequest::getVar('searchname');
-        $weblink = JSVEHICLEMANAGERrequest::getVar('weblink');
+        $searchname = jsvehiclemanager::$_search['sellerlist']['searchname'];
+        $weblink = jsvehiclemanager::$_search['sellerlist']['weblink'];
 
         if(isset(jsvehiclemanager::$_data['sanitized_args']) && isset(jsvehiclemanager::$_data['sanitized_args']['cityid'])){
             $id = jsvehiclemanager::$_data['sanitized_args']["cityid"];
@@ -162,37 +149,13 @@ class JSVEHICLEMANAGERUserModel {
                 $cityid = '';
             }
         }else{
-            $cityid = JSVEHICLEMANAGERrequest::getVar("cityid");
+            $cityid = jsvehiclemanager::$_search['sellerlist']['cityid'];
         }
         $formsearch = JSVEHICLEMANAGERrequest::getVar('JSVEHICLEMANAGER_form_search', 'post');
         if (!empty($search_userfields)) {
             foreach ($search_userfields as $uf) {
-                $value_array[$uf->field] = JSVEHICLEMANAGERrequest::getVar($uf->field);
+                $value_array[$uf->field] = jsvehiclemanager::$_search['jsvm_seller_customfield'][$uf->field];
             }
-        }
-        if ($formsearch == 'JSVEHICLEMANAGER_SEARCH') {
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['searchname'] = $searchname;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['weblink'] = $weblink;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['cityid'] = $cityid;
-            if (!empty($search_userfields)) {
-                foreach ($search_userfields as $uf) {
-                $_SESSION['JSVEHICLEMANAGER_SEARCH'][$uf->field] = $value_array[$uf->field];
-                }
-            }
-        } elseif (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) == null) {
-            unset($_SESSION['JSVEHICLEMANAGER_SEARCH']);
-        }
-        if (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null) {
-            $searchname = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['searchname']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['searchname'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['searchname'] : null;
-            $weblink = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['weblink']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['weblink'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['weblink'] : null;
-            $cityid = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['cityid']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['cityid'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['cityid'] : null;
-            if (!empty($search_userfields)) {
-                foreach ($search_userfields as $uf) {
-                    $value_array[$uf->field] = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH'][$uf->field]) && $_SESSION['JSVEHICLEMANAGER_SEARCH'][$uf->field] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH'][$uf->field] : null;
-                }
-            }
-        } elseif ($formsearch !== 'JSVEHICLEMANAGER_SEARCH') {
-            unset($_SESSION['JSVEHICLEMANAGER_SEARCH']);
         }
 
         $inquery = '';

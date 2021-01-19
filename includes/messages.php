@@ -13,38 +13,32 @@ class JSVEHICLEMANAGERMessages {
     public static $counter;
 
     public static function setLayoutMessage($message, $type, $msgkey){
-        if (isset($_SESSION[$msgkey])) {
-            $count = COUNT($_SESSION[$msgkey]);
-            $_SESSION[$msgkey]['msg'][$count] = $message;
-            $_SESSION[$msgkey]['type'][$count] = $type;
-        } else {
-            $_SESSION[$msgkey]['msg'][0] = $message;
-            $_SESSION[$msgkey]['type'][0] = $type;
-        }
+        JSVEHICLEMANAGERincluder::getObjectClass('wpvmnotification')->addSessionNotificationDataToTable($message,$type,'notification',$msgkey);
     }
 
     public static function getLayoutMessage($msgkey) {
         $frontend = (is_admin()) ? '' : 'frontend';
         $divHtml = '';
-        if (isset($_SESSION[$msgkey]['msg'][0]) && isset($_SESSION[$msgkey]['type'][0])) {
-            for ($i = 0; $i < COUNT($_SESSION[$msgkey]['msg']); $i++){
+        $notificationdata = JSVEHICLEMANAGERincluder::getObjectClass('wpvmnotification')->getNotificationDatabySessionId('notification',$msgkey,true);
+        if (isset($notificationdata['msg'][0]) && isset($notificationdata['type'][0])) {
+            for ($i = 0; $i < COUNT($notificationdata['msg']); $i++){
                 if(is_admin()){
-                    if(isset($_SESSION[$msgkey]['type'][$i])){
-                        $divHtml .= '<div class="frontend ' . $_SESSION[$msgkey]['type'][$i] . '"><p>' . $_SESSION[$msgkey]['msg'][$i] . '</p></div>';
+                    if(isset($notificationdata['type'][$i])){
+                        $divHtml .= '<div class="frontend ' . $notificationdata['type'][$i] . '"><p>' . $notificationdata['msg'][$i] . '</p></div>';
                     }
                 }else{
-                    if(isset($_SESSION[$msgkey]['type'][$i])){
+                    if(isset($notificationdata['type'][$i])){
                         if(jsvehiclemanager::$_car_manager_theme == 1){
-                            if($_SESSION[$msgkey]['type'][$i] == 'updated'){
+                            if($notificationdata['type'][$i] == 'updated'){
                                 $alert_class = 'success';
                                 $img_name = 'veh-alert-successful.png';
-                            }elseif($_SESSION[$msgkey]['type'][$i] == 'saved'){
+                            }elseif($notificationdata['type'][$i] == 'saved'){
                                 $alert_class = 'success';
                                 $img_name = 'veh-alert-successful.png';
-                            }elseif($_SESSION[$msgkey]['type'][$i] == 'saved'){
+                            }elseif($notificationdata['type'][$i] == 'saved'){
                                 //$alert_class = 'info';
                                 //$alert_class = 'warning';
-                            }elseif($_SESSION[$msgkey]['type'][$i] == 'error'){
+                            }elseif($notificationdata['type'][$i] == 'error'){
                                 $alert_class = 'danger';
                                 $img_name = 'veh-aler-unsuccessful.png';
                             }
@@ -53,17 +47,16 @@ class JSVEHICLEMANAGERMessages {
                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
-                                            '. $_SESSION[$msgkey]['msg'][$i] . '
+                                            '. $notificationdata['msg'][$i] . '
                                         </div>';
                         }else{
-                            $divHtml .= '<div class=" ' . $frontend . ' ' . $_SESSION[$msgkey]['type'][$i] . '"><p>' . $_SESSION[$msgkey]['msg'][$i] . '</p></div>';
+                            $divHtml .= '<div class=" ' . $frontend . ' ' . $notificationdata['type'][$i] . '"><p>' . $notificationdata['msg'][$i] . '</p></div>';
                         }
                     }
                 }
             }
         }
         echo $divHtml;
-        unset($_SESSION[$msgkey]);
     }
 
     public static function getMSelectionEMessage() { // multi selection error message
@@ -438,6 +431,9 @@ class JSVEHICLEMANAGERMessages {
                 break;
             case 'user':
                     $name = __('User', 'js-vehicle-manager');
+                break;
+            case 'shortlist':
+                    $name = __('Shortlist Vehicle', 'js-vehicle-manager');
                 break;
         }
         return $name;

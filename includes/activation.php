@@ -652,7 +652,7 @@ class JSVEHICLEMANAGERactivation {
 		('free_package_auto_approve', '0', 'package','credits'),
 		('register_user_redirect_page', '', 'user',NULL),
 		('producttype', 'free', 'default',NULL),
-		('productversion', '116', 'default',NULL),
+		('productversion', '117', 'default',NULL),
 		('recaptcha_contacttoseller', '1', 'recaptcha',NULL),
 		('recaptcha_makeanoffer', '0', 'recaptcha','makeanoffer'),
 		('recaptcha_privatekey', '6Lc-2TMUAAAAAPE7oZ5ow434v6gxV3HWlvhdFAPe', 'recaptcha',NULL),
@@ -2677,6 +2677,18 @@ class JSVEHICLEMANAGERactivation {
 		  `longitude` varchar(100) NOT NULL,
 		  PRIMARY KEY (`id`)
 		) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
+		$db->setQuery($query);
+		$db->query();
+
+		$query = "
+		CREATE TABLE IF NOT EXISTS `#__js_vehiclemanager_jsvmsessiondata` (
+		  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		  `usersessionid` char(64) NOT NULL,
+		  `sessionmsg` text CHARACTER SET utf8 NOT NULL,
+		  `sessionexpire` bigint(32) NOT NULL,
+		  `sessionfor` varchar(125) NOT NULL,
+		  `msgkey`varchar(125) NOT NULL
+		) ENGINE=MyISAM DEFAULT CHARSET=latin1;";
 		$db->setQuery($query);
 		$db->query();
 

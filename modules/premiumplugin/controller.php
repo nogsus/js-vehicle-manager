@@ -32,7 +32,6 @@ class JSVEHICLEMANAGERpremiumpluginController {
     }
 
     function verifytransactionkey(){
-
         $post_data['transactionkey'] = JSVEHICLEMANAGERrequest::getVar('transactionkey','','');
         if($post_data['transactionkey'] != ''){
 
@@ -55,8 +54,8 @@ class JSVEHICLEMANAGERpremiumpluginController {
                }
             }
             if(is_array($result) && isset($result['status']) && $result['status'] == 1 ){ // means everthing ok
-                $_SESSION['jsvm_addon_install_data'] = $result;
-                $_SESSION['jsvm_addon_install_data']['actual_transaction_key'] = $post_data['transactionkey'];
+                update_option( 'jsvm_addon_install_data', $result );
+                update_option( 'jsvm_addon_install_data_actual_transaction_key', $post_data['transactionkey']);
                 $url = admin_url("admin.php?page=jsvm_premiumplugin&jsvmlt=step2");
                 wp_redirect($url);
                 return;
@@ -70,10 +69,10 @@ class JSVEHICLEMANAGERpremiumpluginController {
         }else{
             $error = __('Please insert activation key to proceed','js-vehicle-manager').'!';
         }
-        $_SESSION['jsvm_addon_return_data'] = array();
-        $_SESSION['jsvm_addon_return_data']['status'] = 0;
-        $_SESSION['jsvm_addon_return_data']['message'] = $error;
-        $_SESSION['jsvm_addon_return_data']['transactionkey'] = $post_data['transactionkey'];
+        update_option( 'jsvm_addon_return_data', array() );
+        update_option( 'jsvm_addon_return_data_status', 0 );
+        update_option( 'jsvm_addon_return_data_message', $error );
+        update_option( 'jsvm_addon_return_data_transactionkey', $post_data['transactionkey'] );
         $url = admin_url("admin.php?page=jsvm_premiumplugin&jsvmlt=step1");
         wp_redirect($url);
         return;
@@ -94,10 +93,11 @@ class JSVEHICLEMANAGERpremiumpluginController {
 
         $token = $post_data['token'];
         if($token == ''){
-            $_SESSION['jsvm_addon_return_data'] = array();
-            $_SESSION['jsvm_addon_return_data']['status'] = 0;
-            $_SESSION['jsvm_addon_return_data']['message'] = __('Addon Installation Failed','js-vehicle-manager').'!';
-            $_SESSION['jsvm_addon_return_data']['transactionkey'] = '';
+            $error = __('Addon Installation Failed','js-vehicle-manager').'!';
+            update_option( 'jsvm_addon_return_data', array() );
+            update_option( 'jsvm_addon_return_data_status', 0 );
+            update_option( 'jsvm_addon_return_data_message', $error );
+            update_option( 'jsvm_addon_return_data_transactionkey', '' );
             $url = admin_url("admin.php?page=jsvm_premiumplugin&jsvmlt=step1");
             wp_redirect($url);
             exit;
@@ -122,10 +122,11 @@ class JSVEHICLEMANAGERpremiumpluginController {
             }
 
         }else{
-            $_SESSION['jsvm_addon_return_data'] = array();
-            $_SESSION['jsvm_addon_return_data']['status'] = 0;
-            $_SESSION['jsvm_addon_return_data']['message'] = __('Addon Installation Failed','js-vehicle-manager').'!';
-            $_SESSION['jsvm_addon_return_data']['transactionkey'] = '';
+            $error = __('Addon Installation Failed','js-vehicle-manager').'!';
+            update_option( 'jsvm_addon_return_data', array() );
+            update_option( 'jsvm_addon_return_data_status', 0 );
+            update_option( 'jsvm_addon_return_data_message', $error );
+            update_option( 'jsvm_addon_return_data_transactionkey', '' );
             $url = admin_url("admin.php?page=jsvm_premiumplugin&jsvmlt=step1");
             wp_redirect($url);
             exit;
@@ -154,10 +155,11 @@ class JSVEHICLEMANAGERpremiumpluginController {
             @unlink( $tmpfile ); // must unlink afterwards
 
             if ( is_wp_error( $unzipfile ) ) {
-                $_SESSION['jsvm_addon_return_data'] = array();
-                $_SESSION['jsvm_addon_return_data']['status'] = 0;
-                $_SESSION['jsvm_addon_return_data']['message'] = __('Addon installation failed, Directory permission error','js-vehicle-manager').'!';
-                $_SESSION['jsvm_addon_return_data']['transactionkey'] = '';
+                $error = __('Addon installation failed, Directory permission error','js-vehicle-manager').'!';
+                update_option( 'jsvm_addon_return_data', array() );
+                update_option( 'jsvm_addon_return_data_status', 0 );
+                update_option( 'jsvm_addon_return_data_message', $error );
+                update_option( 'jsvm_addon_return_data_transactionkey', '' );
                 $url = admin_url("admin.php?page=jsvm_premiumplugin&jsvmlt=step1");
                 wp_redirect($url);
                 exit;
@@ -165,10 +167,11 @@ class JSVEHICLEMANAGERpremiumpluginController {
                 return true;
             }
         }else{
-            $_SESSION['jsvm_addon_return_data'] = array();
-            $_SESSION['jsvm_addon_return_data']['status'] = 0;
-            $_SESSION['jsvm_addon_return_data']['message'] = __('Addon Installation Failed, File download error','js-vehicle-manager').'!';
-            $_SESSION['jsvm_addon_return_data']['transactionkey'] = '';
+            $error = __('Addon Installation Failed, File download error','js-vehicle-manager').'!';
+            update_option( 'jsvm_addon_return_data', array() );
+            update_option( 'jsvm_addon_return_data_status', 0 );
+            update_option( 'jsvm_addon_return_data_message', $error );
+            update_option( 'jsvm_addon_return_data_transactionkey', '' );
             $url = admin_url("admin.php?page=jsvm_premiumplugin&jsvmlt=step1");
             wp_redirect($url);
             exit;

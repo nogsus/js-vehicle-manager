@@ -20,8 +20,8 @@ class JSVEHICLEMANAGERCityController {
                     $countryid = JSVEHICLEMANAGERrequest::getVar('countryid');
                     $stateid = JSVEHICLEMANAGERrequest::getVar('stateid');
 
-                    $_SESSION["countryid"] = $countryid;
-                    $_SESSION["stateid"] = $stateid;
+                    update_option("jsvm_countryid_for_city",$countryid);
+                    update_option("jsvm_stateid_for_city",$stateid);
                     JSVEHICLEMANAGERincluder::getJSModel('city')->getAllStatesCities($countryid, $stateid);
                     break;
                 case 'admin_formcity':
@@ -62,10 +62,10 @@ class JSVEHICLEMANAGERCityController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'delete-city') ) {
-             die( 'Security check Failed' ); 
+             die( 'Security check Failed' );
         }
-        $countryid = $_SESSION["countryid"];
-        $stateid = $_SESSION["stateid"];
+        $countryid = get_option( 'jsvm_countryid_for_city');
+        $stateid = get_option( 'jsvm_stateid_for_city');
 
         $ids = JSVEHICLEMANAGERrequest::getVar('jsvehiclemanager-cb');
         $result = JSVEHICLEMANAGERincluder::getJSModel('city')->deleteCities($ids);
@@ -81,10 +81,10 @@ class JSVEHICLEMANAGERCityController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'publish-city') ) {
-             die( 'Security check Failed' ); 
+             die( 'Security check Failed' );
         }
-        $countryid = $_SESSION["countryid"];
-        $stateid = $_SESSION["stateid"];
+        $countryid = get_option( 'jsvm_countryid_for_city');
+        $stateid = get_option( 'jsvm_stateid_for_city');
 
         $pagenum = JSVEHICLEMANAGERrequest::getVar('pagenum');
         $ids = JSVEHICLEMANAGERrequest::getVar('jsvehiclemanager-cb');
@@ -103,10 +103,10 @@ class JSVEHICLEMANAGERCityController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'unpublish-city') ) {
-             die( 'Security check Failed' ); 
+             die( 'Security check Failed' );
         }
-        $countryid = $_SESSION["countryid"];
-        $stateid = $_SESSION["stateid"];
+        $countryid = get_option( 'jsvm_countryid_for_city');
+        $stateid = get_option( 'jsvm_stateid_for_city');
 
         $pagenum = JSVEHICLEMANAGERrequest::getVar('pagenum');
         $ids = JSVEHICLEMANAGERrequest::getVar('jsvehiclemanager-cb');
@@ -125,10 +125,10 @@ class JSVEHICLEMANAGERCityController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'save-city') ) {
-             die( 'Security check Failed' ); 
+             die( 'Security check Failed' );
         }
-        $countryid = $_SESSION["countryid"];
-        $stateid = $_SESSION["stateid"];
+        $countryid = get_option( 'jsvm_countryid_for_city');
+        $stateid = get_option( 'jsvm_stateid_for_city');
         $url = admin_url("admin.php?page=jsvm_city&jsvmlt=cities&countryid=" . $countryid . "&stateid=" . $stateid);
 
         $data = JSVEHICLEMANAGERrequest::get('post');

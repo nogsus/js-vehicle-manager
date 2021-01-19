@@ -38,22 +38,10 @@ class JSVEHICLEMANAGERcurrencyModel {
 
     function getAllCurrencies() {
         // Filter
-        $title = JSVEHICLEMANAGERrequest::getVar('title');
-        $status = JSVEHICLEMANAGERrequest::getVar('status');
-        $code = JSVEHICLEMANAGERrequest::getVar('code');
-        $formsearch = JSVEHICLEMANAGERrequest::getVar('JSVEHICLEMANAGER_form_search', 'post');
-        if ($formsearch == 'JSVEHICLEMANAGER_SEARCH') {
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] = $title;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] = $status;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['code'] = $code;
-        }
-        if (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null) {
-            $title = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['title']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['title'] : null;
-            $status = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['status']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] : null;
-            $code = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['code']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['code'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['code'] : null;
-        } elseif ($formsearch !== 'JSVEHICLEMANAGER_SEARCH') {
-            unset($_SESSION['JSVEHICLEMANAGER_SEARCH']);
-        }
+        $title = jsvehiclemanager::$_search['currency']['title'];
+        $status = jsvehiclemanager::$_search['currency']['status'];
+        $code = jsvehiclemanager::$_search['currency']['code'];
+
         $inquery = '';
         $clause = ' WHERE ';
         if ($title != null) {
@@ -296,7 +284,7 @@ class JSVEHICLEMANAGERcurrencyModel {
         }
 
         return $price;
-    }    
+    }
 
     function getMessagekey(){
         $key = 'currency';if(is_admin()){$key = 'admin_'.$key;}return $key;

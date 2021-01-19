@@ -137,21 +137,22 @@ function getRowForVideoView($value, $vtype) {
                         <a href="<?php echo $weblink; ?>" ><?php echo $seller->weblink; ?></a>
                     </span>
                 </div>
-                <!-- <div class="jsvehiclemanager_seller-info-wrp" >
+                <!--
+                <div class="jsvehiclemanager_seller-info-wrp" >
                     <span class="jsvehiclemanager_cm-seller-info-bottom-bold-text">
                         <?php //echo __(jsvehiclemanager::$_data['fields']['cityid'],'js-vehicle-manager')." : "; ?>
                     </span>
                     <span class="jsvehiclemanager_cm-seller-info-bottom-text text-muted">
                         <?php //echo __($seller->location,'js-vehicle-manager'); ?>
                     </span>
-                </div>-->
+                </div>
+                -->
                 <div class="jsvehiclemanager_seller-info-wrp" >
                     <span class="jsvehiclemanager_cm-seller-info-bottom-bold-text">
                         <?php echo __(jsvehiclemanager::$_data['fields']['address'],'js-vehicle-manager')." : "; ?>
                     </span>
                     <span class="jsvehiclemanager_cm-seller-info-bottom-text text-muted">
-                        <?php 
-                        //echo esc_html($seller->address);
+                        <?php //echo esc_html($seller->address); 
                         if(!empty($seller->latitude) && !empty($seller->longitude)) {
                             echo '<a href="https://maps.google.com/?q=' . $seller->latitude . ',' . $seller->longitude . '" target="_blank">' . esc_html($seller->address) . '</a>'; 
                         } else {

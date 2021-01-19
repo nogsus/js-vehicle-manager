@@ -2,18 +2,17 @@
 
 /**
  * @package WP Vehicle Manager
- * @version 1.1.6
+ * @version 1.1.7
  */
 /*
   Plugin Name: WP Vehicle Manager
   Plugin URI: https://wpvehiclemanager.com/
   Description: WP Vehicle Manager is Word Press most comprehensive and easist show room plugin.
   Author: Joom Sky
-  Version: 1.1.6
+  Version: 1.1.7
   Text Domain: js-vehicle-manager
   Author URI: https://wpvehiclemanager.com/
  */
-
 if (!defined('ABSPATH'))
     die('Restricted Access');
 
@@ -37,6 +36,9 @@ class jsvehiclemanager {
     public static $_addon_query;
     public static $_db;
     public static $_wpprefixforuser;
+    public static $_search;
+    public static $_captcha;
+    public static $_jsvmhdsession;
 
     function __construct() {
         // to check what addons are active and create an array.
@@ -60,10 +62,10 @@ class jsvehiclemanager {
         self::$_error_flag = null;
         self::$_error_flag_message = null;
         self::$_car_manager_theme = 0;
-        self::$_currentversion = '116';
+        self::$_currentversion = '117';
         self::$_addon_query = array('select'=>'','join'=>'','where'=>'');
+        self::$_jsvmhdsession = JSVEHICLEMANAGERincluder::getObjectClass('wpvmsession');
         self::$_db = $wpdb;
-
         if(is_multisite()) {
             self::$_wpprefixforuser = $wpdb->base_prefix;
         }else{
@@ -84,6 +86,16 @@ class jsvehiclemanager {
         add_action('admin_init', array($this, 'jsvehiclemanager_activation_redirect'));//for post installation screens
         add_action('jsvehiclemanager_cronjobs_action', array($this,'jsvehiclemanager_cronjobs'));
         add_action('reset_jsvm_aadon_query', array($this,'reset_jsvm_aadon_query') );
+
+        //handle search and response message
+        add_action('admin_init', array($this,'jsvm_handle_search_form_data'));
+        add_action('init', array($this,'jsvm_handle_search_form_data'));
+        add_action( 'jsvm_delete_expire_session_data', array($this , 'jsvm_delete_expire_session_data') );
+        if( !wp_next_scheduled( 'jsvm_delete_expire_session_data' ) ) {
+            // Schedule the event
+            wp_schedule_event( time(), 'daily', 'jsvm_delete_expire_session_data' );
+        }
+
         // current theme to handle vehicle manager calls to car manager
         $theme = get_template();
         if($theme == 'car-manager'){
@@ -235,7 +247,11 @@ class jsvehiclemanager {
      * Localization
      */
     public function load_plugin_textdomain() {
-        load_plugin_textdomain('js-vehicle-manager', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+        if(!load_plugin_textdomain('js-vehicle-manager')){
+            load_plugin_textdomain('js-vehicle-manager', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+        }else{
+            load_plugin_textdomain('js-vehicle-manager');
+        }
     }
 
     /*
@@ -646,6 +662,488 @@ class jsvehiclemanager {
         return NULL;
     }
 
+    function jsvm_handle_search_form_data(){
+        $isadmin = is_admin();
+        $jsvmlt = '';
+        if(isset($_REQUEST['page'])){
+            $jsvmlt = $_REQUEST['page'];
+        }elseif(isset($_REQUEST['jsvmlt'])){
+            $jsvmlt = $_REQUEST['jsvmlt'];
+        }elseif(isset($_REQUEST['jsvmlay'])){
+            $jsvmlt = $_REQUEST['jsvmlay'];
+        }
+        $layoutname = explode("jsvm_", $jsvmlt);
+        if(isset($layoutname[1])){
+            $jsvmlt = $layoutname[1];
+        }
+        $callfrom = 3;
+        if(isset($_REQUEST['JSVEHICLEMANAGER_form_search']) && $_REQUEST['JSVEHICLEMANAGER_form_search'] == 'JSVEHICLEMANAGER_SEARCH' || isset($_REQUEST['searchsubmit']) && $_REQUEST['searchsubmit'] == 1){
+            $callfrom = 1;
+        }elseif(JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null){
+            $callfrom = 2;
+        }
+        $setcookies = false;
+        $ticket_search_cookie_data = '';
+        $jsvm_search_array = array();
+        switch($jsvmlt){
+            case 'vehicles':
+            case 'vehicle':
+            case 'vehiclequeue':
+                $search_userfields = JSVEHICLEMANAGERincluder::getObjectClass('customfields')->userFieldsForSearch(1);
+                if($callfrom == 1){ // form submit search
+                    if(is_admin()){
+                        $jsvm_search_array = JSVEHICLEMANAGERincluder::getJSModel('vehicle')->getAdminVehicleSearchFormData($search_userfields);
+                    }else{
+                        $jsvm_search_array = JSVEHICLEMANAGERincluder::getJSModel('vehicle')->getFrontSideVehicleSearchFormData($search_userfields);
+                    }
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $jsvm_search_array = JSVEHICLEMANAGERincluder::getJSModel('vehicle')->getCookiesSavedSearchDataVehicle($search_userfields);
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                if(is_admin()){
+                    JSVEHICLEMANAGERincluder::getJSModel('vehicle')->setSearchVariableForAdminVehicle($jsvm_search_array,$search_userfields);
+                }else{
+                    JSVEHICLEMANAGERincluder::getJSModel('vehicle')->setSearchVariableForFrontVehicle($jsvm_search_array,$search_userfields);
+                }
+            break;
+            case 'activitylog':
+            case 'activitylogs':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array = JSVEHICLEMANAGERincluder::getJSModel('activitylog')->getAdminActivityLogSearchFormData();
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $jsvm_search_array = JSVEHICLEMANAGERincluder::getJSModel('activitylog')->getCookiesSavedSearchDataActivityLog();
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                JSVEHICLEMANAGERincluder::getJSModel('activitylog')->setSearchVariableForAdminActivityLog($jsvm_search_array);
+            break;
+            case 'fieldordering':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array = JSVEHICLEMANAGERincluder::getJSModel('fieldordering')->getAdminFieldorderingSearchFormData();
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $jsvm_search_array = JSVEHICLEMANAGERincluder::getJSModel('fieldordering')->getCookiesSavedSearchDataFieldordering();
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                JSVEHICLEMANAGERincluder::getJSModel('fieldordering')->setSearchVariableForAdminFieldordering($jsvm_search_array);
+            break;
+            case 'vehiclealert':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array = JSVEHICLEMANAGERincluder::getJSModel('vehiclealert')->getAdminAlertSearchFormData();
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $jsvm_search_array = JSVEHICLEMANAGERincluder::getJSModel('vehiclealert')->getCookiesSavedSearchDataAlert();
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                JSVEHICLEMANAGERincluder::getJSModel('vehiclealert')->setSearchVariableForAdminAlert($jsvm_search_array);
+            break;
+            case 'make':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array['title'] = JSVEHICLEMANAGERrequest::getVar('title');
+                    $jsvm_search_array['status'] = JSVEHICLEMANAGERrequest::getVar('status');
+                    $jsvm_search_array['search_from_make'] = 1;
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $vehicle_search_cookie_data = '';
+                    if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+                        $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+                        $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+                    }
+                    if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_make']) && $vehicle_search_cookie_data['search_from_make'] == 1){
+                        $jsvm_search_array['title'] = $vehicle_search_cookie_data['title'];
+                        $jsvm_search_array['status'] = $vehicle_search_cookie_data['status'];
+                    }
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                jsvehiclemanager::$_search['make']['title'] = isset($jsvm_search_array['title']) ? $jsvm_search_array['title'] : null;
+                jsvehiclemanager::$_search['make']['status'] = isset($jsvm_search_array['status']) ? $jsvm_search_array['status'] : null;
+            break;
+            case 'user':
+            case 'users':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array['searchname'] = JSVEHICLEMANAGERrequest::getVar('searchname');
+                    $jsvm_search_array['email'] = JSVEHICLEMANAGERrequest::getVar('email');
+                    $jsvm_search_array['status'] = JSVEHICLEMANAGERrequest::getVar("status");
+                    $jsvm_search_array['search_from_user'] = 1;
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $vehicle_search_cookie_data = '';
+                    if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+                        $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+                        $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+                    }
+                    if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_user']) && $vehicle_search_cookie_data['search_from_user'] == 1){
+                        $jsvm_search_array['searchname'] = $vehicle_search_cookie_data['searchname'];
+                        $jsvm_search_array['email'] = $vehicle_search_cookie_data['email'];
+                        $jsvm_search_array['status'] = $vehicle_search_cookie_data['status'];
+                    }
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                jsvehiclemanager::$_search['user']['searchname'] = isset($jsvm_search_array['searchname']) ? $jsvm_search_array['searchname'] : null;
+                jsvehiclemanager::$_search['user']['status'] = isset($jsvm_search_array['status']) ? $jsvm_search_array['status'] : null;
+                jsvehiclemanager::$_search['user']['email'] = isset($jsvm_search_array['email']) ? $jsvm_search_array['email'] : null;
+            break;
+            case 'vehicletype':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array['title'] = JSVEHICLEMANAGERrequest::getVar('title');
+                    $jsvm_search_array['status'] = JSVEHICLEMANAGERrequest::getVar('status');
+                    $jsvm_search_array['search_from_type'] = 1;
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $vehicle_search_cookie_data = '';
+                    if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+                        $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+                        $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+                    }
+                    if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_type']) && $vehicle_search_cookie_data['search_from_type'] == 1){
+                        $jsvm_search_array['title'] = $vehicle_search_cookie_data['title'];
+                        $jsvm_search_array['status'] = $vehicle_search_cookie_data['status'];
+                    }
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                jsvehiclemanager::$_search['type']['title'] = isset($jsvm_search_array['title']) ? $jsvm_search_array['title'] : null;
+                jsvehiclemanager::$_search['type']['status'] = isset($jsvm_search_array['status']) ? $jsvm_search_array['status'] : null;
+            break;
+            case 'fueltypes':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array['title'] = JSVEHICLEMANAGERrequest::getVar('title');
+                    $jsvm_search_array['status'] = JSVEHICLEMANAGERrequest::getVar('status');
+                    $jsvm_search_array['search_from_fuel'] = 1;
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $vehicle_search_cookie_data = '';
+                    if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+                        $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+                        $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+                    }
+                    if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_fuel']) && $vehicle_search_cookie_data['search_from_fuel'] == 1){
+                        $jsvm_search_array['title'] = $vehicle_search_cookie_data['title'];
+                        $jsvm_search_array['status'] = $vehicle_search_cookie_data['status'];
+                    }
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                jsvehiclemanager::$_search['fuel']['title'] = isset($jsvm_search_array['title']) ? $jsvm_search_array['title'] : null;
+                jsvehiclemanager::$_search['fuel']['status'] = isset($jsvm_search_array['status']) ? $jsvm_search_array['status'] : null;
+            break;
+            case 'mileages':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array['title'] = JSVEHICLEMANAGERrequest::getVar('title');
+                    $jsvm_search_array['status'] = JSVEHICLEMANAGERrequest::getVar('status');
+                    $jsvm_search_array['search_from_milage'] = 1;
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $vehicle_search_cookie_data = '';
+                    if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+                        $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+                        $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+                    }
+                    if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_milage']) && $vehicle_search_cookie_data['search_from_milage'] == 1){
+                        $jsvm_search_array['title'] = $vehicle_search_cookie_data['title'];
+                        $jsvm_search_array['status'] = $vehicle_search_cookie_data['status'];
+                    }
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                jsvehiclemanager::$_search['milage']['title'] = isset($jsvm_search_array['title']) ? $jsvm_search_array['title'] : null;
+                jsvehiclemanager::$_search['milage']['status'] = isset($jsvm_search_array['status']) ? $jsvm_search_array['status'] : null;
+            break;
+            case 'modelyears':
+            case 'model':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array['title'] = JSVEHICLEMANAGERrequest::getVar('title');
+                    $jsvm_search_array['status'] = JSVEHICLEMANAGERrequest::getVar('status');
+                    $jsvm_search_array['search_from_modelyear'] = 1;
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $vehicle_search_cookie_data = '';
+                    if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+                        $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+                        $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+                    }
+                    if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_modelyear']) && $vehicle_search_cookie_data['search_from_modelyear'] == 1){
+                        $jsvm_search_array['title'] = $vehicle_search_cookie_data['title'];
+                        $jsvm_search_array['status'] = $vehicle_search_cookie_data['status'];
+                    }
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                jsvehiclemanager::$_search['modelyear']['title'] = isset($jsvm_search_array['title']) ? $jsvm_search_array['title'] : null;
+                jsvehiclemanager::$_search['modelyear']['status'] = isset($jsvm_search_array['status']) ? $jsvm_search_array['status'] : null;
+            break;
+            case 'transmissions':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array['title'] = JSVEHICLEMANAGERrequest::getVar('title');
+                    $jsvm_search_array['status'] = JSVEHICLEMANAGERrequest::getVar('status');
+                    $jsvm_search_array['search_from_transmission'] = 1;
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $vehicle_search_cookie_data = '';
+                    if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+                        $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+                        $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+                    }
+                    if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_transmission']) && $vehicle_search_cookie_data['search_from_transmission'] == 1){
+                        $jsvm_search_array['title'] = $vehicle_search_cookie_data['title'];
+                        $jsvm_search_array['status'] = $vehicle_search_cookie_data['status'];
+                    }
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                jsvehiclemanager::$_search['transmission']['title'] = isset($jsvm_search_array['title']) ? $jsvm_search_array['title'] : null;
+                jsvehiclemanager::$_search['transmission']['status'] = isset($jsvm_search_array['status']) ? $jsvm_search_array['status'] : null;
+            break;
+            case 'cylinders':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array['title'] = JSVEHICLEMANAGERrequest::getVar('title');
+                    $jsvm_search_array['status'] = JSVEHICLEMANAGERrequest::getVar('status');
+                    $jsvm_search_array['search_from_cylinder'] = 1;
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $vehicle_search_cookie_data = '';
+                    if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+                        $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+                        $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+                    }
+                    if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_cylinder']) && $vehicle_search_cookie_data['search_from_cylinder'] == 1){
+                        $jsvm_search_array['title'] = $vehicle_search_cookie_data['title'];
+                        $jsvm_search_array['status'] = $vehicle_search_cookie_data['status'];
+                    }
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                jsvehiclemanager::$_search['cylinder']['title'] = isset($jsvm_search_array['title']) ? $jsvm_search_array['title'] : null;
+                jsvehiclemanager::$_search['cylinder']['status'] = isset($jsvm_search_array['status']) ? $jsvm_search_array['status'] : null;
+            break;
+            case 'conditions':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array['title'] = JSVEHICLEMANAGERrequest::getVar('title');
+                    $jsvm_search_array['status'] = JSVEHICLEMANAGERrequest::getVar('status');
+                    $jsvm_search_array['search_from_condition'] = 1;
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $vehicle_search_cookie_data = '';
+                    if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+                        $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+                        $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+                    }
+                    if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_condition']) && $vehicle_search_cookie_data['search_from_condition'] == 1){
+                        $jsvm_search_array['title'] = $vehicle_search_cookie_data['title'];
+                        $jsvm_search_array['status'] = $vehicle_search_cookie_data['status'];
+                    }
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                jsvehiclemanager::$_search['condition']['title'] = isset($jsvm_search_array['title']) ? $jsvm_search_array['title'] : null;
+                jsvehiclemanager::$_search['condition']['status'] = isset($jsvm_search_array['status']) ? $jsvm_search_array['status'] : null;
+            break;
+            case 'currency':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array['title'] = JSVEHICLEMANAGERrequest::getVar('title');
+                    $jsvm_search_array['status'] = JSVEHICLEMANAGERrequest::getVar('status');
+                    $jsvm_search_array['code'] = JSVEHICLEMANAGERrequest::getVar('code');
+                    $jsvm_search_array['search_from_currency'] = 1;
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $vehicle_search_cookie_data = '';
+                    if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+                        $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+                        $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+                    }
+                    if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_currency']) && $vehicle_search_cookie_data['search_from_currency'] == 1){
+                        $jsvm_search_array['title'] = $vehicle_search_cookie_data['title'];
+                        $jsvm_search_array['status'] = $vehicle_search_cookie_data['status'];
+                        $jsvm_search_array['code'] = $vehicle_search_cookie_data['code'];
+                    }
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                jsvehiclemanager::$_search['currency']['title'] = isset($jsvm_search_array['title']) ? $jsvm_search_array['title'] : null;
+                jsvehiclemanager::$_search['currency']['status'] = isset($jsvm_search_array['status']) ? $jsvm_search_array['status'] : null;
+                jsvehiclemanager::$_search['currency']['code'] = isset($jsvm_search_array['code']) ? $jsvm_search_array['code'] : null;
+            break;
+            case 'country':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array['countryname'] = JSVEHICLEMANAGERrequest::getVar('countryname');
+                    $jsvm_search_array['status'] = JSVEHICLEMANAGERrequest::getVar('status');
+                    $jsvm_search_array['states'] = JSVEHICLEMANAGERrequest::getVar('states');
+                    $jsvm_search_array['city'] = JSVEHICLEMANAGERrequest::getVar('city');
+                    $jsvm_search_array['search_from_country'] = 1;
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $vehicle_search_cookie_data = '';
+                    if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+                        $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+                        $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+                    }
+                    if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_country']) && $vehicle_search_cookie_data['search_from_country'] == 1){
+                        $jsvm_search_array['countryname'] = $vehicle_search_cookie_data['countryname'];
+                        $jsvm_search_array['status'] = $vehicle_search_cookie_data['status'];
+                        $jsvm_search_array['states'] = $vehicle_search_cookie_data['states'];
+                        $jsvm_search_array['city'] = $vehicle_search_cookie_data['city'];
+                    }
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                jsvehiclemanager::$_search['country']['countryname'] = isset($jsvm_search_array['countryname']) ? $jsvm_search_array['countryname'] : null;
+                jsvehiclemanager::$_search['country']['status'] = isset($jsvm_search_array['status']) ? $jsvm_search_array['status'] : null;
+                jsvehiclemanager::$_search['country']['states'] = isset($jsvm_search_array['states']) ? $jsvm_search_array['states'] : null;
+                jsvehiclemanager::$_search['country']['city'] = isset($jsvm_search_array['city']) ? $jsvm_search_array['city'] : null;
+            break;
+            case 'state':
+            case 'states':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array['searchname'] = JSVEHICLEMANAGERrequest::getVar('searchname');
+                    $jsvm_search_array['status'] = JSVEHICLEMANAGERrequest::getVar("status");
+                    $jsvm_search_array['city'] = JSVEHICLEMANAGERrequest::getVar('city');
+                    $jsvm_search_array['search_from_state'] = 1;
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $vehicle_search_cookie_data = '';
+                    if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+                        $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+                        $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+                    }
+                    if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_state']) && $vehicle_search_cookie_data['search_from_state'] == 1){
+                        $jsvm_search_array['searchname'] = $vehicle_search_cookie_data['searchname'];
+                        $jsvm_search_array['status'] = $vehicle_search_cookie_data['status'];
+                        $jsvm_search_array['city'] = $vehicle_search_cookie_data['city'];
+                    }
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                jsvehiclemanager::$_search['state']['searchname'] = isset($jsvm_search_array['searchname']) ? $jsvm_search_array['searchname'] : null;
+                jsvehiclemanager::$_search['state']['status'] = isset($jsvm_search_array['status']) ? $jsvm_search_array['status'] : null;
+                jsvehiclemanager::$_search['state']['city'] = isset($jsvm_search_array['city']) ? $jsvm_search_array['city'] : null;
+            break;
+            case 'city':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array['searchname'] = JSVEHICLEMANAGERrequest::getVar('searchname');
+                    $jsvm_search_array['status'] = JSVEHICLEMANAGERrequest::getVar("status");
+                    $jsvm_search_array['search_from_city'] = 1;
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $vehicle_search_cookie_data = '';
+                    if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+                        $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+                        $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+                    }
+                    if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_city']) && $vehicle_search_cookie_data['search_from_city'] == 1){
+                        $jsvm_search_array['searchname'] = $vehicle_search_cookie_data['searchname'];
+                        $jsvm_search_array['status'] = $vehicle_search_cookie_data['status'];
+                    }
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                jsvehiclemanager::$_search['city']['searchname'] = isset($jsvm_search_array['searchname']) ? $jsvm_search_array['searchname'] : null;
+                jsvehiclemanager::$_search['city']['status'] = isset($jsvm_search_array['status']) ? $jsvm_search_array['status'] : null;
+            break;
+            case 'adexpiry':
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array['advalue'] = JSVEHICLEMANAGERrequest::getVar('advalue');
+                    $jsvm_search_array['type'] = JSVEHICLEMANAGERrequest::getVar('type');
+                    $jsvm_search_array['status'] = JSVEHICLEMANAGERrequest::getVar('status');
+                    $jsvm_search_array['search_from_adexpiry'] = 1;
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $vehicle_search_cookie_data = '';
+                    if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+                        $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+                        $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+                    }
+                    if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_adexpiry']) && $vehicle_search_cookie_data['search_from_adexpiry'] == 1){
+                        $jsvm_search_array['advalue'] = $vehicle_search_cookie_data['advalue'];
+                        $jsvm_search_array['status'] = $vehicle_search_cookie_data['status'];
+                        $jsvm_search_array['type'] = $vehicle_search_cookie_data['type'];
+                    }
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                jsvehiclemanager::$_search['adexpiry']['advalue'] = isset($jsvm_search_array['advalue']) ? $jsvm_search_array['advalue'] : null;
+                jsvehiclemanager::$_search['adexpiry']['status'] = isset($jsvm_search_array['status']) ? $jsvm_search_array['status'] : null;
+                jsvehiclemanager::$_search['adexpiry']['type'] = isset($jsvm_search_array['type']) ? $jsvm_search_array['type'] : null;
+            break;
+            case 'sellerlist':
+                $search_userfields = JSVEHICLEMANAGERincluder::getObjectClass('customfields')->userFieldsForSearch(2);
+                if($callfrom == 1){ // form submit search
+                    $jsvm_search_array['searchname'] = JSVEHICLEMANAGERrequest::getVar('searchname');
+                    $jsvm_search_array['weblink'] = JSVEHICLEMANAGERrequest::getVar('weblink');
+                    $jsvm_search_array['cityid'] = JSVEHICLEMANAGERrequest::getVar('cityid');
+                    $jsvm_search_array['search_from_sellerlist'] = 1;
+                    if (!empty($search_userfields)) {
+                        foreach ($search_userfields as $uf) {
+                            $jsvm_search_array['jsvm_seller_customfield'][$uf->field] = JSVEHICLEMANAGERrequest::getVar($uf->field);
+                        }
+                    }
+                    $setcookies = true;
+                }elseif($callfrom == 2){ // when pagnitaion call
+                    $vehicle_search_cookie_data = '';
+                    if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+                        $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+                        $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+                    }
+                    if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_sellerlist']) && $vehicle_search_cookie_data['search_from_sellerlist'] == 1){
+                        $jsvm_search_array['searchname'] = $vehicle_search_cookie_data['searchname'];
+                        $jsvm_search_array['weblink'] = $vehicle_search_cookie_data['weblink'];
+                        $jsvm_search_array['cityid'] = $vehicle_search_cookie_data['cityid'];
+                        if (!empty($search_userfields)) {
+                            foreach ($search_userfields as $uf) {
+                                $jsvm_search_array['jsvm_seller_customfield'][$uf->field] = (isset($jsvm_search_array['jsvm_seller_customfield'][$uf->field]) && $jsvm_search_array['jsvm_seller_customfield'][$uf->field] != '') ? $jsvm_search_array['jsvm_seller_customfield'][$uf->field] : null;
+                            }
+                        }
+                    }
+                }else{
+                    jsvehiclemanager::removeusersearchcookies();
+                }
+                jsvehiclemanager::$_search['sellerlist']['searchname'] = isset($jsvm_search_array['searchname']) ? $jsvm_search_array['searchname'] : null;
+                jsvehiclemanager::$_search['sellerlist']['weblink'] = isset($jsvm_search_array['weblink']) ? $jsvm_search_array['weblink'] : null;
+                jsvehiclemanager::$_search['sellerlist']['cityid'] = isset($jsvm_search_array['cityid']) ? $jsvm_search_array['cityid'] : null;
+                if (!empty($search_userfields)) {
+                    foreach ($search_userfields as $uf) {
+                        jsvehiclemanager::$_search['jsvm_seller_customfield'][$uf->field] = isset($jsvm_search_array['jsvm_seller_customfield'][$uf->field]) ? $jsvm_search_array['jsvm_seller_customfield'][$uf->field] : null;
+                    }
+                }
+            break;
+        }
+
+        if($setcookies){
+            jsvehiclemanager::setusersearchcookies($setcookies,$jsvm_search_array);
+        }
+    }
+
+    public static function removeusersearchcookies(){
+        if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+            setcookie('jsvm_vehicle_search_data' , '' , time() - 3600 , COOKIEPATH);
+            if ( SITECOOKIEPATH != COOKIEPATH ){
+                setcookie('jsvm_vehicle_search_data' , '' , time() - 3600 , SITECOOKIEPATH);
+            }
+        }
+    }
+
+    public static function setusersearchcookies($cookiesval = false , $jsvm_search_array){
+        if(!$cookiesval)
+            return false;
+        $data = json_encode( $jsvm_search_array );
+        $data = base64_encode($data);
+        setcookie('jsvm_vehicle_search_data' , $data , 0 , COOKIEPATH);
+        if ( SITECOOKIEPATH != COOKIEPATH ){
+            setcookie('jsvm_vehicle_search_data' , $data , 0 , SITECOOKIEPATH);
+        }
+    }
+
+    function jsvm_delete_expire_session_data(){
+        global $wpdb;
+        $wpdb->query('DELETE  FROM '.$wpdb->prefix.'js_vehiclemanager_jsvmsessiondata WHERE sessionexpire < "'. time() .'"');
+    }
+
 }
 
 $jsvehiclemanager = new jsvehiclemanager();
@@ -660,25 +1158,6 @@ function addLostPasswordLink() {
     }
 
     return $losturl;
-}
-
-add_action('init', 'jsvehiclemanager_custom_init_session', 1);
-
-function jsvehiclemanager_custom_init_session() {
-    if (!session_id())
-        session_start();
-    if(isset($_SESSION['jsvehiclemanager_apply_visitor'])){
-        $layout = JSVEHICLEMANAGERrequest::getVar('jsvmlt');
-        if($layout != null && $layout != 'addresume'){ // reset the session id
-            unset($_SESSION['jsvehiclemanager_apply_visitor']);
-        }
-    }
-    if(isset($_SESSION['wp-jsvehiclemanager']) && isset($_SESSION['wp-jsvehiclemanager']['resumeid'])){
-        $layout = JSVEHICLEMANAGERrequest::getVar('jsvmlt');
-        if($layout != null && $layout != 'addresume'){ // reset the session id
-            unset($_SESSION['wp-jsvehiclemanager']);
-        }
-    }
 }
 
 // define the upgrader_pre_download callback

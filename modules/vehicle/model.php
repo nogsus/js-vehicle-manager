@@ -18,8 +18,8 @@ class JSVEHICLEMANAGERvehicleModel {
     }
 
     function sorting() {
-        jsvehiclemanager::$_data['sorton'] = JSVEHICLEMANAGERrequest::getVar('sorton', 'post', 6);
-        jsvehiclemanager::$_data['sortby'] = JSVEHICLEMANAGERrequest::getVar('sortby', 'post', 2);
+        jsvehiclemanager::$_data['sorton'] = jsvehiclemanager::$_search['vehicle']['sorton'];
+        jsvehiclemanager::$_data['sortby'] = jsvehiclemanager::$_search['vehicle']['sortby'];
         switch (jsvehiclemanager::$_data['sorton']) {
             case 6: // created
                 $sort_string = ' veh.created ';
@@ -56,47 +56,18 @@ class JSVEHICLEMANAGERvehicleModel {
         // DB Object
         $db = new jsvehiclemanagerdb();
         // Filter
-        $status = JSVEHICLEMANAGERrequest::getVar('status');
-        $isgfcombo = JSVEHICLEMANAGERrequest::getVar('isgfcombo');
-        $condition = JSVEHICLEMANAGERrequest::getVar('condition');
-        $transmission = JSVEHICLEMANAGERrequest::getVar('transmission');
-        $fueltype = JSVEHICLEMANAGERrequest::getVar('fueltype');
-        $mileage = JSVEHICLEMANAGERrequest::getVar('mileage');
-        $make = JSVEHICLEMANAGERrequest::getVar('make');
-        $model = JSVEHICLEMANAGERrequest::getVar('model');
-        $pricestrat = JSVEHICLEMANAGERrequest::getVar('pricestrat');
-        $priceend = JSVEHICLEMANAGERrequest::getVar('priceend');
-        $uid = JSVEHICLEMANAGERrequest::getVar('uid');
+        $status = jsvehiclemanager::$_search['vehicle']['status'];
+        $isgfcombo = jsvehiclemanager::$_search['vehicle']['isgfcombo'];
+        $condition = jsvehiclemanager::$_search['vehicle']['condition'];
+        $transmission = jsvehiclemanager::$_search['vehicle']['transmission'];
+        $fueltype = jsvehiclemanager::$_search['vehicle']['fueltype'];
+        $mileage = jsvehiclemanager::$_search['vehicle']['mileage'];
+        $make = jsvehiclemanager::$_search['vehicle']['make'];
+        $model = jsvehiclemanager::$_search['vehicle']['model'];
+        $pricestrat = jsvehiclemanager::$_search['vehicle']['pricestrat'];
+        $priceend = jsvehiclemanager::$_search['vehicle']['priceend'];
+        $uid = jsvehiclemanager::$_search['vehicle']['uid'];
         $formsearch = JSVEHICLEMANAGERrequest::getVar('JSVEHICLEMANAGER_form_search', 'post');
-        if ($formsearch == 'JSVEHICLEMANAGER_SEARCH') {
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] = $status;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['isgfcombo'] = $isgfcombo;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['condition'] = $condition;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['transmission'] = $transmission;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['fueltype'] = $fueltype;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['mileage'] = $mileage;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['make'] = $make;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['model'] = $model;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['pricestrat'] = $pricestrat;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['priceend'] = $priceend;
-            $_SESSION['JSVEHICLEMANAGER_SEARCH']['uid'] = $uid;
-        }
-        if (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null) {
-            $status = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['status']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['status'] : null;
-            $isgfcombo = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['isgfcombo']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['isgfcombo'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['isgfcombo'] : null;
-            $condition = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['condition']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['condition'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['condition'] : null;
-            $transmission = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['transmission']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['transmission'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['transmission'] : null;
-            $fueltype = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['fueltype']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['fueltype'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['fueltype'] : null;
-            $mileage = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['mileage']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['mileage'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['mileage'] : null;
-            $make = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['make']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['make'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['make'] : null;
-            $model = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['model']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['model'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['model'] : null;
-            $pricestrat = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['pricestrat']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['pricestrat'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['pricestrat'] : null;
-            $priceend = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['priceend']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['priceend'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['priceend'] : null;
-            $uid = (isset($_SESSION['JSVEHICLEMANAGER_SEARCH']['uid']) && $_SESSION['JSVEHICLEMANAGER_SEARCH']['uid'] != '') ? $_SESSION['JSVEHICLEMANAGER_SEARCH']['uid'] : null;
-
-        } elseif ($formsearch !== 'JSVEHICLEMANAGER_SEARCH') {
-            unset($_SESSION['JSVEHICLEMANAGER_SEARCH']);
-        }
 
         /*
             $isgfcombo
@@ -1602,9 +1573,10 @@ class JSVEHICLEMANAGERvehicleModel {
             $vehicle->location = JSVEHICLEMANAGERincluder::getJSModel('city')->getLocationDataForView($vehicle->loccity);
         }
         jsvehiclemanager::$_data[0] = $finalvehicles;
-        if(isset($_SESSION['jsvm_comp_vehicle']) && is_array($_SESSION['jsvm_comp_vehicle']) && !empty($_SESSION['jsvm_comp_vehicle'])){
+        if(isset($_COOKIE['jsvm_comp_vehicle'])){
+            $vehnum = json_decode( base64_decode($_COOKIE['jsvm_comp_vehicle']),true);
             $htmldata = array();
-            jsvehiclemanager::$_data['json_data'] = apply_filters("jsvm_comparevehicle_vehicle_data_for_compare",$htmldata,$_SESSION['jsvm_comp_vehicle']);
+            jsvehiclemanager::$_data['json_data'] = apply_filters("jsvm_comparevehicle_vehicle_data_for_compare",$htmldata,$vehnum);
         }
         jsvehiclemanager::$_data['fields'] = JSVEHICLEMANAGERincluder::getJSModel('fieldordering')->getFieldsOrderingforView(1,10);
         if(JSVEHICLEMANAGERincluder::getObjectClass('user')->isguest()){
@@ -2356,7 +2328,10 @@ class JSVEHICLEMANAGERvehicleModel {
     function setListStyleSession(){
         check_ajax_referer( 'wp_js_vm_nonce_check', 'wpnoncecheck' );
         $listingstyle = JSVEHICLEMANAGERrequest::getVar('styleid');
-        $_SESSION['jsvm_listing_style'] = $listingstyle;
+        setcookie('jsvm_listing_style' , $listingstyle , 0 , COOKIEPATH);
+        if ( SITECOOKIEPATH != COOKIEPATH ){
+            setcookie('jsvm_listing_style' , $listingstyle , 0 , SITECOOKIEPATH);
+        }
         return $listingstyle;
     }
 
@@ -2418,10 +2393,18 @@ class JSVEHICLEMANAGERvehicleModel {
             WHERE veh.id = ".$id;
         $db->setQuery($query);
         $data = $db->loadObject($query);
-
-        $_SESSION['autoz-email']['sellername'] = $data->sellername;
-        $_SESSION['autoz-email']['vehicletitle'] = $name;
-        $_SESSION['autoz-email']['useremail'] = $data->email;
+        setcookie('autoz-email-sellername' , $data->sellername , 0 , COOKIEPATH);
+        if ( SITECOOKIEPATH != COOKIEPATH ){
+            setcookie('autoz-email-sellername' , $data->sellername , 0 , SITECOOKIEPATH);
+        }
+        setcookie('autoz-email-vehicletitle' , $name , 0 , COOKIEPATH);
+        if ( SITECOOKIEPATH != COOKIEPATH ){
+            setcookie('autoz-email-vehicletitle' , $name , 0 , SITECOOKIEPATH);
+        }
+        setcookie('autoz-email-useremail' , $data->email , 0 , COOKIEPATH);
+        if ( SITECOOKIEPATH != COOKIEPATH ){
+            setcookie('autoz-email-useremail' , $data->email , 0 , SITECOOKIEPATH);
+        }
 
         return;
     }
@@ -2829,5 +2812,84 @@ class JSVEHICLEMANAGERvehicleModel {
     }
     //mobile code here by zain end
 
+    /* Vehicle Search data, admin setting, frontend setting and delete cookies */
+    function getAdminVehicleSearchFormData($search_userfields){
+        $jsvm_search_array = array();
+        $search_userfields = JSVEHICLEMANAGERincluder::getObjectClass('customfields')->userFieldsForSearch(1);
+        $jsvm_search_array['status'] = JSVEHICLEMANAGERrequest::getVar('status','');
+        $jsvm_search_array['isgfcombo'] = JSVEHICLEMANAGERrequest::getVar('isgfcombo' , '');
+        $jsvm_search_array['condition'] = JSVEHICLEMANAGERrequest::getVar('condition','');
+        $jsvm_search_array['transmission'] = JSVEHICLEMANAGERrequest::getVar('transmission');
+        $jsvm_search_array['fueltype'] = JSVEHICLEMANAGERrequest::getVar('fueltype');
+        $jsvm_search_array['mileage'] = JSVEHICLEMANAGERrequest::getVar('mileage');
+        $jsvm_search_array['make'] = JSVEHICLEMANAGERrequest::getVar('make');
+        $jsvm_search_array['model'] = JSVEHICLEMANAGERrequest::getVar('model');
+        $jsvm_search_array['pricestrat'] = JSVEHICLEMANAGERrequest::getVar('pricestrat');
+        $jsvm_search_array['priceend'] = JSVEHICLEMANAGERrequest::getVar('priceend');
+        $jsvm_search_array['uid'] = JSVEHICLEMANAGERrequest::getVar('uid');
+        $jsvm_search_array['sorton'] = JSVEHICLEMANAGERrequest::getVar('sorton', 'post', 6);
+        $jsvm_search_array['sortby'] = JSVEHICLEMANAGERrequest::getVar('sortby', 'post', 2);
+        $jsvm_search_array['search_from_vehicle'] = 1;
+        if (!empty($search_userfields)) {
+            foreach ($search_userfields as $uf) {
+                $jsvm_search_array['jsvm_vehicle_custom_field'][$uf->field] = JSVEHICLEMANAGERrequest::getVar($uf->field, 'post');
+            }
+        }
+        return $jsvm_search_array;
+    }
+
+    function setSearchVariableForAdminVehicle($jsvm_search_array,$search_userfields){
+        jsvehiclemanager::$_search['vehicle']['status'] = isset($jsvm_search_array['status']) ? $jsvm_search_array['status'] : null;
+        jsvehiclemanager::$_search['vehicle']['isgfcombo'] = isset($jsvm_search_array['isgfcombo']) ? $jsvm_search_array['isgfcombo'] : null;
+        jsvehiclemanager::$_search['vehicle']['condition'] = isset($jsvm_search_array['condition']) ? $jsvm_search_array['condition'] : null;
+        jsvehiclemanager::$_search['vehicle']['transmission'] = isset($jsvm_search_array['transmission']) ? $jsvm_search_array['transmission'] : null;
+        jsvehiclemanager::$_search['vehicle']['fueltype'] = isset($jsvm_search_array['fueltype']) ? $jsvm_search_array['fueltype'] : null;
+        jsvehiclemanager::$_search['vehicle']['mileage'] = isset($jsvm_search_array['mileage']) ? $jsvm_search_array['mileage'] : null;
+        jsvehiclemanager::$_search['vehicle']['make'] = isset($jsvm_search_array['make']) ? $jsvm_search_array['make'] : null;
+        jsvehiclemanager::$_search['vehicle']['model'] = isset($jsvm_search_array['model']) ? $jsvm_search_array['model'] : null;
+        jsvehiclemanager::$_search['vehicle']['pricestrat'] = isset($jsvm_search_array['pricestrat']) ? $jsvm_search_array['pricestrat'] : null;
+        jsvehiclemanager::$_search['vehicle']['priceend'] = isset($jsvm_search_array['priceend']) ? $jsvm_search_array['priceend'] : null;
+        jsvehiclemanager::$_search['vehicle']['uid'] = isset($jsvm_search_array['uid']) ? $jsvm_search_array['uid'] : '';
+        jsvehiclemanager::$_search['vehicle']['sorton'] = isset($jsvm_search_array['sorton']) ? $jsvm_search_array['sorton'] : 6;
+        jsvehiclemanager::$_search['vehicle']['sortby'] = isset($jsvm_search_array['sortby']) ? $jsvm_search_array['sortby'] : 2;
+        if (!empty($search_userfields)) {
+            foreach ($search_userfields as $uf) {
+                jsvehiclemanager::$_search['jsvm_vehicle_custom_field'][$uf->field] = isset($jsvm_search_array['jsvm_vehicle_custom_field'][$uf->field]) ? $jsvm_search_array['jsvm_vehicle_custom_field'][$uf->field] : null;
+            }
+        }
+    }
+
+    function getCookiesSavedSearchDataVehicle($search_userfields){
+        $jsvm_search_array = array();
+        $vehicle_search_cookie_data = '';
+        if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+            $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+            $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+        }
+        if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_vehicle']) && $vehicle_search_cookie_data['search_from_vehicle'] == 1){
+            $jsvm_search_array['status'] = $vehicle_search_cookie_data['status'];
+            $jsvm_search_array['isgfcombo'] = $vehicle_search_cookie_data['isgfcombo'];
+            $jsvm_search_array['condition'] = $vehicle_search_cookie_data['condition'];
+            $jsvm_search_array['transmission'] = $vehicle_search_cookie_data['transmission'];
+            $jsvm_search_array['fueltype'] = $vehicle_search_cookie_data['fueltype'];
+            $jsvm_search_array['mileage'] = $vehicle_search_cookie_data['mileage'];
+            $jsvm_search_array['make'] = $vehicle_search_cookie_data['make'];
+            $jsvm_search_array['model'] = $vehicle_search_cookie_data['model'];
+            $jsvm_search_array['pricestrat'] = $vehicle_search_cookie_data['pricestrat'];
+            $jsvm_search_array['priceend'] = $vehicle_search_cookie_data['priceend'];
+            $jsvm_search_array['uid'] = $vehicle_search_cookie_data['uid'];
+            $jsvm_search_array['sorton'] = $vehicle_search_cookie_data['sorton'];
+            $jsvm_search_array['sortby'] = $vehicle_search_cookie_data['sortby'];
+            $jsvm_search_array['search_from_vehicle'] = $vehicle_search_cookie_data['search_from_vehicle'];
+
+            if (!empty($search_userfields)) {
+                foreach ($search_userfields as $uf) {
+                    $jsvm_search_array['jsvm_vehicle_custom_field'][$uf->field] = (isset($vehicle_search_cookie_data['jsvm_vehicle_custom_field'][$uf->field]) && $vehicle_search_cookie_data['jsvm_vehicle_custom_field'][$uf->field] != '') ? $vehicle_search_cookie_data['jsvm_vehicle_custom_field'][$uf->field] : null;
+                }
+            }
+        }
+
+        return $jsvm_search_array;
+    }
 }
 ?>

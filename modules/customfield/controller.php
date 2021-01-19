@@ -18,7 +18,7 @@ class JSVEHICLEMANAGERCustomfieldController {
             switch ($layout) {
                 case 'admin_userfields':
                     $fieldfor = JSVEHICLEMANAGERrequest::getVar('ff');
-                    $_SESSION['ff'] = $fieldfor;
+                    update_option( 'jsvm_customfield_ff', $fieldfor );
                     JSVEHICLEMANAGERincluder::getJSModel('customfield')->getUserFields($fieldfor);
                     jsvehiclemanager::$_data['fieldfor'] = $fieldfor;
                     break;
@@ -28,7 +28,7 @@ class JSVEHICLEMANAGERCustomfieldController {
                     if (empty($fieldfor))
                         $fieldfor = JSVEHICLEMANAGERrequest::getVar('ff');
                     if (empty($fieldfor))
-                        $fieldfor = $_SESSION['ff'];
+                        $fieldfor = get_option( 'jsvm_customfield_ff' , 1 );
 
                     JSVEHICLEMANAGERincluder::getJSModel('fieldordering')->getUserFieldbyId($id, $fieldfor);
                     if ($fieldfor == 3)
@@ -56,10 +56,10 @@ class JSVEHICLEMANAGERCustomfieldController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'delete-customfield') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $ids = JSVEHICLEMANAGERrequest::getVar('jsvm-vm-cb');
-        $fieldfor = $_SESSION['ff'];
+        $fieldfor = get_option( 'jsvm_customfield_ff');
         $result = JSVEHICLEMANAGERincluder::getJSModel('customfield')->deleteUserFields($ids);
         $msg = JSVEHICLEMANAGERmessages::getMessage($result, 'customfield');
         $url = admin_url("admin.php?page=jsvm_customfield&jsvmlt=userfields&ff=" . $fieldfor);

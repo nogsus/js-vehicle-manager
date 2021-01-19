@@ -154,9 +154,9 @@ if (jsvehiclemanager::$_error_flag == null) {
                     <?php } ?>
                 <?php }else{
                     $logout_link = '';
-                    if (isset($_SESSION['jsvehiclemanager-socialmedia']) && !empty($_SESSION['jsvehiclemanager-socialmedia'])) {
+                    if (isset($_COOKIE['jsvehiclemanager-socialmedia']) && !empty($_COOKIE['jsvehiclemanager-socialmedia'])) {
                         if(in_array('sociallogin', jsvehiclemanager::$_active_addons)){
-                            $logout_link = jsvehiclemanager::makeUrl(array('jsvmme'=>'sociallogin', 'task'=>'logout', 'action'=>'jsvmtask', 'media'=>$_SESSION['jsvehiclemanager-socialmedia'] , 'jsvehiclemanagerpageid'=>jsvehiclemanager::getPageid()));
+                            $logout_link = jsvehiclemanager::makeUrl(array('jsvmme'=>'sociallogin', 'task'=>'logout', 'action'=>'jsvmtask', 'media'=>$_COOKIE['jsvehiclemanager-socialmedia'] , 'jsvehiclemanagerpageid'=>jsvehiclemanager::getPageid()));
                         }
                     } else {
                             $logout_link = wp_logout_url(get_permalink());

@@ -63,19 +63,8 @@ class JSVehicleManageractivitylogModel {
     }
 
     function sorting() {
-        jsvehiclemanager::$_data['sorton'] = JSVEHICLEMANAGERrequest::getVar('sorton', 'post', 4);
-        jsvehiclemanager::$_data['sortby'] = JSVEHICLEMANAGERrequest::getVar('sortby', 'post', 2);
-
-        if (jsvehiclemanager::$_data['sorton'] != 4 || jsvehiclemanager::$_data['sortby'] != 2) {
-            $_SESSION['JSVEHICLEMANAGER_SORT']['al_sorton'] = jsvehiclemanager::$_data['sorton'];
-            $_SESSION['JSVEHICLEMANAGER_SORT']['al_sortby'] = jsvehiclemanager::$_data['sortby'];
-        }        
-        if (JSVEHICLEMANAGERrequest::getVar('pagenum', 'get', null) != null) {
-            jsvehiclemanager::$_data['sortby'] = (isset($_SESSION['JSVEHICLEMANAGER_SORT']['al_sortby']) && $_SESSION['JSVEHICLEMANAGER_SORT']['al_sortby'] != '') ? $_SESSION['JSVEHICLEMANAGER_SORT']['al_sortby'] : 4;
-            jsvehiclemanager::$_data['sorton'] = (isset($_SESSION['JSVEHICLEMANAGER_SORT']['al_sorton']) && $_SESSION['JSVEHICLEMANAGER_SORT']['al_sorton'] != '') ? $_SESSION['JSVEHICLEMANAGER_SORT']['al_sorton'] : 2;
-        } elseif(jsvehiclemanager::$_data['sorton'] == 4 && jsvehiclemanager::$_data['sortby'] == 2) {
-            unset($_SESSION['JSVEHICLEMANAGER_SORT']);
-        }
+        jsvehiclemanager::$_data['sorton'] = jsvehiclemanager::$_search['vehicle']['sorton'];
+        jsvehiclemanager::$_data['sortby'] = jsvehiclemanager::$_search['vehicle']['sortby'];
 
         switch (jsvehiclemanager::$_data['sorton']) {
             case 1: // created
@@ -109,99 +98,99 @@ class JSVehicleManageractivitylogModel {
             $string .= $comma . '"vehicletypes"';
             $comma = ',';
         }
-        
+
         if (isset($data['vehicles'])) {
             $string .= $comma . '"vehicles"';
             $comma = ',';
         }
-        
+
         if (isset($data['fueltypes'])) {
             $string .= $comma . '"fueltypes"';
             $comma = ',';
         }
-        
+
         if (isset($data['mileages'])) {
             $string .= $comma . '"mileages"';
             $comma = ',';
         }
-        
+
         if (isset($data['modelyears'])) {
             $string .= $comma . '"modelyears"';
             $comma = ',';
         }
-        
+
         if (isset($data['transmissions'])) {
             $string .= $comma . '"transmissions"';
             $comma = ',';
         }
-        
+
         if (isset($data['adexpiries'])) {
             $string .= $comma . '"adexpiries"';
             $comma = ',';
         }
-        
+
         if (isset($data['cylinders'])) {
             $string .= $comma . '"cylinders"';
             $comma = ',';
         }
-        
+
         if (isset($data['conditions'])) {
             $string .= $comma . '"conditions"';
             $comma = ',';
         }
-        
+
         if (isset($data['currencies'])) {
             $string .= $comma . '"currencies"';
             $comma = ',';
         }
-        
+
         if (isset($data['makes'])) {
             $string .= $comma . '"makes"';
             $comma = ',';
         }
-        
+
         if (isset($data['config'])) {
             $string .= $comma . '"config"';
             $comma = ',';
         }
-        
+
         if (isset($data['countries'])) {
             $string .= $comma . '"countries"';
             $comma = ',';
         }
-        
+
         if (isset($data['states'])) {
             $string .= $comma . '"states"';
             $comma = ',';
         }
-        
+
         if (isset($data['cities'])) {
             $string .= $comma . '"cities"';
             $comma = ',';
         }
-        
+
         if (isset($data['credits_pack'])) {
             $string .= $comma . '"credits_pack"';
             $comma = ',';
         }
-        
+
 
         $inquery = " ";
         $db = new jsvehiclemanagerdb();
         $searchsubmit = JSVEHICLEMANAGERrequest::getVar('searchsubmit');
         if(!empty($searchsubmit) AND $searchsubmit == 1){
-            $query = "UPDATE `#__js_vehiclemanager_config` 
+            $query = "UPDATE `#__js_vehiclemanager_config`
                 set configvalue = '$string' WHERE configname = 'activity_log_filter'";
             $db->setQuery($query);
             $db->query();
         }
 
         $activity_log_filter = JSVEHICLEMANAGERincluder::getJSModel('configuration')->getConfigurationByConfigName('activity_log_filter');
-        
-        if ($string != '') { 
+
+        if ($string != '') {
             $inquery = "WHERE act.referencefor IN ($string) ";
-        } else if ($activity_log_filter != null) { 
-            
+        } else if ($activity_log_filter != null) {
+
             $data = array();
             $string = $activity_log_filter;
             $inquery = "WHERE act.referencefor IN ($string) ";
@@ -285,7 +274,7 @@ class JSVehicleManageractivitylogModel {
         $total = $db->loadResult();
         jsvehiclemanager::$_data[1] = JSVEHICLEMANAGERpagination::getPagination($total);
 
-        $query = "SELECT act.description,act.created,act.id,act.referencefor,u.name AS display_name 
+        $query = "SELECT act.description,act.created,act.id,act.referencefor,u.name AS display_name
         FROM `#__js_vehiclemanager_activitylog` AS act
         LEFT JOIN `#__js_vehiclemanager_users` AS u ON u.id = act.uid " . $inquery;
         $query .= "ORDER BY " . jsvehiclemanager::$_data['sorting'];
@@ -463,7 +452,7 @@ class JSVehicleManageractivitylogModel {
                 break;
             case 3:
                 $entityaction = __('delete a record', 'js-vehicle-manager');
-                break;            
+                break;
             default:
                 $entityaction = __('unknown', 'js-vehicle-manager');
                 break;
@@ -569,6 +558,38 @@ class JSVehicleManageractivitylogModel {
         $result[2] = $uid;
 
         return $result;
+    }
+
+    /* Activity log Search data, admin setting and delete cookies */
+    function getAdminActivityLogSearchFormData(){
+        $jsvm_search_array = array();
+        if(JSVEHICLEMANAGERrequest::getVar('sorton', 'post', 4) != 4 || JSVEHICLEMANAGERrequest::getVar('sortby', 'post', 2) != 2){
+            $jsvm_search_array['sorton'] = JSVEHICLEMANAGERrequest::getVar('sorton', 'post', 4);
+            $jsvm_search_array['sortby'] = JSVEHICLEMANAGERrequest::getVar('sortby', 'post', 2);
+            $jsvm_search_array['search_from_activitylog'] = 1;
+        }
+        return $jsvm_search_array;
+    }
+
+    function setSearchVariableForAdminActivityLog($jsvm_search_array){
+        jsvehiclemanager::$_search['vehicle']['sorton'] = isset($jsvm_search_array['sorton']) ? $jsvm_search_array['sorton'] : 4;
+        jsvehiclemanager::$_search['vehicle']['sortby'] = isset($jsvm_search_array['sortby']) ? $jsvm_search_array['sortby'] : 2;
+    }
+
+    function getCookiesSavedSearchDataActivityLog(){
+        $jsvm_search_array = array();
+        $vehicle_search_cookie_data = '';
+        if(isset($_COOKIE['jsvm_vehicle_search_data'])){
+            $vehicle_search_cookie_data = $_COOKIE['jsvm_vehicle_search_data'];
+            $vehicle_search_cookie_data = json_decode( base64_decode($vehicle_search_cookie_data) , true );
+        }
+        if($vehicle_search_cookie_data != '' && isset($vehicle_search_cookie_data['search_from_activitylog']) && $vehicle_search_cookie_data['search_from_activitylog'] == 1){
+            $jsvm_search_array['sorton'] = $vehicle_search_cookie_data['sorton'];
+            $jsvm_search_array['sortby'] = $vehicle_search_cookie_data['sortby'];
+            $jsvm_search_array['search_from_activitylog'] = $vehicle_search_cookie_data['search_from_activitylog'];
+        }
+
+        return $jsvm_search_array;
     }
 
 }

@@ -45,6 +45,7 @@ class JSVEHICLEMANAGERdeactivation {
            $wpdb->prefix."js_vehiclemanager_vehicles",
            $wpdb->prefix."js_vehiclemanager_vehicletypes",
            $wpdb->prefix."js_vehiclemanager_zip",
+           $wpdb->prefix."js_vehiclemanager_jsvmsessiondata",
         );
         return $tables;
     }

@@ -240,7 +240,7 @@ if (!defined('ABSPATH')) die('Restricted Access');
             }
             $curdate = date_i18n('Y-m-d');
             $html = '';
-            if ($_SESSION['jsvm_listing_style'] == 1) {
+            if (isset($_COOKIE['jsvm_listing_style']) && $_COOKIE['jsvm_listing_style'] == 1) {
                 foreach ($vehicles as $row){
                 $featuredexpiry = date_i18n('Y-m-d', strtotime($row->endfeatureddate));
                 $lightbox_flag = 0;
@@ -422,7 +422,7 @@ if (!defined('ABSPATH')) die('Restricted Access');
                         }
                     }
                 }
-            }elseif ($_SESSION['jsvm_listing_style'] == 2 || $_SESSION['jsvm_listing_style'] == 3) {
+            }elseif (isset($_COOKIE['jsvm_listing_style']) && ($_COOKIE['jsvm_listing_style'] == 2 || $_COOKIE['jsvm_listing_style'] == 3)) {
                 foreach (jsvehiclemanager::$_data[0] as $row){
                     $featuredexpiry = date_i18n('Y-m-d', strtotime($row->endfeatureddate));
                     $lightbox_flag = 0;
@@ -572,7 +572,7 @@ if (!defined('ABSPATH')) die('Restricted Access');
                         }
                     }
                  }
-            }elseif ($_SESSION['jsvm_listing_style'] == 5 || $_SESSION['jsvm_listing_style'] == 6) {
+            }elseif (isset($_COOKIE['jsvm_listing_style']) && ($_COOKIE['jsvm_listing_style'] == 5 || $_COOKIE['jsvm_listing_style'] == 6)) {
                 $rowcountes= 0;
                 foreach (jsvehiclemanager::$_data[0] as $row){
                     $featuredexpiry = date_i18n('Y-m-d', strtotime($row->endfeatureddate));
@@ -705,7 +705,7 @@ if (!defined('ABSPATH')) die('Restricted Access');
                 $html .='</div>';
                 $html .='</div>';
 
-            }elseif($_SESSION['jsvm_listing_style'] == 4){
+            }elseif(isset($_COOKIE['jsvm_listing_style']) && $_COOKIE['jsvm_listing_style'] == 4){
                 $html .='<div class="container-fluid jsvm_cm-veh-list-vert-wrap">';
                 $rowcount= 0;
                 foreach ($vehicles as $row) {

@@ -1,7 +1,6 @@
 <?php
-if(isset($_SESSION['jsvm_addon_install_data'])){
-    unset($_SESSION['jsvm_addon_install_data']);
-}
+delete_option( 'jsvm_addon_install_data' );
+delete_option( 'jsvm_addon_install_data_actual_transaction_key' );
 ?>
     <div id="jsvehiclemanageradmin-wrapper">
         <div id="jsvehiclemanageradmin-leftmenu">
@@ -49,12 +48,15 @@ if(isset($_SESSION['jsvm_addon_install_data'])){
                                 <?php
                                 $error_message = '';
                                 $transactionkey = '';
-                                if(isset($_SESSION['jsvm_addon_return_data'])){
-                                    if(isset($_SESSION['jsvm_addon_return_data']['status']) && $_SESSION['jsvm_addon_return_data']['status'] == 0){
-                                        $error_message = $_SESSION['jsvm_addon_return_data']['message'];
-                                        $transactionkey = $_SESSION['jsvm_addon_return_data']['transactionkey'];
+                                if(get_option( 'jsvm_addon_return_data', '' ) != ''){
+                                    if(get_option( 'jsvm_addon_return_data_status' , 0) == 0){
+                                        $error_message = get_option( 'jsvm_addon_return_data_message');
+                                        $transactionkey = get_option( 'jsvm_addon_return_data_transactionkey');
                                     }
-                                    unset($_SESSION['jsvm_addon_return_data']);
+                                    delete_option( 'jsvm_addon_return_data' );
+                                    delete_option( 'jsvm_addon_return_data_status' );
+                                    delete_option( 'jsvm_addon_return_data_message' );
+                                    delete_option( 'jsvm_addon_return_data_transactionkey' );
                                 }
 
                                 ?>

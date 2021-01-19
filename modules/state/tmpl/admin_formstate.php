@@ -10,7 +10,7 @@
     </div>
     <div id="jsvehiclemanageradmin-data">
         <span class="jsvm_js-admin-title">
-            <a href="<?php echo admin_url('admin.php?page=jsvm_state&countryid='.$_SESSION["countryid"]); ?>"><img src="<?php echo jsvehiclemanager::$_pluginpath; ?>includes/images/back-icon.png" /></a>
+            <a href="<?php echo admin_url('admin.php?page=jsvm_state&countryid='. get_option( 'jsvm_countryid_for_state')); ?>"><img src="<?php echo jsvehiclemanager::$_pluginpath; ?>includes/images/back-icon.png" /></a>
             <?php
             $heading = isset(jsvehiclemanager::$_data[0]) ? __('Edit', 'js-vehicle-manager') : __('Add New', 'js-vehicle-manager');
             echo $heading . '&nbsp' . __('State', 'js-vehicle-manager');
@@ -32,7 +32,7 @@
                 <?php echo JSVEHICLEMANAGERformfield::hidden('_wpnonce', wp_create_nonce('save-state')); ?>
                 <div class="jsvm_js-submit-container">
                     <div class="jsvm_js-button-container">
-                        <a id="jsvm_form-cancel-button" href="<?php echo admin_url('admin.php?page=jsvm_state&countryid='.$_SESSION["countryid"]); ?>" ><?php echo __('Cancel', 'js-vehicle-manager'); ?></a>
+                        <a id="jsvm_form-cancel-button" href="<?php echo admin_url('admin.php?page=jsvm_state&countryid='. get_option( 'jsvm_countryid_for_state')); ?>" ><?php echo __('Cancel', 'js-vehicle-manager'); ?></a>
                         <?php echo JSVEHICLEMANAGERformfield::submitbutton('save', __('Save','js-vehicle-manager') .' '. __('State', 'js-vehicle-manager'), array('class' => 'button')); ?>
                     </div>
                 </div>

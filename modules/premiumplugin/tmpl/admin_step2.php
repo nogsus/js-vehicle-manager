@@ -43,8 +43,9 @@ foreach ($allPlugins as $key => $value) {
                             <div class="jsvm-addon-installer-right-addon-wrapper" >
                                 <?php
                                 $error_message = '';
-                                if(isset($_SESSION['jsvm_addon_install_data'])){
-                                    $result = $_SESSION['jsvm_addon_install_data'];
+                                $result = array();
+                                if(get_option( 'jsvm_addon_install_data' , "-1") != "-1"){
+                                    $result = get_option( 'jsvm_addon_install_data');
                                     if(isset($result['status']) && $result['status'] == 1){?>
                                         <div class="jsvm-addon-installer-right-addon-title">
                                             <?php echo __("Select Addons for download","js-vehicle-manager"); ?>
@@ -165,7 +166,6 @@ foreach ($allPlugins as $key => $value) {
     }
 </script>
 <?php
-if(isset($_SESSION['jsvm_addon_install_data'])){// to avoid to show data on refresh
-    unset($_SESSION['jsvm_addon_install_data']);
-}
+delete_option( 'jsvm_addon_install_data' );
+delete_option( 'jsvm_addon_install_data_actual_transaction_key' );
 ?>

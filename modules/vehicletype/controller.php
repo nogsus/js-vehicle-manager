@@ -1,5 +1,4 @@
 <?php
-
 if (!defined('ABSPATH'))
     die('Restricted Access');
 
@@ -48,7 +47,7 @@ class JSVEHICLEMANAGERVehicletypeController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'save-vehicletype') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $data = JSVEHICLEMANAGERrequest::get('post');
         $url = admin_url("admin.php?page=jsvm_vehicletype&jsvmlt=vehicletypes");
@@ -64,7 +63,7 @@ class JSVEHICLEMANAGERVehicletypeController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'delete-vehicletype') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $ids = JSVEHICLEMANAGERrequest::getVar('jsvehiclemanager-cb');
         $result = JSVEHICLEMANAGERincluder::getJSModel('vehicletype')->deleteVehicletype($ids);
@@ -80,7 +79,7 @@ class JSVEHICLEMANAGERVehicletypeController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'publish-vehicletype') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $pagenum = JSVEHICLEMANAGERrequest::getVar('pagenum');
         $ids = JSVEHICLEMANAGERrequest::getVar('jsvehiclemanager-cb');
@@ -99,7 +98,7 @@ class JSVEHICLEMANAGERVehicletypeController {
             return false;
         $nonce = JSVEHICLEMANAGERrequest::getVar('_wpnonce');
         if (! wp_verify_nonce( $nonce, 'unpublish-vehicletype') ) {
-            die( 'Security check Failed' ); 
+            die( 'Security check Failed' );
         }
         $pagenum = JSVEHICLEMANAGERrequest::getVar('pagenum');
         $ids = JSVEHICLEMANAGERrequest::getVar('jsvehiclemanager-cb');

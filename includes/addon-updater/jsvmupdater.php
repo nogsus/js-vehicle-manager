@@ -218,7 +218,8 @@ class JSVM_Updater {
 						update_option('transaction_key_for_'.$value,$token);
 					}
 				}else{
-					$_SESSION['jsvm-addon-key-error-message'] = __('Somthing went wrong','js-vehicle-manager');
+					$vtext = __('Somthing went wrong','js-vehicle-manager');
+					update_option( 'jsvm-addon-key-error-message', $vtext);
 				}
 			}
 		}else{
@@ -269,7 +270,7 @@ class JSVM_Updater {
 			if(is_array($response) && isset($response['error'])){
 				$error_message = $response['error'];
 			}
-			$_SESSION['jsvm-addon-key-error-message'] = $error_message;
+			update_option( 'jsvm-addon-key-error-message', $error_message);
 		}
 		return false;
 	}

@@ -266,9 +266,13 @@ function showLightBox(vehid){
                                     ?>
                                     <?php
                                         $date = $row->adexpiryvalue;
-                                        if(date('Y-m-d',strtotime($date)) >= date('Y-m-d')){
+                                        if(date('Y-m-d',strtotime($date)) >= date('Y-m-d') && $row->status == 1){
                                             echo "<span class='jsvehiclemanager_vehicle_status_value jsvm_publish'>";
                                                 echo __("Publish",'js-vehicle-manager');
+                                            echo"</span>";
+                                        }elseif($row->status == "-1"){
+                                            echo "<span class='jsvehiclemanager_vehicle_status_value jsvm_rejected'>";
+                                                echo __("Rejected",'js-vehicle-manager');
                                             echo"</span>";
                                         }else{
                                             echo "<span class='jsvehiclemanager_vehicle_status_value'>";
